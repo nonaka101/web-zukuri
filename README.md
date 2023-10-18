@@ -51,6 +51,24 @@ WordPressの学習用として作り始めましたが、Webアクセシビリ�
 
 ## 特徴
 
+## 導入方法
+
+### テーマフォルダにコピー
+
+WordPressのテーマを管理しているフォルダに対し、`wordpress/themes` 内にある `web-zukuri` フォルダをコピーしてください。
+
+### テーマの切り替え
+
+WordPress側の管理画面にて、テーマを切り替えてください。
+
+### 検索ページの設定（推奨）
+
+検索ページは固定ページを使っており、リンク先として独自のスラッグ `zkr-searchpage` を使用しています。下記の手順で設定してください。
+
+1. 新規に固定ページを作成（タイトルは "検索" としてください）
+2. 固定ページには、エディタで何かを追加する必要はありません（空の状態でOKです）
+3. 作成した固定ページのスラッグを、 `zkr-searchpage` に変更してください
+
 ## 注意
 
 ### 現段階でわかっている問題点
@@ -114,3 +132,24 @@ CSS設計に Precss の考え方を使っていますが、厳密なルールに
 
 私が制作した部分につきましては、MITライセンスといたします。  
 それ以外につきましては、所有者のライセンスに従ってください。
+
+### WordPress
+
+WordPress に関するPHPファイルに対しては、wordpress.org より GPL-2.0 が適用されます。
+
+[License &#124; WordPress.org 日本語](https://ja.wordpress.org/about/license/)  
+[GNU General Public License v2.0 - GNU Project - Free Software Foundation](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+
+### Google Font
+
+Googleフォントの `Noto Sans JP` を使用しています。こちらは Open Font License となっています。
+
+[Noto Sans Japanese - Google Fonts](https://fonts.google.com/noto/specimen/Noto+Sans+JP/about)  
+[SIL Open Font License (OFL)](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
+
+### デジタル庁イラストレーション・アイコン
+
+一部のSVGアイコンと画像については、デジタル庁が公開しているデータを使用しています。これらはデジタル庁に著作権があります。
+
+[イラストレーション・アイコン素材｜デジタル庁](https://www.digital.go.jp/policies/servicedesign/designsystem/Illustration_Icons)  
+[イラストレーション・アイコン素材利用規約｜デジタル庁](https://www.digital.go.jp/policies/servicedesign/designsystem/Illustration_Icons/terms_of_use)
