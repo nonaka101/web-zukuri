@@ -1,3 +1,36 @@
+/*≡≡≡ ❒ bl_component ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+  ■ 概要
+    固定ページにある、コンポーネント用のボックス
+		（調べやすいよう、リサイズを可能にしている）
+  ■ 構成
+    bl_component_box : ベース
+      bl_component_caption : ボックス上部に固定されたキャプション
+-----------------------------------------------------------------------------*/
+.bl_component_box{
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding: 0;
+  border: var(--sc_border_field);
+  border-color: var(--sc_bg_btn__primary);
+  overflow-y: auto;
+  resize: horizontal;
+  & > *:not(.bl_component_caption) {
+    margin: 10px;
+  }
+}
+.bl_component_caption{
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 0.1em 0.5em;
+  margin: 0;
+  background-color: var(--sc_bg_btn__primary);
+  color: var(--sc_txt_btn__Primary);
+}
+
+
+
+
 /*≡≡≡ ❒ bl_devToolBox ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     開発に使うツール
@@ -41,38 +74,4 @@
   display: block;
   border: 2px solid var(--sc_bg_btn__primary);
   width: 200px;
-}
-
-
-/*≡≡≡ ❒ bl_component ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-  ■ 概要
-    固定ページにある、コンポーネント用のボックス
-		（調べやすいよう、リサイズを可能にしている）
-  ■ 構成
-    bl_component_box : ベース
-      bl_component_caption : ボックス上部に固定されたキャプション
------------------------------------------------------------------------------*/
-.bl_component_box{
-  position: relative;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  padding: 2.5rem 20px 10px;
-  border: var(--sc_border_field);
-  border-color: var(--sc_bg_btn__primary);
-  overflow-y: auto;
-  resize: horizontal;
-}
-.bl_component_caption{
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  padding: 0.1em 0.5em;
-  margin: 0;
-  background-color: var(--sc_bg_btn__primary);
-  color: var(--sc_txt_btn__Primary);
-  text-wrap: nowrap;
 }

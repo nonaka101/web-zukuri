@@ -10,34 +10,47 @@ Version: 1.0
 
 /* ▄▀▄▀▄▀ Description ▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄
 # CSS設計
-  ◲ ly_ : Layout モジュール
+
+## 主なクラスについて
+
+  ◲ ly_* : Layout モジュール
     役割
       レイアウトを扱う最上位のモジュール
     責任範囲
-      + レイアウトに関するプロパティ（top, left, right, bottom, margin, flex, grid 等）
-      + 但し、margin-top(bottom) については煩雑になるため、下位のモジュールでの使用は許容される
+      + 主に、レイアウトに関するプロパティ
+      （top, left, right, bottom, margin, flex, grid 等）
 
-  ❒ bl_ : Block モジュール
+  ❒ bl_* : Block モジュール
     役割
       複数の要素を束ねて1つのブロックを構成する
     責任範囲
       + ブロック内部のレイアウト
-      + ブロック外のレイアウトに関しては、上位のコンテキストが責任を持つ（※但しmargin-top と margin-bottom は除く）
+      + ブロック外のレイアウトに関しては、上位のコンテキストが責任を持つ
 
-  ☐ el_ : Element モジュール
+  ☐ el_* : Element モジュール
     役割
       単体の要素であり、独立して機能するブロック
     責任範囲
       + 内部のレイアウト
-      + 外のレイアウトに関しては、上位のコンテキストが責任を持つ（※但しmargin-top と margin-bottom は除く）
+      + 外のレイアウトに関しては、上位のコンテキストが責任を持つ
 
-  ⚠ hp_ : Helper クラス
+  ⚠ hp_* : Helper クラス
     役割
       特殊な場合に使用される、単体のプロパティを適用させるためのもので、強制的な上書きを行う
     責任範囲
       基本的には単体のプロパティ（セットで使うことが当然に認められるは複数でも許容）
       必ず適用させる都合上、全てのプロパティに !important を使用することになる
+
+## モディファイアについて
+
+  `クラス名__モディファイア名` のように、末尾にアンダーバーが2つ付与されているものは、モディファイアである。
+  これは、そのクラスの基本から振る舞いやあしらいが変わるものである。
+  使う場合には、そのクラスと同じ場所に加えるものとする。
+  （例：<a href="#" class="bl_btn bl_btn__primary">プライマリボタン</a>）
+
 */
+
+
 
 
 
@@ -204,9 +217,6 @@ select {
   }
 }
 
-
-
-
 /* フォーカス時のスタイル */
 *:focus{
   animation-name: focusEffect;
@@ -228,19 +238,18 @@ select {
 
 
 
+
+
 /*≡≡≡ ▀▄ WordPress Block ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     WordPressのブロックエディタ用のスタイル
   ■ 注意
-    + ブロックテーマに対応させる方法が思い浮かばないための暫定的な処置になります。
-    + 目標としては、他のテーマで使っていたデータを、問題なくこのテーマにも適用できることです。
-    + ただし、そのためにはダークモードに関する色、レイアウト等に対応させる必要があります。
-    + theme.json 側での処理も考えましたが、各ブロックに直接書いていくのは現実的でないと判断しました。
-    + そのためここでは、必要最小限となる要素にのみスタイルをつけています。
-    + 上記より、エディタ側とのスタイルの違いが生じるという問題が起きています。
-
-    TODO: 検索ページ、アーカイブページに適用すると詳細度の関係からカードのレイアウトが崩れる
-        -> エレメントモジュールとして、同じものをクラスとして別に用意しておく？
+    + ブロックテーマに対応させる方法が思い浮かばないための暫定的な処置となっている。
+    + 目標としては、他のテーマで使っていたデータを、問題なくこのテーマにも適用できること。
+    + ただし、そのためにはダークモードに関する色、レイアウト等に対応させる必要がある。
+    + theme.json 側での処理も考えているが、各ブロックに直接書いていくのは現実的でないと判断。
+    + そのためここでは、必要最小限となる要素にのみスタイルをつけている。
+    + 上記より、エディタ側とのスタイルの違いが生じるという問題が生じている。
 -----------------------------------------------------------------------------*/
 .single #anchor_mainContent {
   & h1 {
@@ -318,6 +327,8 @@ select {
     }
   }
 }
+
+
 
 
 
@@ -464,6 +475,8 @@ select {
 
 
 
+
+
 /*≡≡≡ ◲ ly_footer ◲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     フッター部のレイアウト構成
@@ -522,6 +535,9 @@ select {
 }
 
 
+
+
+
 /*≡≡≡ ❒ ly_dialog ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     dialogタグを使ったモーダルダイアログ
@@ -566,6 +582,65 @@ html:has(dialog[open]) {
     margin-bottom: 0;
   }
 }
+
+
+
+
+
+/*≡≡≡ ❒ bl_accordion ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+  ■ 概要
+    アコーディオンブロック
+  ■ バリエーション
+    bl_accordion : アコーディオン本体
+    -> bl_accordion__dummy : カテゴリ一覧等、アコーディオンと並ぶ要素をそろえるためのダミー
+      bl_accordion_summary : サマリー要素
+      -> bl_accordion_summary__accent : 連続した場合に見分けがつくよう、色を付与
+      bl_accordion_description : 格納されている要素
+---------------------------------------------------------------------------*/
+.bl_accordion {
+  border-bottom: var(--sc_border_divider);
+  padding: .5em 0;
+  font-size: 1rem;
+  & a {
+    color: var(--sc_txt_body);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.bl_accordion_summary {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  cursor: pointer;
+  color: var(--sc_txt_body);
+  &::after{
+    content: "";
+    width: 1em;
+    height: 1em;
+    margin-right: .1em;
+    margin-left: auto;
+    transition: all 0.3s ease;
+    background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
+  }
+  .is_darkMode &::after {
+    background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
+  }
+  &.bl_accordion_summary__accent {
+    background-color: var(--sc_bg_body__tertiary);
+  }
+}
+/* インナーブロックを考慮して子結合子を使用 */
+.bl_accordion[open] > .bl_accordion_summary::after {
+  transform: rotate(180deg);
+  translate:0 -12.5%;
+}
+.bl_accordion_description {
+  margin-top: 0.3rem;
+}
+
+
 
 
 
@@ -666,11 +741,13 @@ html:has(dialog[open]) {
 
 
 
+
+
 /*≡≡≡ ❒ bl_btn ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     クリックできるボタン
   ■ バリエーション
-    bl_btn_wrapper : ラッパー（複数配置する場合のレイアウトを制御、まだ未完成）
+    bl_btn_wrapper : ラッパー（複数配置する場合のレイアウトを制御）
     bl_btn : ベーススタイル
       -> bl_btn__primary : プライマリボタン、ページ内で最も重要なアクションに使用（例：同意、送信、応募）
       -> bl_btn__secondary : セカンダリボタン、プライマリより優先度が低いアクション（例：問い合わせ）
@@ -732,49 +809,6 @@ button.bl_btn {
 
 
 
-/*≡≡≡ ❒ bl_tagMenu ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-  ■ 概要
-    各サイドバーで使われているリンクリスト
-    WordPressではカスタムメニューとして使う
-
-  ■ バリエーション
-    bl_tagMenu : 全体
-      bl_tagMenu_title : タイトル
-      bl_tagMenu_list : リスト
-      -> bl_tagMenu_list__indented : ネストされたリスト（WordPress用、未検証）
-        bl_tagMenu_item : リストアイテム
-          bl_tagMenu_link : リンク文
----------------------------------------------------------------------------*/
-.bl_tagMenu {
-  margin-bottom: 40px;
-}
-.bl_tagMenu_title {
-  display: block;
-  font-size: 0.7rem;
-  color: var(--sc_txt_desc);
-  margin-bottom: 0.2rem;
-}
-.bl_tagMenu_list {
-  margin: 0;
-  list-style: none;
-  padding: 0;
-  &.bl_tagMenu_list__indented {
-    padding-left: 1em;
-  }
-}
-.bl_tagMenu_item {
-  margin-bottom: 0.75em;
-}
-.bl_tagMenu_link {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--sc_txt_body);
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
 
 
 /*≡≡≡ ❒ bl_card ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -802,8 +836,7 @@ button.bl_btn {
   margin-bottom: 1rem;
 }
 .bl_card {
-  /* カード内のR値、自身の幅に応じ変化「～40px : R4」「40px～120px : R8」「120px～ : R12」
-    ※計算式の意味（https://ishadeed.com/article/conditional-border-radius/）*/
+  /* カード内のR値、自身の幅に応じ変化「～40px : R4」「40px～120px : R8」「120px～ : R12」*/
   --card_r: max(
     min(4px, calc(40px - 100%)*9999),
     min(8px, calc(100% - 40px)*9999, calc(120px - 100%)*9999),
@@ -887,6 +920,8 @@ button.bl_btn {
 
 
 
+
+
 /*≡≡≡ ❒ bl_pager ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     アーカイブ、検索ページ等で、ページ送り用に使うページネーション要素
@@ -965,81 +1000,6 @@ button.bl_btn {
 
 
 
-/*≡≡≡ ❒ bl_snsIcon ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-  ■ 概要
-    複数のSNSアイコンを一覧表示する
-  ■ 構成
-    bl_snsIcon : アイコン群を並べて入れるためのラッパー
-      bl_snsIcon_item : アイコン本体
------------------------------------------------------------------------------*/
-.bl_snsIcon {
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-}
-.bl_snsIcon_item {
-  height: 48px;
-  width: 48px;
-  padding: 8px;
-}
-
-
-
-/*≡≡≡ ❒ bl_accordion ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-  ■ 概要
-    アコーディオンブロック
-  ■ バリエーション
-    bl_accordion : アコーディオン本体
-    -> bl_accordion__dummy : カテゴリ一覧等、アコーディオンと並ぶ要素をそろえるためのダミー
-      bl_accordion_summary : サマリー要素
-      -> bl_accordion_summary__accent : 連続した場合に見分けがつくよう、色を付与
-      bl_accordion_description : 格納されている要素
----------------------------------------------------------------------------*/
-.bl_accordion {
-  border-bottom: var(--sc_border_divider);
-  padding: .5em 0;
-  font-size: 1rem;
-  & a {
-    color: var(--sc_txt_body);
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-.bl_accordion_summary {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  cursor: pointer;
-  color: var(--sc_txt_body);
-  &::after{
-    content: "";
-    width: 1em;
-    height: 1em;
-    margin-right: .1em;
-    margin-left: auto;
-    transition: all 0.3s ease;
-    background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
-  }
-  .is_darkMode &::after {
-    background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
-  }
-  &.bl_accordion_summary__accent {
-    background-color: var(--sc_bg_body__tertiary);
-  }
-}
-/* インナーブロックを考慮して子結合子を使用 */
-.bl_accordion[open] > .bl_accordion_summary::after {
-  transform: rotate(180deg);
-  translate:0 -12.5%;
-}
-.bl_accordion_description {
-  margin-top: 0.3rem;
-}
-
-
-
 
 
 /*≡≡≡ ❒ bl_postData ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -1097,8 +1057,7 @@ button.bl_btn {
 /*≡≡≡ ❒ bl_searchForm ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     検索用のフォーム
-    ※デザインシステムの他のフォームと共通化できるスタイルが少ないため、専用モジュール化している
-    （あちらと無理に共通化すると、場合分けのスタイリングが不必要に多くなる）
+    （※デザインシステムの他のフォームと共通化できるスタイルが少ないため、専用モジュール化している）
   ■ バリエーション
     共通パーツ
     bl_searchForm_wrapper : ラッパー
@@ -1248,6 +1207,75 @@ button.bl_btn {
 
 
 
+/*≡≡≡ ❒ bl_snsIcon ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+  ■ 概要
+    複数のSNSアイコンを一覧表示する
+  ■ 構成
+    bl_snsIcon : アイコン群を並べて入れるためのラッパー
+      bl_snsIcon_item : アイコン本体
+-----------------------------------------------------------------------------*/
+.bl_snsIcon {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.bl_snsIcon_item {
+  height: 48px;
+  width: 48px;
+  padding: 8px;
+}
+
+
+
+
+
+/*≡≡≡ ❒ bl_tagMenu ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+  ■ 概要
+    各サイドバーで使われているリンクリスト
+    WordPressではカスタムメニューとして使う
+
+  ■ バリエーション
+    bl_tagMenu : 全体
+      bl_tagMenu_title : タイトル
+      bl_tagMenu_list : リスト
+      -> bl_tagMenu_list__indented : ネストされたリスト（WordPress用、未検証）
+        bl_tagMenu_item : リストアイテム
+          bl_tagMenu_link : リンク文
+---------------------------------------------------------------------------*/
+.bl_tagMenu {
+  margin-bottom: 40px;
+}
+.bl_tagMenu_title {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--sc_txt_desc);
+  margin-bottom: 0.2rem;
+}
+.bl_tagMenu_list {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  &.bl_tagMenu_list__indented {
+    padding-left: 1em;
+  }
+}
+.bl_tagMenu_item {
+  margin-bottom: 0.75em;
+}
+.bl_tagMenu_link {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--sc_txt_body);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+
+
 
 /*≡≡≡ ☐ el_header_lv* ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
@@ -1328,6 +1356,8 @@ button.bl_btn {
     font-weight: 500;
   }
 }
+
+
 
 
 
