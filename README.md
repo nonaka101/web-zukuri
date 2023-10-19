@@ -2,7 +2,9 @@
 
 ## 概要
 
-[デジタル庁デザインシステム](https://www.digital.go.jp/policies/servicedesign/designsystem) を参考に試作した、WordPressテーマです。  
+![テーマ：Web-Zukuriの、ロゴ](docs/images_readme/screenshot.png)
+
+こちらは、[デジタル庁デザインシステム](https://www.digital.go.jp/policies/servicedesign/designsystem) を参考に試作した WordPressテーマです。  
 どのようなものかについては、[GitHub Pagesを使ったサンプルページ](https://nonaka101.github.io/web-zukuri/) をご覧ください。
 
 作成の際の考えにつきましては、後日 整理も兼ねて [Zenn](https://zenn.dev/nonaka101) にて書いていく予定です。
@@ -52,6 +54,25 @@
 WordPressの学習用として作り始めましたが、Webアクセシビリティの考えを取り入れられればと考えてます。
 
 ## 特徴
+
+### ダークモードを搭載し、OS側のフォントサイズに配慮
+
+![404ページの初期状態](docs/images_readme/devUtils_01.jpg)
+
+このテーマでは、ダークモードを搭載しています。また OS側によるフォントサイズに配慮できるよう、テキスト要素を中心に相対指定の `rem` を使うようにしています。  
+[GitHub Pages](https://nonaka101.github.io/web-zukuri/) では、画面の右下に開発用のツールを配置しています。
+
+![開発用ツール](docs/images_readme/devUtils_00.jpg)
+
+ここでは、「カラーモードの切り替え」「フォントサイズの切り替え」の2つを行うことができます。
+
+![root上のフォントサイズを16pxから32pxに上げた状態](docs/images_readme/devUtils_02.jpg)
+
+ルート要素のフォントサイズをJavaScriptで変更し、様々なフォントサイズでのレイアウト変化を確認できます。
+
+![ダークモードに切り替えた状態](docs/images_readme/devUtils_03.jpg)
+
+CSSのカスタムプロパティを使い、このようにカラーモードの切り替えを行えるようにしています。
 
 ## 導入方法
 
