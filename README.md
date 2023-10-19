@@ -13,37 +13,39 @@
 大まかなロードマップですが、下記のように考え進めております。
 
 1. テーマの基となるデータ作成
-    + 各種テンプレートファイルの作成
-      - [x] : index.html（front-page）
-      - [x] : 404.html
-      - [x] : archive.html
-      - [x] : search.html
-      - [ ] : page.html（各種パーツを確認用にまとめて配置）
-      - [ ] : single.html（Readmeを兼ねる）
-    + CSS の作成
-      - [x] : style.css
-      - [x] : devUtilities.css（開発用）
-    + JavaScript の作成
-      - [x] : common.js
-      - [x] : devUtilities.js（開発用）
+	+ 各種テンプレートファイルの作成
+		- [x] : index.html（front-page）
+		- [x] : 404.html
+		- [x] : archive.html
+		- [x] : search.html
+		- [x] : page.html（各種パーツを確認用にまとめて配置）
+		- [ ] : single.html（Readmeを兼ねる）
+	+ CSS の作成
+		- [x] : style.css
+		- [x] : devUtilities.css（開発用）
+	+ JavaScript の作成
+		- [x] : common.js
+		- [x] : devUtilities.js（開発用）
 2. WordPressテーマを作成
-    + 各種テンプレートパーツの作成
-      - [ ] : parts-menu.php（メイン、サブメニューを出力）
-      - [ ] : parts-categories-and-archives.php（カテゴリ、年月アーカイブを出力）
-      - [ ] : sidebar-left.php
-      - [ ] : sidebar-right.php
-      - [ ] : header.php
-      - [ ] : footer.php
-    + 各種テンプレートファイルの作成
-      - [ ] : front-page.php（index.htmlを使用）
-      - [ ] : 404.php
-      - [ ] : archive.php
-      - [ ] : search.php
-      - [ ] : page.php
-      - [ ] : single.php
-    + その他
-      - [ ] : functions.php の整理
-      - [ ] : ブロックテーマ関係（theme.json やエディタ関連、自作ブロックなど）
+	+ 各種テンプレートパーツの作成
+		- [ ] : parts-menu.php（メイン、サブメニューを出力）
+		- [ ] : parts-categories-and-archives.php（カテゴリ、年月アーカイブを出力）
+		- [ ] : sidebar-left.php
+		- [ ] : sidebar-right.php
+		- [ ] : header.php
+		- [ ] : footer.php
+		- [ ] : searchform.php
+	+ 各種テンプレートファイルの作成
+		- [ ] : front-page.php（index.htmlを使用）
+		- [ ] : 404.php
+		- [ ] : archive.php
+		- [ ] : singular.php（投稿・固定ページ）
+		- [ ] : index.php
+		- [ ] : search.php
+		- [ ] : searchpage.php（固定ページテンプレートとして）
+	+ その他
+		- [ ] : functions.php の整理
+		- [ ] : ブロックテーマ関係（theme.json やエディタ関連、自作ブロックなど）
 
 ## 目的
 
@@ -55,7 +57,7 @@ WordPressの学習用として作り始めましたが、Webアクセシビリ�
 
 ### テーマフォルダにコピー
 
-WordPressのテーマを管理しているフォルダに対し、`wordpress/themes` 内にある `web-zukuri` フォルダをコピーしてください。
+WordPressのテーマを管理しているフォルダに対し、`wp-content/themes` 内にある `web-zukuri` フォルダをコピーしてください。
 
 ### テーマの切り替え
 
