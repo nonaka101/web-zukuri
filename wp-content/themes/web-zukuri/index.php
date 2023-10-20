@@ -22,7 +22,5 @@
     <!-- /.ly_mainArea_content -->
 
 		<?php get_sidebar('right'); ?>
-  </div>
-  <!-- /.ly_mainArea -->
-	
+
 <?php get_footer(); ?>
