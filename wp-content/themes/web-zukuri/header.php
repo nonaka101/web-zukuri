@@ -26,7 +26,7 @@
 						echo '<img src="'.$mylogo.'" alt="サイトのロゴ">' . "\n";
 
 						// トップページのみ h1タグ、それ以外は spanタグでサイトタイトルを構築
-						$tagname = (is_home() || is_front_page()) ? 'h1' : 'div' ;
+						$tagname = (is_home() || is_front_page()) ? 'h1' : 'span' ;
 						echo '<'.$tagname.'>'.get_bloginfo('name').'</'.$tagname.'>'."\n";
 					?>
         </a>
