@@ -16,21 +16,10 @@
 		array('loc'=>'sub-menu')
 		);
 	?>
-	
+
 	<?php get_template_part(
 		'template-parts/parts',
 		'categories-and-archives'
-		);
-	?>
-
-	<section>
-		<h2 class="el_header__xs">アドレス</h2>
-		<address>〒000-0000 A県B市C区D町123-4</address>
-	</section>
-
-	<?php get_template_part(
-		'template-parts/parts',
-		'sns'
 		);
 	?>
 

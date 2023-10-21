@@ -30,3 +30,26 @@ window.addEventListener("scroll",() => {
     }
   }
 });
+
+
+
+
+
+/*≡≡≡ [JS]「メニュー」ボタン ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+  ■ 概要
+    モバイル画面時、ヘッダーにある「検索」ボタンを押すと、モーダルダイアログを表示
+-----------------------------------------------------------------------------*/
+const menuBtn = document.getElementById('menu-button');
+const menuDialog = document.getElementById('menu');
+menuBtn.addEventListener('click', () => {
+  menuDialog.showModal();
+});
+function closeDialog(){
+  menuDialog.close();
+};
+// モーダルダイアログ外をクリック時、ダイアログを閉じる
+menuDialog.addEventListener('click', (e) => {
+  if(e.target === menuDialog){
+    menuDialog.close();
+  }
+});

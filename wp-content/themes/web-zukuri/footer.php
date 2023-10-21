@@ -1,6 +1,5 @@
 	</div>
   <!-- /.ly_mainArea -->
-  <!--≡≡≡ ▼ footer.php ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
   <footer class="ly_footer_wrapper" id="anchor_footer">
     <div class="ly_footer">
       <div class="ly_footer_widget3fr">
@@ -127,5 +126,6 @@
     <!-- /.bl_debToolBox_utils -->
   </div>
   <!-- /.bl_devToolBox -->
+  <?php wp_footer() ; ?>
 </body>
 </html>

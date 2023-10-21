@@ -4,7 +4,7 @@
 
 ![テーマ：Web-Zukuriの、ロゴ](docs/images_readme/screenshot.png)
 
-こちらは、[デジタル庁デザインシステム](https://www.digital.go.jp/policies/servicedesign/designsystem) を参考に試作した WordPressテーマです。  
+こちらは、[デジタル庁デザインシステム](https://www.digital.go.jp/policies/servicedesign/designsystem) を参考に試作した WordPressテーマです。`Version 1.3.2`（2023年6月29日に公開されたもの）を主軸として作成しています。  
 どのようなものかについては、[GitHub Pagesを使ったサンプルページ](https://nonaka101.github.io/web-zukuri/) をご覧ください。
 
 作成の際の考えにつきましては、後日 整理も兼ねて [Zenn](https://zenn.dev/nonaka101) にて書いていく予定です。
@@ -30,15 +30,15 @@
 		- [x] : devUtilities.js（開発用）
 2. WordPressテーマを作成
 	+ 各種テンプレートパーツの作成
-		- [ ] : parts-menu.php（メイン、サブメニューを出力）
-		- [ ] : parts-categories-and-archives.php（カテゴリ、年月アーカイブを出力）
-		- [ ] : sidebar-left.php
-		- [ ] : sidebar-right.php
-		- [ ] : header.php
-		- [ ] : footer.php
+		- [x] : parts-menu.php（メイン、サブメニューを出力）
+		- [x] : parts-categories-and-archives.php（カテゴリ、年月アーカイブを出力）
+		- [x] : sidebar-left.php
+		- [x] : sidebar-right.php
+		- [x] : header.php
+		- [x] : footer.php
 		- [ ] : searchform.php
 	+ 各種テンプレートファイルの作成
-		- [ ] : front-page.php（index.htmlを使用）
+		- [x] : front-page.php（index.htmlを使用）
 		- [ ] : 404.php
 		- [ ] : archive.php
 		- [ ] : singular.php（投稿・固定ページ）
@@ -57,22 +57,18 @@ WordPressの学習用として作り始めましたが、Webアクセシビリ�
 
 ### ダークモードを搭載し、OS側のフォントサイズに配慮
 
-![404ページの初期状態](docs/images_readme/devUtils_01.jpg)
-
 このテーマでは、ダークモードを搭載しています。また OS側によるフォントサイズに配慮できるよう、テキスト要素を中心に相対指定の `rem` を使うようにしています。  
 [GitHub Pages](https://nonaka101.github.io/web-zukuri/) では、画面の右下に開発用のツールを配置しています。
-
-![開発用ツール](docs/images_readme/devUtils_00.jpg)
+![404ページの初期状態](docs/images_readme/devUtils_01.jpg)
 
 ここでは、「カラーモードの切り替え」「フォントサイズの切り替え」の2つを行うことができます。
+![開発用ツール](docs/images_readme/devUtils_00.jpg)
 
+ルート要素のフォントサイズをJavaScriptで変更し、様々なフォントサイズでのレイアウト変化を確認できます。下図は一般的なサイズ 16px から 32px に上げた状態です。
 ![root上のフォントサイズを16pxから32pxに上げた状態](docs/images_readme/devUtils_02.jpg)
 
-ルート要素のフォントサイズをJavaScriptで変更し、様々なフォントサイズでのレイアウト変化を確認できます。
-
+CSSのカスタムプロパティを使い、カラーモードの切り替えることができます。下図はダークモード時のものです。
 ![ダークモードに切り替えた状態](docs/images_readme/devUtils_03.jpg)
-
-CSSのカスタムプロパティを使い、このようにカラーモードの切り替えを行えるようにしています。
 
 ## 導入方法
 
@@ -88,8 +84,8 @@ WordPress側の管理画面にて、テーマを切り替えてください。
 
 検索ページは固定ページを使っており、リンク先として独自のスラッグ `zkr-searchpage` を使用しています。下記の手順で設定してください。
 
-1. 新規に固定ページを作成（タイトルは "検索" としてください）
-2. 固定ページには、エディタで何かを追加する必要はありません（空の状態でOKです）
+1. 新規に固定ページを作成してください（タイトルは "検索" に）
+2. 固定ページ編集画面で、使用するテンプレートを `Search Page` に変更してください。エディタで何かブロックを追加する必要はありません
 3. 作成した固定ページのスラッグを、 `zkr-searchpage` に変更してください
 
 ## 注意
@@ -126,30 +122,30 @@ CSS設計に Precss の考え方を使っていますが、厳密なルールに
 
 ### デザイン関係
 
-#### [デザインシステム｜デジタル庁](https://www.digital.go.jp/policies/servicedesign/designsystem)
-
 テーマのベースとなるものです。
 
-#### [ウェブアクセシビリティ導入ガイドブック｜デジタル庁](https://www.digital.go.jp/resources/introduction-to-web-accessibility-guidebook/)
++ [デザインシステム｜デジタル庁](https://www.digital.go.jp/policies/servicedesign/designsystem)
 
 アクセシビリティについて考える基となりました。
 
-#### [Webアプリケーションアクセシビリティ ――今日から始める現場からの改善：書籍案内｜技術評論社](https://gihyo.jp/book/2023/978-4-297-13366-5)
++ [ウェブアクセシビリティ導入ガイドブック｜デジタル庁](https://www.digital.go.jp/resources/introduction-to-web-accessibility-guidebook/)
 
-#### [書籍『Webアプリケーションアクセシビリティ』サポートサイト](https://webapp-a11y.com/)
+下記の書籍は、説明の中に「ダメな例」と「何故ダメなのか」まで詳細に書かれてあり、コーディングする際に役立ちました。
+
++ [Webアプリケーションアクセシビリティ ――今日から始める現場からの改善：書籍案内｜技術評論社](https://gihyo.jp/book/2023/978-4-297-13366-5)
++ [書籍『Webアプリケーションアクセシビリティ』サポートサイト](https://webapp-a11y.com/)
 
 ### CSS設計
 
-今回はCSS設計に、*PRECSS(Prefix css)* を参考にしています。  
-（※一部ルールから逸脱している箇所があります）
+今回はCSS設計に、*PRECSS(Prefix css)* を参考にしています。[^1]  
+[^1]：本家のルールからは逸脱している箇所が結構あります
 
-#### [CSS設計完全ガイド ～詳細解説＋実践的モジュール集：書籍案内｜技術評論社](https://gihyo.jp/book/2020/978-4-297-11173-1)
-
-#### [PRECSS - Manage your CSS with prefixes.](https://precss.io/ja/)
++ [CSS設計完全ガイド ～詳細解説＋実践的モジュール集：書籍案内｜技術評論社](https://gihyo.jp/book/2020/978-4-297-11173-1)
++ [PRECSS - Manage your CSS with prefixes.](https://precss.io/ja/)
 
 ### WordPress関係
 
-#### [WordPressオリジナルテーマ制作入門：書籍案内｜技術評論社](https://gihyo.jp/book/2022/978-4-297-12557-8)
++ [WordPressオリジナルテーマ制作入門：書籍案内｜技術評論社](https://gihyo.jp/book/2022/978-4-297-12557-8)
 
 ## ライセンスについて
 
@@ -160,19 +156,19 @@ CSS設計に Precss の考え方を使っていますが、厳密なルールに
 
 WordPress に関するPHPファイルに対しては、wordpress.org より GPL-2.0 が適用されます。
 
-[License &#124; WordPress.org 日本語](https://ja.wordpress.org/about/license/)  
-[GNU General Public License v2.0 - GNU Project - Free Software Foundation](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
++ [License &#124; WordPress.org 日本語](https://ja.wordpress.org/about/license/)  
++ [GNU General Public License v2.0 - GNU Project - Free Software Foundation](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
 
 ### Google Font
 
 Googleフォントの `Noto Sans JP` を使用しています。こちらは Open Font License となっています。
 
-[Noto Sans Japanese - Google Fonts](https://fonts.google.com/noto/specimen/Noto+Sans+JP/about)  
-[SIL Open Font License (OFL)](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
++ [Noto Sans Japanese - Google Fonts](https://fonts.google.com/noto/specimen/Noto+Sans+JP/about)  
++ [SIL Open Font License (OFL)](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
 
 ### デジタル庁イラストレーション・アイコン
 
 一部のSVGアイコンと画像については、デジタル庁が公開しているデータを使用しています。これらはデジタル庁に著作権があります。
 
-[イラストレーション・アイコン素材｜デジタル庁](https://www.digital.go.jp/policies/servicedesign/designsystem/Illustration_Icons)  
-[イラストレーション・アイコン素材利用規約｜デジタル庁](https://www.digital.go.jp/policies/servicedesign/designsystem/Illustration_Icons/terms_of_use)
++ [イラストレーション・アイコン素材｜デジタル庁](https://www.digital.go.jp/policies/servicedesign/designsystem/Illustration_Icons)  
++ [イラストレーション・アイコン素材利用規約｜デジタル庁](https://www.digital.go.jp/policies/servicedesign/designsystem/Illustration_Icons/terms_of_use)

@@ -8,7 +8,9 @@ function zkr_enqueue_scripts() {
 		get_template_directory_uri() . '/assets/js/common.js',
 		array(),
 		'1.0.0',
-		array('in_footer' => true)
+		array(
+			'in_footer' => 'true',
+		)
 	);
 
   wp_enqueue_script(
@@ -16,7 +18,9 @@ function zkr_enqueue_scripts() {
 		get_template_directory_uri() . '/assets/js/devUtilities.js',
 		array(),
 		'1.0.0',
-		array('in_footer' => true)
+		array(
+			'in_footer' => 'true',
+		)
 	);
 
 	// スタイルシートの読み込み

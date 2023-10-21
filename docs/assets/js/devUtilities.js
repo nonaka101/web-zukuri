@@ -55,22 +55,6 @@ if (sessionStorage.getItem("is_darkMode") === "on") {
   darkModeOff();
 }
 
-// モーダルダイアログ
-const menuBtn = document.getElementById('menu-button');
-const menuDialog = document.getElementById('menu');
-menuBtn.addEventListener('click', () => {
-  menuDialog.showModal();
-});
-function closeDialog(){
-  menuDialog.close();
-};
-// モーダルダイアログ外をクリック時、ダイアログを閉じる
-menuDialog.addEventListener('click', (e) => {
-  if(e.target === menuDialog){
-    menuDialog.close();
-  }
-});
-
 
 
 
@@ -95,5 +79,5 @@ res.textContent = rng.value;
 rng.addEventListener('input', (e) => {
   let val = e.target.value;
   res.textContent = val;
-  document.documentElement.style.fontSize = val + 'px'; 
+  document.documentElement.style.fontSize = val + 'px';
 })
