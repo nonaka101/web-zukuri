@@ -43,7 +43,7 @@
 		- [x] : 404.php
 		- [x] : search.php
 		- [x] : searchpage.php（固定ページテンプレートとして）
-		- [ ] : archive.php
+		- [x] : archive.php
 		- [ ] : singular.php（投稿・固定ページ）
 		- [ ] : index.php
 	+ その他
