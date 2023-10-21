@@ -32,19 +32,20 @@
 	+ 各種テンプレートパーツの作成
 		- [x] : parts-menu.php（メイン、サブメニューを出力）
 		- [x] : parts-categories-and-archives.php（カテゴリ、年月アーカイブを出力）
+		- [x] : parts-pagenation.php（検索、アーカイブでのページ送り要素を出力）
 		- [x] : sidebar-left.php
 		- [x] : sidebar-right.php
 		- [x] : header.php
 		- [x] : footer.php
-		- [ ] : searchform.php
+		- [x] : searchform.php
 	+ 各種テンプレートファイルの作成
 		- [x] : front-page.php（index.htmlを使用）
-		- [ ] : 404.php
+		- [x] : 404.php
+		- [x] : search.php
+		- [x] : searchpage.php（固定ページテンプレートとして）
 		- [ ] : archive.php
 		- [ ] : singular.php（投稿・固定ページ）
 		- [ ] : index.php
-		- [ ] : search.php
-		- [ ] : searchpage.php（固定ページテンプレートとして）
 	+ その他
 		- [ ] : functions.php の整理
 		- [ ] : ブロックテーマ関係（theme.json やエディタ関連、自作ブロックなど）
@@ -85,8 +86,11 @@ WordPress側の管理画面にて、テーマを切り替えてください。
 検索ページは固定ページを使っており、リンク先として独自のスラッグ `zkr-searchpage` を使用しています。下記の手順で設定してください。
 
 1. 新規に固定ページを作成してください（タイトルは "検索" に）
-2. 固定ページ編集画面で、使用するテンプレートを `Search Page` に変更してください。エディタで何かブロックを追加する必要はありません
+2. 固定ページ編集画面で、使用するテンプレートを `Search Page` に変更してください。エディタで何かブロックを追加する必要はありません（※１）
 3. 作成した固定ページのスラッグを、 `zkr-searchpage` に変更してください
+
+※１：固定ページ編集画面
+![WordPress管理画面にてテンプレートを変更した状態](docs/images_readme/setting_searchpage.png)
 
 ## 注意
 
