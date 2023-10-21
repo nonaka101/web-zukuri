@@ -410,16 +410,16 @@ select {
   gap: 8px;
   text-decoration: none;
   color: var(--sc_txt_body);
-  & > img {
-    max-height: 36px;
-    width: auto;
-  }
-  & > span,
-  & > h1 {
-    font-size: 24px;
-    margin: 0;
-    font-weight: 700;
-  }
+}
+.bl_header_siteTitle > img {
+	max-height: 36px;
+	width: auto;
+}
+.bl_header_siteTitle > h1,
+.bl_header_siteTitle > span {
+	font-size: 24px;
+	margin: 0;
+	font-weight: 700;
 }
 .bl_header_mobileMenu {
   flex: none;
@@ -529,9 +529,9 @@ select {
   text-decoration: none;
   color: var(--sc_txt_body);
   font-size: 1.75rem;
-  & >img {
-    max-height: 1.75rem;
-  }
+}
+.ly_footer_headerTitle > img{
+	max-height: 1.75rem;
 }
 
 
