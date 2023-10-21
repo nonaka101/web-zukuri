@@ -13,7 +13,7 @@
   <div class="ly_mainArea">
     <header class="ly_mainArea_header">
       <div class="bl_header">
-        <a class="bl_header_siteTitle" href="./index.html" id="anchor_header">
+        <a class="bl_header_siteTitle" href="<?php echo esc_url(home_url()); ?>" id="anchor_header">
 					<?php
 						// カスタムロゴの出力（ない場合はダミーを出力）
 						if(has_custom_logo()){
