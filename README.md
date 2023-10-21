@@ -44,7 +44,7 @@
 		- [x] : search.php
 		- [x] : searchpage.php（固定ページテンプレートとして）
 		- [x] : archive.php
-		- [ ] : singular.php（投稿・固定ページ）
+		- [x] : singular.php（投稿・固定ページ）
 		- [ ] : index.php
 	+ その他
 		- [ ] : functions.php の整理
