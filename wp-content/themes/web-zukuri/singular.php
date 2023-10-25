@@ -65,7 +65,7 @@
 
 				<?php if(has_post_thumbnail()) : ?>
 					<div class="el_thumbnail">
-						<?php the_post_thumbnail(); ?>
+						<?php the_post_thumbnail('thumbnail'); ?>
 					</div>
 				<?php endif; ?>
 

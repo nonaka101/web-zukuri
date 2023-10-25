@@ -15,7 +15,7 @@
 				<a class="<?php echo $card_class ?>" href="<?php the_permalink(); ?>">
 					<?php if(has_post_thumbnail()) : ?>
 						<div class="bl_card_thumbnail">
-							<?php the_post_thumbnail(); ?>
+							<?php the_post_thumbnail('thumbnail'); ?>
 						</div>
 					<?php endif; ?>
 
