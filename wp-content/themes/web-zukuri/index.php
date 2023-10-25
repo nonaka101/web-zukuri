@@ -1,26 +1,37 @@
 <?php get_header(); ?>
 <?php get_sidebar('left'); ?>
 
-		<main class="ly_mainArea_content ly_mainArea_content__middle" id="anchor_mainContent">
-      <article class="bl_card_wrapper">
-        <a class="bl_card bl_card__clickable" href="./single.html">
-          <div class="bl_card_body">
-            <span class="bl_card_category">サンプルページ</span>
-            <h2 class="bl_card_title">Read me</h2>
-            <p class="bl_card_content">
-              ここでは、このプロジェクトの主旨や注意事項等についてまとめてあります。
-              また、投稿ページのサンプルも兼ねています。
-            </p>
-            <time class="bl_card_date" datetime="2023-07-21">2023/07/21</time>
-          </div>
-          <!-- /.bl_card_body -->
-        </a>
-        <!-- /.bl_card bl_card__clickable -->
-      </article>
-      <!-- /.bl_card_wrapper -->
-    </main>
-    <!-- /.ly_mainArea_content -->
+<main class="ly_mainArea_content ly_mainArea_content__middle" id="anchor_mainContent">
+	<?php if ( is_home() && ! is_front_page() && ! empty( single_post_title( '', false ) ) ) : ?>
+		<h1 class="el_heading_lv1"><?php single_post_title(); ?></h1>
+	<?php elseif (is_date() || is_category() || is_tag() || is_author() || is_tax()) : ?>
+		<h1 class="el_header_lv1">
+			<?php if(is_month()): ?>
+				<?php echo get_the_date(format:'Y年n月'); // 月別アーカイブの場合は `single_term_title()` では取得不可のため ?>
+			<?php elseif (is_year()): ?>
+				<?php echo get_the_date(format:'Y年');?>
+			<?php else: ?>
+				<?php single_term_title(); // カテゴリアーカイブとタグアーカイブのタイトルを表示 ?>
+			<?php endif; ?>
+		</h1>
+	<?php elseif (is_attachment() || is_single()): ?>
+		<h1 class="el_heading_lv1"><?php single_post_title(); ?></h1>
+	<?php endif; ?>
 
-		<?php get_sidebar('right'); ?>
+	<?php
+	if ( have_posts() ) {
+		while ( have_posts() ) {
+			the_post();
+			get_template_part( 'template-parts/loop', 'post');
+		}
+		get_template_part('template-parts', 'pagenation');
+	} else {
+		echo '<p>コンテンツが存在しませんでした</p>'."\n";
+	}
+	?>
+</main>
+<!-- /.ly_mainArea_content -->
+
+<?php get_sidebar('right'); ?>
 
 <?php get_footer(); ?>
