@@ -9,46 +9,22 @@
 
 作成の際の考えにつきましては、後日 整理も兼ねて [Zenn](https://zenn.dev/nonaka101) にて書いていく予定です。
 
-### ロードマップ
+### 現状について
 
 現在、**作業途中**となっております。  
-大まかなロードマップですが、下記のように考え進めております。
+下記の作業が残っている状態です。
 
-1. テーマの基となるデータ作成
-	+ 各種テンプレートファイルの作成
-		- [x] : index.html（front-page）
-		- [x] : 404.html
-		- [x] : archive.html
-		- [x] : search.html
-		- [x] : page.html（各種パーツを確認用にまとめて配置）
-		- [ ] : single.html（Readmeを兼ねる）
-	+ CSS の作成
-		- [x] : style.css
-		- [x] : devUtilities.css（開発用）
-	+ JavaScript の作成
-		- [x] : common.js
-		- [x] : devUtilities.js（開発用）
-2. WordPressテーマを作成
-	+ 各種テンプレートパーツの作成
-		- [x] : parts-menu.php（メイン、サブメニューを出力）
-		- [x] : parts-categories-and-archives.php（カテゴリ、年月アーカイブを出力）
-		- [x] : parts-pagenation.php（検索、アーカイブでのページ送り要素を出力）
-		- [x] : sidebar-left.php
-		- [x] : sidebar-right.php
-		- [x] : header.php
-		- [x] : footer.php
-		- [x] : searchform.php
-	+ 各種テンプレートファイルの作成
-		- [x] : front-page.php（index.htmlを使用）
-		- [x] : 404.php
-		- [x] : search.php
-		- [x] : searchpage.php（固定ページテンプレートとして）
-		- [x] : archive.php
-		- [x] : singular.php（投稿・固定ページ）
-		- [ ] : index.php
-	+ その他
-		- [ ] : functions.php の整理
-		- [ ] : ブロックテーマ関係（theme.json やエディタ関連、自作ブロックなど）
+- [ ] : single.html の Readme を作成
+- [ ] : index.php の作成
+- [ ] : functions.php の整理
+- [ ] : ブロックテーマ関係（theme.json やエディタ関係、自作ブロックなど）
+
+コメント機能など、下記の機能についてはまだ導入できるか不明な状態です。   
+一度完成してから考えようと思っております。
+
+- [ ] : コメント機能
+- [ ] : カスタムタクソノミー
+- [ ] : パンくずリスト
 
 ## 目的
 
@@ -106,6 +82,16 @@ WordPress側の管理画面にて、テーマを切り替えてください。
 ![WordPress管理画面にてテンプレートを変更した状態](docs/images_readme/setting_searchpage.png)
 
 ## 注意
+
+### 使用していただける場合の注意事項
+
+#### 「導入すればアクセシビリティを達成できる*ものではない*」ことをご了承ください
+
+投稿するコンテンツにも、アクセシビリティへの配慮は必要となってきます。例えば下記のような取り組みです。
+
++ 画像に `alt` を設定する
++ 多色のグラフは、パターンを使う
++ 適切な見出し要素を使う
 
 ### 現段階でわかっている問題点
 
