@@ -1066,8 +1066,10 @@ button.bl_btn {
 .bl_postData_item {
   display: flex;
   flex-direction: row;
-  gap: 0.5em;
-  margin-bottom: 0.2em;
+	flex-wrap: wrap;
+	column-gap: 0.25rem;
+	row-gap: 0.125rem;
+  margin-bottom: 0.5rem;
   & a {
     color: var(--sc_txt_body);
   }
@@ -1087,7 +1089,8 @@ button.bl_btn {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 0.1em 0.3em;
+	column-gap: 0.3rem;
+	row-gap: 0.1rem;
   margin: 0;
   padding: 0;
   list-style: none;
