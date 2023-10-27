@@ -564,13 +564,22 @@ html:has(dialog[open]) {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100dvw;
-	height: 100dvh;
 	border: none;
 	padding: 0;
 	&::backdrop {
     backdrop-filter: blur(4px);
 	}
+}
+#menu {
+	/*
+	 * ここでIDセレクタを使っているのは、詳細度を高めるため
+	 * デフォルトのスタイル（例：`dialog:-internal-dialog-in-top-layer`）に `max-width` や `max-height` があり、
+	 * そこに em 関係が使われているため、ルートフォントが大きいと余白も大きくなり、折り返しが生じやすくなっていた。
+	 */
+	max-width: 100dvw;
+	max-height: 100dvh;
+	width: 100dvw;
+	height: 100dvh;
 }
 .ly_dialog_wrapper:not([open]) {
 	display: none;
