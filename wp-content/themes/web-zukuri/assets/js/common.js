@@ -38,6 +38,9 @@ window.addEventListener("scroll",() => {
 /*≡≡≡ [JS]「メニュー」ボタン ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     モバイル画面時、ヘッダーにある「検索」ボタンを押すと、モーダルダイアログを表示
+	■ 備考
+		`showModal()` を使っているため、HTML側で autofocus 属性は不要
+		（フォーカスは、自動で近くのフォーカス可能な要素に移るため「閉じる」ボタンが選択される）
 -----------------------------------------------------------------------------*/
 const menuBtn = document.getElementById('menu-button');
 const menuDialog = document.getElementById('menu');
