@@ -91,8 +91,17 @@
 
     <dialog class="ly_dialog_wrapper" id="menu">
       <div class="ly_dialog">
-        <button class="bl_btn bl_btn__primary" type="button" onclick="closeDialog()">メニューを閉じる</button>
-        <h2>メニュー</h2>
+				<div class="bl_menuHeader">
+					<h2 class="bl_menuHeader_title">メニュー</h2>
+					<button class="bl_menuHeader_btnIcon" type="button" onclick="closeDialog()">
+            <svg role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24" width="24" height="24">
+							<path stroke-width="1.4286" d="M 22,4.0142857 19.985715,2 12,9.9857149 4.0142857,2 2,4.0142857 9.9857149,12 2,19.985715 4.0142857,22 12,14.014286 19.985715,22 22,19.985715 14.014286,12 Z"/>
+            </svg>
+            閉じる
+					</button>
+				</div>
+				<!-- /.bl_menuHeader -->
 
         <!--≡≡≡ ▼ template-parts/parts-menu.php[main] ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
         <div class="bl_tagMenu">

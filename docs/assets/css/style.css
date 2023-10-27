@@ -449,6 +449,7 @@ select {
   font-size: 10px;
   color: var(--sc_txt_body);
   text-decoration: none;
+	cursor: pointer;
 }
 .ly_mainArea_leftSidebar {
   display: none;
@@ -551,26 +552,28 @@ select {
   ■ 構成
     ly_dialog_wrapper : ラッパー
       ly_dialog : ダイアログ本体
+        bl_menuHeader : メニューヘッダー
+          bl_menuHeader_title : メニュー名
+          bl_menuHeader_btnIcon : 「閉じる」ボタン
 -----------------------------------------------------------------------------*/
 html:has(dialog[open]) {
   /* ダイアログ表示中は、裏側にあるページをスクロールさせない */
   overflow: hidden;
 }
 .ly_dialog_wrapper {
-  width: 100%;
-  border: 0;
-  inset: 0;
-  background-color: transparent;
-  display: flex;
-  justify-content: center;
-  padding-top: 20px;
-
-  &::backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100dvw;
+	height: 100dvh;
+	border: none;
+	padding: 0;
+	&::backdrop {
     backdrop-filter: blur(4px);
-  }
-  &:not([open]) {
-    display: none;
-  }
+	}
+}
+.ly_dialog_wrapper:not([open]) {
+	display: none;
 }
 .ly_dialog {
   padding: 16px;
@@ -587,6 +590,37 @@ html:has(dialog[open]) {
   & *:last-child {
     margin-bottom: 0;
   }
+}
+.bl_menuHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.bl_menuHeader_title {
+	font-size: 1.75rem;
+	margin: 0;
+	padding: 0;
+	line-height: 1.5;
+}
+.bl_menuHeader_btnIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+	padding: 0;
+	margin: 0;
+	/* アイコンサイズは rem で制御（bl_header と違い画面占有率を気にしなくていいため） */
+	width: 2.625rem;
+	height: 2.625rem;
+  font-size: 0.7rem;
+  color: var(--sc_txt_body);
+  text-decoration: none;
+	cursor: pointer;
+}
+.bl_menuHeader_btnIcon > svg {
+	height: 1.625rem;
+	width: 1.625rem;
 }
 
 
