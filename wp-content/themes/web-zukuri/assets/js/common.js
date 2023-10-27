@@ -7,15 +7,15 @@
 -----------------------------------------------------------------------------*/
 // ボタン押下後、トップにスクロールし、フォーカスをヘッダー部に移す
 const focusHeader = () => document.getElementById("anchor_header").focus();
-var btnPageTop = document.getElementById("pagetop");
+const btnPageTop = document.getElementById("pagetop");
 btnPageTop.addEventListener("click", () =>{
   window.scroll({ top: 0, behavior: "smooth"});
   setTimeout(focusHeader, 1000);
 })
 
 // 下に一定値スクロールした場合に表示、トップに来たら非表示に
-var isShowPageTop = false;
-window.addEventListener("scroll",() => {
+let isShowPageTop = true;
+function changeOpacity() {
   if (window.scrollY > 100) {
     if (isShowPageTop == false) {
       btnPageTop.animate([{opacity: '0'}, {opacity: '1'}], 500);
@@ -29,7 +29,10 @@ window.addEventListener("scroll",() => {
       isShowPageTop = false;
     }
   }
-});
+}
+changeOpacity();
+window.addEventListener("scroll",() => changeOpacity());
+
 
 
 
