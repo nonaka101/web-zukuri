@@ -629,12 +629,185 @@
 				<!-- /.bl_postData -->
 
 				<div class="el_thumbnail">
-					<img src="./assets/images/m_02_white.png" alt="ダミーのサムネイル">
+					<img src="./images_readme/screenshot.png" alt="ダミーのサムネイル:このテーマのスクリーンショット">
 				</div>
 
 				<div id="anchor_mainArticle" class="wp_blockContent">
-					<h2>記事タイトル（H2要素）</h2>
+					<h2>概要</h2>
+					<p>
+						こちらは、<a class="el_link" href="https://www.digital.go.jp/policies/servicedesign/designsystem">デジタル庁デザインシステム</a>を参考に試作した WordPressテーマです。
+						<code>Version 1.3.2</code>（2023年6月29日に公開されたもの）を主軸として作成しています。
+						どのようなものかについては、<a class="el_link" href="https://nonaka101.github.io/web-zukuri/">GitHub Pagesを使ったサンプルページ</a>をご覧ください。
+					</p>
+					<p>
+						作成の際の考えにつきましては、後日 整理も兼ねて<a class="el_link" href="https://zenn.dev/nonaka101">Zenn</a>にて書いていく予定です。
+					</p>
+					<h3>現状について</h3>
+					<p>
+						現在、<strong>作業途中</strong>となっております。
+						下記の作業が残っている状態です。
+					</p>
+					<ul>
+						<li>single.html の Readme を作成</li>
+						<li>index.php の作成</li>
+						<li>functions.php の整理</li>
+						<li>ブロックテーマ関係（theme.json やエディタ関係、自作ブロックなど）</li>
+					</ul>
+					<p>
+						コメント機能など、下記の機能についてはまだ導入できるか不明な状態です。
+						一度完成してから考えようと思っております。
+					</p>
+					<ul>
+						<li>コメント機能</li>
+						<li>カスタムタクソノミー</li>
+						<li>パンくずリスト</li>
+					</ul>
+					<h2>目的</h2>
+					<p>WordPressの学習用として作り始めましたが、Webアクセシビリティの考えを取り入れられればと考えてます。</p>
+					<h2>特徴</h2>
+					<h3>レスポンシブデザイン</h3>
+					<p>主に 960px を境界に、モバイル画面とデスクトップ画面の切り替えが行われます。</p>
+					<figure>
+						<img src="./images_readme/responsive_design01.jpg" alt="デスクトップ画面時、左右にサイドバーが出た状態になる">
+						<figcaption>デスクトップ画面</figcaption>
+					</figure>
+					<figure>
+						<img src="./images_readme/responsive_design02.PNG" alt="モバイル画面時だと、固定ヘッターが現れ1列に収まる状態になる"
+							style="width: 350px;">
+						<figcaption>モバイル画面（縦）</figcaption>
+					</figure>
+					<figure>
+						<img src="./images_readme/responsive_design03.PNG" alt="レスポンシブデザインのため、横画面でもサイズを自動的に調整される"
+							style="width: 650px;">
+						<figcaption>モバイル画面（横）</figcaption>
+					</figure>
+					<h3>ダークモードを搭載し、OS側のフォントサイズに配慮</h3>
+					<p>
+						このテーマでは、ダークモードを搭載しています。また OS側によるフォントサイズに配慮できるよう、テキスト要素を中心に相対指定の `rem` を使うようにしています。
+						<a class="el_link" href="https://nonaka101.github.io/web-zukuri/">GitHub Pages</a>では、画面の右下に開発用のツールを配置しています。
+					</p>
+					<img src="./images_readme/devUtils_01.jpg" alt="404ページの初期状態">
+					<p>ここでは、「カラーモードの切り替え」「フォントサイズの切り替え」の2つを行うことができます。</p>
+					<img src="./images_readme/devUtils_00.jpg" alt="開発用ツール">
+					<p>
+						ルート要素のフォントサイズをJavaScriptで変更し、様々なフォントサイズでのレイアウト変化を確認できます。
+						下図は一般的なサイズ 16px から 32px に上げた状態です。
+					</p>
+					<img src="./images_readme/devUtils_02.jpg" alt="root上のフォントサイズを16pxから32pxに上げた状態">
+					<p>CSSのカスタムプロパティを使い、カラーモードの切り替えることができます。下図はダークモード時のものです。</p>
+					<img src="./images_readme/devUtils_03.jpg" alt="ダークモードに切り替えた状態">
+					<h2>導入方法</h2>
+					<h3>テーマフォルダにコピー</h3>
+					<p>WordPressのテーマを管理しているフォルダに対し、<code>wp-content/themes</code> 内にある <code>web-zukuri</code> フォルダをコピーしてください。</p>
+					<h3>テーマの切り替え</h3>
+					<p>WordPress側の管理画面にて、テーマを切り替えてください。</p>
+					<h3>検索ページの設定（推奨）</h3>
+					<p>
+						検索ページは固定ページを使っており、リンク先として独自のスラッグ <code>zkr-searchpage</code> を使用しています。
+						下記の手順で設定してください。
+					</p>
+					<ol>
+						<li>新規に固定ページを作成してください（タイトルは "検索" に）</li>
+						<li>固定ページ編集画面で、使用するテンプレートを <code>Search Page</code> に変更してください。エディタで何かブロックを追加する必要はありません（※１）</li>
+						<li>作成した固定ページのスラッグを、 <code>zkr-searchpage</code> に変更してください</li>
+					</ol>
+					<figure>
+						<figcaption>※１：固定ページ編集画面</figcaption>
+						<img src="./images_readme/setting_searchpage.png" alt="WordPress管理画面にてテンプレートを変更した状態">
+					</figure>
+					<h2>注意</h2>
+					<h3>使用していただける場合の注意事項</h3>
+					<h4>「導入すればアクセシビリティを達成できる<strong>ものではない</strong>」ことをご了承ください</h4>
+					<p>投稿するコンテンツにも、アクセシビリティへの配慮は必要となってきます。例えば下記のような取り組みです。</p>
+					<ul>
+						<li>画像に <code>alt</code> を設定する</li>
+						<li>多色のグラフは、パターンを使う</li>
+						<li>適切な見出し要素を使う</li>
+					</ul>
+					<h3>現段階でわかっている問題点</h3>
+					<h4>古いブラウザでは動作が怪しいと思われます</h4>
+					<p>
+						これは CSS において、新しい機能を使っているためです（ネストしたセレクタ など）<br>
+						「ベンダープレフィックスを使う」、「セレクタをネストさせない」など回避できる手段もあると思われますが、
+						まずはできるかできないかを知りたいため完成の方を優先させております。ご了承ください。
+					</p>
+					<h4>ブロックテーマに関する知見が不足しており、テーマを適合させる方法が未解決の状態です</h4>
+					<p>
+						ブロックエディタで作成したコンテンツを、どのようにテーマの中に受け入れるかについて上手い解決法が思いついていない状態です。
+						最終的には WordPress のブロックエディタよる投稿に対応させることを目標にしておりますが、
+						現在は暫定的な対応（あるいは未解決状態のまま）になっています。
+					</p>
+					<ul>
+						<li>カラーモード切り替えによるコントラスト比の問題が起きるのではないか？</li>
+						<li>カラムブロック等のレイアウトに関するブロックが上手く調整されるか？</li>
+						<li>機能の関係上、フォントサイズは <code>rem</code> を使うのが望ましいが、それは <code>theme.json</code> で設定すべきなのか css で個別に設定しなければいけないのか？</li>
+					</ul>
+					<h4>カラーモードに関する部分は、最終的には別の方法に変える予定です</h4>
+					<p>
+						現在は JavaScript と css クラスを使って処理していますが、これは検証しやすくするためのものです。
+						（画面上にコントロールできる要素を配置）
+						本来は <code>@media (prefers-color-scheme: dark) {各セマンティックカラー（カスタムプロパティ）}</code> を使うのが望ましいと考え、
+						最終的にはそちらに変更する予定です。
+					</p>
+					<h4>CSS設計が参考元とは少し変わっています</h4>
+					<p>
+						CSS設計に Precss の考え方を使っていますが、厳密なルールに則っていない状態です。
+						（例：省コード化のためにネストしたセレクタを使い詳細度を高めている、など）<br>
+						モジュール等の各要素には簡易的なコメント文を入れておりますので、どのように使っているかについてはそちらをご参照ください。
+					</p>
+					<h2>参考資料について</h2>
+					<p>作成に際し、参考にさせてもらった資料です。</p>
+					<h3>デザイン関係</h3>
+					<p>テーマのベースとなるものです。</p>
+					<ul>
+						<li><a class="el_link" href="https://www.digital.go.jp/policies/servicedesign/designsystem">デザインシステム｜デジタル庁</a></li>
+					</ul>
+					<p>アクセシビリティについて考える基となりました。</p>
+					<ul>
+						<li><a class="el_link" href="https://www.digital.go.jp/resources/introduction-to-web-accessibility-guidebook/">ウェブアクセシビリティ導入ガイドブック｜デジタル庁</a></li>
+					</ul>
+					<p>下記の書籍は、説明の中に「ダメな例」と「何故ダメなのか」まで詳細に書かれてあり、コーディングする際に役立ちました。</p>
+					<ul>
+						<li><a class="el_link" href="https://gihyo.jp/book/2023/978-4-297-13366-5">Webアプリケーションアクセシビリティ ――今日から始める現場からの改善：書籍案内｜技術評論社</a></li>
+						<li><a class="el_link" href="https://webapp-a11y.com/">書籍『Webアプリケーションアクセシビリティ』サポートサイト</a></li>
+					</ul>
+					<h3>CSS設計</h3>
+					<p>
+						今回はCSS設計に、<i>PRECSS(Prefix css)</i> を参考にしています。<br>
+						（※：本家のルールからは逸脱している箇所が結構あります）
+					</p>
 
+					<ul>
+						<li><a class="el_link" href="https://gihyo.jp/book/2020/978-4-297-11173-1">CSS設計完全ガイド ～詳細解説＋実践的モジュール集：書籍案内｜技術評論社</a></li>
+						<li><a class="el_link" href="https://precss.io/ja/">PRECSS - Manage your CSS with prefixes.</a></li>
+					</ul>
+					<h3>WordPress関係</h3>
+					<ul>
+						<li><a class="el_link" href="https://gihyo.jp/book/2022/978-4-297-12557-8">WordPressオリジナルテーマ制作入門：書籍案内｜技術評論社</a></li>
+					</ul>
+					<h2>ライセンスについて</h2>
+					<p>
+						私が制作した部分につきましては、MITライセンスといたします。
+						それ以外につきましては、所有者のライセンスに従ってください。
+					</p>
+					<h3>WordPress</h3>
+					<p>WordPress に関するPHPファイルに対しては、wordpress.org より GPL-2.0 が適用されます。</p>
+					<ul>
+						<li><a class="el_link" href="https://ja.wordpress.org/about/license/">License &#124; WordPress.org 日本語</a></li>
+						<li><a class="el_link" href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License v2.0 - GNU Project - Free Software Foundation</a></li>
+					</ul>
+					<h3>Google Font</h3>
+					<p>Googleフォントの <code>Noto Sans JP</code> を使用しています。こちらは Open Font License となっています。</p>
+					<ul>
+						<li><a class="el_link" href="https://fonts.google.com/noto/specimen/Noto+Sans+JP/about">Noto Sans Japanese - Google Fonts</a></li>
+						<li><a class="el_link" href="https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL">SIL Open Font License (OFL)</a></li>
+					</ul>
+					<h3>デジタル庁イラストレーション・アイコン</h3>
+					<p>一部のSVGアイコンと画像については、デジタル庁が公開しているデータを使用しています。これらはデジタル庁に著作権があります。</p>
+					<ul>
+						<li><a class="el_link" href="https://www.digital.go.jp/policies/servicedesign/designsystem/Illustration_Icons">イラストレーション・アイコン素材｜デジタル庁</a></li>
+						<li><a class="el_link" href="https://www.digital.go.jp/policies/servicedesign/designsystem/Illustration_Icons/terms_of_use">イラストレーション・アイコン素材利用規約｜デジタル庁</a></li>
+					</ul>
 				</div>
 			</article>
     </main>
