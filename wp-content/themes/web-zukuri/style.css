@@ -203,7 +203,7 @@ svg {
 }
 
 /* デフォルトのスタイルを剥ぐ */
-summary {list-style: none;}
+summary {list-style-type: none;}
 summary::-webkit-details-marker { display: none; }
 button {
   padding: 0;
@@ -1093,7 +1093,7 @@ button.bl_btn {
 	row-gap: 0.1rem;
   margin: 0;
   padding: 0;
-  list-style: none;
+  list-style-type: none;
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.5;
@@ -1306,7 +1306,7 @@ button.bl_btn {
 }
 .bl_tagMenu_list {
   margin: 0;
-  list-style: none;
+  list-style-type: none;
   padding: 0;
   &.bl_tagMenu_list__indented {
     padding-left: 1em;
