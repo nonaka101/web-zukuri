@@ -131,7 +131,7 @@ Version: 1.0
   --sc_bg_btn__secondary: var(--sea-50);
   --sc_bg_disabled: var(--sumi-500);
   --sc_bg_alert: var(--sun-800);
-  --sc_bg_shadow: var(--white);
+  --sc_bg_shadow: var(--sumi-700);
 
   /* セマンティックカラー（ダークモード時） */
   &.is_darkMode {
@@ -163,7 +163,7 @@ Version: 1.0
     --sc_bg_btn__secondary: var(--sea-1100);
     --sc_bg_disabled: var(--sumi-600);
     --sc_bg_alert: var(--sun-500);
-    --sc_bg_shadow: var(--sumi-700);
+  	--sc_bg_shadow: var(--white);
   }
 }
 
