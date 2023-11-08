@@ -26,7 +26,7 @@ function zkr_enqueue_scripts() {
 	// スタイルシートの読み込み
   wp_enqueue_style(
 		'googlefonts',
-    'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans:wght@400;700&display=swap',
+    'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap',
 		array(),
 		'1.0.0',
 		'all'
