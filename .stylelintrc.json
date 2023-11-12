@@ -15,6 +15,7 @@
 		"custom-property-pattern": null,
 		"color-hex-length": null,
 		"selector-class-pattern": null,
-		"keyframes-name-pattern": null
+		"keyframes-name-pattern": null,
+		"no-descending-specificity": null
   }
 }
