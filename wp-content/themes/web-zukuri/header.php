@@ -161,7 +161,7 @@
 					'sns'
 					);
 				?>
-        <button class="bl_btn bl_btn__primary" type="button" onclick="closeDialog()">メニューを閉じる</button>
+        <button class="el_btn el_btn__primary" type="button" onclick="closeDialog()">メニューを閉じる</button>
       </div>
       <!-- /.ly_dialog -->
     </dialog>

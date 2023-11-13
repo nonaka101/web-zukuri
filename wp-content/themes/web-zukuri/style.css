@@ -51,7 +51,7 @@ Version: 1.0
   `クラス名__モディファイア名` のように、末尾にアンダーバーが2つ付与されているものは、モディファイアである。
   これは、そのクラスの基本から振る舞いやあしらいが変わるものである。
   使う場合には、そのクラスと同じ場所に加えるものとする。
-  （例：<a href="#" class="bl_btn bl_btn__primary">プライマリボタン</a>）
+  （例：<a href="#" class="el_btn el_btn__primary">プライマリボタン</a>）
 
 */
 
@@ -792,74 +792,6 @@ html:has(dialog[open]) {
 
 
 
-/*≡≡≡ ❒ bl_btn ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-  ■ 概要
-    クリックできるボタン
-  ■ バリエーション
-    bl_btn_wrapper : ラッパー（複数配置する場合のレイアウトを制御）
-    bl_btn : ベーススタイル
-      -> bl_btn__primary : プライマリボタン、ページ内で最も重要なアクションに使用（例：同意、送信、応募）
-      -> bl_btn__secondary : セカンダリボタン、プライマリより優先度が低いアクション（例：問い合わせ）
-      -> bl_btn__tertiary : ターシャリボタン、セカンダリより優先度が低いアクション（例：キャンセル）
------------------------------------------------------------------------------*/
-.bl_btn_wrapper {
-  width: inherit;
-}
-.bl_btn {
-  display: block;
-  box-sizing: border-box;
-  border: 2px solid transparent;
-  border-radius: max(
-    min(4px, calc(40px - 100%)*9999),
-    min(8px, calc(100% - 40px)*9999, calc(120px - 100%)*9999),
-    min(12px, calc(100% - 120px)*9999));
-  padding: 16px;
-  cursor: pointer;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1rem;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  text-align: center;
-  transition: .25s;
-
-  &:disabled {pointer-events: none;}
-
-  /* Modifier */
-  &.bl_btn__primary {
-    text-decoration: none;
-    color:var(--sc_txt_btn__primary);
-    background-color: var(--sc_bg_btn__primary);
-    &:hover,
-    &:active {filter: brightness(87%);}
-    &:disabled {background-color: var(--sc_bg_disabled);}
-  }
-  &.bl_btn__secondary {
-    text-decoration: none;
-    color: var(--sc_txt_btn__secondary);
-    border-color: currentColor;
-    background-color: transparent;
-    &:hover,
-    &:active {background-color: var(--sc_bg_btn__secondary);}
-    &:disabled {color: var(--sc_txt_disabled);}
-  }
-  &.bl_btn__tertiary {
-    text-decoration: underline;
-    color: var(--sc_txt_btn__tertiary);
-    background-color: transparent;
-    &:hover,
-    &:active {color: var(--sc_txt_link__active);}
-    &:disabled {color: var(--sc_txt_disabled);}
-  }
-}
-button.bl_btn {
-  width: -webkit-fill-available;
-}
-
-
-
-
-
 /*≡≡≡ ❒ bl_card ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     カードのコンポーネント、下記の場所で使用される
@@ -1323,6 +1255,70 @@ button.bl_btn {
   &:hover {
     text-decoration: underline;
   }
+}
+
+
+
+
+
+/*≡≡≡ ❒ el_btn ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+  ■ 概要
+    クリックできるボタン
+  ■ バリエーション
+    el_btn : ベーススタイル
+      -> el_btn__primary : プライマリボタン、ページ内で最も重要なアクションに使用（例：同意、送信、応募）
+      -> el_btn__secondary : セカンダリボタン、プライマリより優先度が低いアクション（例：問い合わせ）
+      -> el_btn__tertiary : ターシャリボタン、セカンダリより優先度が低いアクション（例：キャンセル）
+-----------------------------------------------------------------------------*/
+.el_btn {
+  display: block;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-radius: max(
+    min(4px, calc(40px - 100%)*9999),
+    min(8px, calc(100% - 40px)*9999, calc(120px - 100%)*9999),
+    min(12px, calc(100% - 120px)*9999));
+  padding: 16px;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-align: center;
+  transition: .25s;
+
+  &:disabled {pointer-events: none;}
+
+  /* Modifier */
+  &.el_btn__primary {
+    text-decoration: none;
+    color:var(--sc_txt_btn__primary);
+    background-color: var(--sc_bg_btn__primary);
+    &:hover,
+    &:active {filter: brightness(87%);}
+    &:disabled {background-color: var(--sc_bg_disabled);}
+  }
+  &.el_btn__secondary {
+    text-decoration: none;
+    color: var(--sc_txt_btn__secondary);
+    border-color: currentColor;
+    background-color: transparent;
+    &:hover,
+    &:active {background-color: var(--sc_bg_btn__secondary);}
+    &:disabled {color: var(--sc_txt_disabled);}
+  }
+  &.el_btn__tertiary {
+    text-decoration: underline;
+    color: var(--sc_txt_btn__tertiary);
+    background-color: transparent;
+    &:hover,
+    &:active {color: var(--sc_txt_link__active);}
+    &:disabled {color: var(--sc_txt_disabled);}
+  }
+}
+button.el_btn {
+  width: -webkit-fill-available;
 }
 
 

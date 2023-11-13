@@ -51,7 +51,7 @@ Version: 1.0
   `クラス名__モディファイア名` のように、末尾にアンダーバーが2つ付与されているものは、モディファイアである。
   これは、そのクラスの基本から振る舞いやあしらいが変わるものである。
   使う場合には、そのクラスと同じ場所に加えるものとする。
-  （例：<a href="#" class="bl_btn bl_btn__primary">プライマリボタン</a>）
+  （例：<a href="#" class="el_btn el_btn__primary">プライマリボタン</a>）
 
 */
 
@@ -966,21 +966,18 @@ html:has(dialog[open]) {
 
 
 
-/* ≡≡≡ ❒ bl_btn ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ el_btn ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     クリックできるボタン
   ■ バリエーション
-    bl_btn_wrapper : ラッパー（複数配置する場合のレイアウトを制御）
-    bl_btn : ベーススタイル
-		-> bl_btn__primary : プライマリボタン、ページ内で最も重要なアクションに使用（例：同意、送信、応募）
-		-> bl_btn__secondary : セカンダリボタン、プライマリより優先度が低いアクション（例：問い合わせ）
-		-> bl_btn__tertiary : ターシャリボタン、セカンダリより優先度が低いアクション（例：キャンセル）
+    el_btn_wrapper : ラッパー（複数配置する場合のレイアウトを制御）
+    el_btn : ベーススタイル
+		-> el_btn__primary : プライマリボタン、ページ内で最も重要なアクションに使用（例：同意、送信、応募）
+		-> el_btn__secondary : セカンダリボタン、プライマリより優先度が低いアクション（例：問い合わせ）
+		-> el_btn__tertiary : ターシャリボタン、セカンダリより優先度が低いアクション（例：キャンセル）
 ----------------------------------------------------------------------------- */
-.bl_btn_wrapper {
-  width: inherit;
-}
 
-.bl_btn {
+.el_btn {
   box-sizing: border-box;
   display: block;
   padding: 16px;
@@ -999,58 +996,59 @@ html:has(dialog[open]) {
   transition: .25s;
 }
 
-.bl_btn:disabled {
+.el_btn:disabled {
   pointer-events: none;
 }
 
-.bl_btn.bl_btn__primary {
+.el_btn.el_btn__primary {
   color: var(--sc_txt_btn__primary);
   text-decoration: none;
   background-color: var(--sc_bg_btn__primary);
 }
 
-.bl_btn.bl_btn__primary:hover,
-.bl_btn.bl_btn__primary:active {
+.el_btn.el_btn__primary:hover,
+.el_btn.el_btn__primary:active {
   filter: brightness(87%);
 }
 
-.bl_btn.bl_btn__primary:disabled {
+.el_btn.el_btn__primary:disabled {
   background-color: var(--sc_bg_disabled);
 }
 
-.bl_btn.bl_btn__secondary {
+.el_btn.el_btn__secondary {
   color: var(--sc_txt_btn__secondary);
   text-decoration: none;
   background-color: transparent;
   border-color: currentcolor;
 }
 
-.bl_btn.bl_btn__secondary:hover,
-.bl_btn.bl_btn__secondary:active {
+.el_btn.el_btn__secondary:hover,
+.el_btn.el_btn__secondary:active {
   background-color: var(--sc_bg_btn__secondary);
 }
 
-.bl_btn.bl_btn__secondary:disabled {
+.el_btn.el_btn__secondary:disabled {
   color: var(--sc_txt_disabled);
 }
 
-.bl_btn.bl_btn__tertiary {
+.el_btn.el_btn__tertiary {
   color: var(--sc_txt_btn__tertiary);
   text-decoration: underline;
   background-color: transparent;
 }
 
-.bl_btn.bl_btn__tertiary:hover,
-.bl_btn.bl_btn__tertiary:active {
+.el_btn.el_btn__tertiary:hover,
+.el_btn.el_btn__tertiary:active {
   color: var(--sc_txt_link__active);
 }
 
-.bl_btn.bl_btn__tertiary:disabled {
+.el_btn.el_btn__tertiary:disabled {
   color: var(--sc_txt_disabled);
 }
 
-button.bl_btn {
-  width: fill-available;
+button.el_btn {
+	width: -moz-available;
+  width: -webkit-fill-available;
 }
 
 
