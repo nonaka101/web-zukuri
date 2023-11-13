@@ -1,35 +1,45 @@
-/*≡≡≡ [JS]「ページトップに戻る」ボタン ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ▀▄「ページトップに戻る」ボタン ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     画面右下に固定表示される、ページ上部に戻るためのボタン機能
   ■ 機能
     + ボタンを押下したら、ページトップに移動し、フォーカスをヘッダー部に移す
     + 下に一定値スクロールした場合に表示状態にする
------------------------------------------------------------------------------*/
+---------------------------------------------------------------------------- */
+
+// 各種要素の読み込み
+const pageTopFocusHeader = () => document.getElementById("js_anchor_header").focus();
+const pageTopBtn = document.getElementById("js_pageTop");
+
 // ボタン押下後、トップにスクロールし、フォーカスをヘッダー部に移す
-const focusHeader = () => document.getElementById("anchor_header").focus();
-const btnPageTop = document.getElementById("pagetop");
-btnPageTop.addEventListener("click", () =>{
+pageTopBtn.addEventListener("click", () =>{
   window.scroll({ top: 0, behavior: "smooth"});
-  setTimeout(focusHeader, 1000);
+  setTimeout(pageTopFocusHeader, 1000);
 })
 
-// 下に一定値スクロールした場合に表示、トップに来たら非表示に
-let isShowPageTop = true;
+/**
+ * ページトップボタンを表すべきかの状態を示す
+ * @type {boolean}
+ */
+let pageTopIsShow = true;
+
+/** 下に一定値スクロールした場合に「ページトップ」ボタンを表示、そうでなければ非表示に */
 function changeOpacity() {
   if (window.scrollY > 100) {
-    if (isShowPageTop == false) {
-      btnPageTop.animate([{opacity: '0'}, {opacity: '1'}], 500);
-      btnPageTop.style.opacity = "1";
-      isShowPageTop = true;
+    if (pageTopIsShow == false) {
+      pageTopBtn.animate([{opacity: '0'}, {opacity: '1'}], 500);
+      pageTopBtn.style.opacity = "1";
+      pageTopIsShow = true;
     }
   } else {
-    if (isShowPageTop == true) {
-      btnPageTop.animate([{opacity: '1'}, {opacity: '0'}], 500);
-      btnPageTop.style.opacity = "0";
-      isShowPageTop = false;
+    if (pageTopIsShow == true) {
+      pageTopBtn.animate([{opacity: '1'}, {opacity: '0'}], 500);
+      pageTopBtn.style.opacity = "0";
+      pageTopIsShow = false;
     }
   }
 }
+
+// 初期状態を、現在のスクロール位置と合わせる（＝非表示）
 changeOpacity();
 window.addEventListener("scroll",() => changeOpacity());
 
@@ -38,21 +48,28 @@ window.addEventListener("scroll",() => changeOpacity());
 
 
 
-/*≡≡≡ [JS]「メニュー」ボタン ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ▀▄ 「メニュー」ボタン ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    モバイル画面時、ヘッダーにある「検索」ボタンを押すと、モーダルダイアログを表示
+    モバイル画面時、ヘッダーにある「メニュー」ボタンを押すと、モーダルダイアログを表示
 	■ 備考
 		`showModal()` を使っているため、HTML側で autofocus 属性は不要
 		（フォーカスは、自動で近くのフォーカス可能な要素に移るため「閉じる」ボタンが選択される）
------------------------------------------------------------------------------*/
+---------------------------------------------------------------------------- */
+
+// 各種要素の取得
 const menuBtn = document.getElementById('menu-button');
 const menuDialog = document.getElementById('menu');
+
+// ボタン押下時、ダイアログをモーダル状態で表示
 menuBtn.addEventListener('click', () => {
   menuDialog.showModal();
 });
+
+// ダイアログを閉じる（ダイアログ内 buttonタグの `onClick` イベントに使用）
 function closeDialog(){
   menuDialog.close();
 };
+
 // モーダルダイアログ外をクリック時、ダイアログを閉じる
 menuDialog.addEventListener('click', (e) => {
   if(e.target === menuDialog){
