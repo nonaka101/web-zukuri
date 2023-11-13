@@ -3,56 +3,29 @@
 /*
 Theme Name: Web-Zukuri
 Author: nonaka101
-Description: デジタル庁公開の情報を基にWordPressへ落とし込んだテストデータ
+Author URI: https://github.com/nonaka101
+Description: デジタル庁公開のデザインシステムをベースに試作したテーマです。
 Requires PHP: 8.0
+License: MIT License
+License URI: https://opensource.org/license/mit/
 Version: 1.0
 */
 
 /* ▄▀▄▀▄▀ Description ▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄
 # CSS設計
 
-## 主なクラスについて
+本テーマでは `PRECSS` を参考にしており、基本的なモジュールは下記の接頭辞を使用している。
 
-  ◲ ly_* : Layout モジュール
-    役割
-      レイアウトを扱う最上位のモジュール
-    責任範囲
-      + 主に、レイアウトに関するプロパティ
-      （top, left, right, bottom, margin, flex, grid 等）
++ ◲ ly_* : Layout モジュール
++ ❒ bl_* : Block モジュール
++ ☐ el_* : Element モジュール
++ ⚠ js_* : Javascript用モジュール
++ ⚠ wp_* : WordPress用クラス
 
-  ❒ bl_* : Block モジュール
-    役割
-      複数の要素を束ねて1つのブロックを構成する
-    責任範囲
-      + ブロック内部のレイアウト
-      + ブロック外のレイアウトに関しては、上位のコンテキストが責任を持つ
+各モジュールの先頭に概要や構成を書いたコメントを用意しているので、詳細についてはそちらを参照。
+構成に関しては、インデントで親子関係を表し、`->` はそのクラスのモディファイアとする。
 
-  ☐ el_* : Element モジュール
-    役割
-      単体の要素であり、独立して機能するブロック
-    責任範囲
-      + 内部のレイアウト
-      + 外のレイアウトに関しては、上位のコンテキストが責任を持つ
-
-  ⚠ hp_* : Helper クラス
-    役割
-      特殊な場合に使用される、単体のプロパティを適用させるためのもので、強制的な上書きを行う
-    責任範囲
-      基本的には単体のプロパティ（セットで使うことが当然に認められるは複数でも許容）
-      必ず適用させる都合上、全てのプロパティに !important を使用することになる
-
-	▀▄ wp_* : WordPress用クラス
-		役割
-			WordPress用の特殊なクラス
-			現在は、ブロックエディタでのコンテンツを出力する wp_blockContent のみ存在
-
-## モディファイアについて
-
-  `クラス名__モディファイア名` のように、末尾にアンダーバーが2つ付与されているものは、モディファイアである。
-  これは、そのクラスの基本から振る舞いやあしらいが変わるものである。
-  使う場合には、そのクラスと同じ場所に加えるものとする。
-  （例：<a href="#" class="el_btn el_btn__primary">プライマリボタン</a>）
-
+モバイル画面とデスクトップ画面の2種でレイアウトを考え、その境界は 960px とする。
 */
 
 
@@ -60,7 +33,8 @@ Version: 1.0
 
 
 :root {
-	font-family: "Noto Sans JP","Segoe UI","Hiragino Kaku Gothic ProN","BIZ UDPGothic",meiryo,sans-serif;
+  font-family: "Noto Sans JP", "Segoe UI", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", meiryo, sans-serif;
+  line-height: 1.5;
 
   /* スペース */
   --space_0: 0.25rem;
@@ -71,40 +45,87 @@ Version: 1.0
   --space_8: 4rem;
   --space_13:6.5rem;
 
-  /*≡≡≡ ▀▄ カラーシステム（DesignSystem 1.3.2 準拠）▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+  /* ≡≡≡ ▀▄ カラーシステム（DesignSystem 1.3.2 準拠）▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    ダークモードを使えるよう、色に関してはセマンティックカラーを採用している。
-    要素の色に関しては、原則としてセマンティックカラーを使用すること。
-    （※カラーモードに関係ない要素に関しては、プリミティブカラーからも可）
+    カラーモードを切り替えられるよう、カスタムプロパティでセマンティックカラーを再現している。
+    原則として、クラスの色に関してはセマンティックカラーを使用すること。
+    （※カラーモードに関係ない要素に関しては、プリミティブカラーからも可とする）
   ■ 注意
     現在は開発用に、ルート要素にクラス 'is_darkMode' を使っている。
-    本来は、`@media (prefers-color-scheme: dark)` を使った方法が望ましい。
-  ---------------------------------------------------------------------------*/
+    本来は、`@media (prefers-color-scheme: dark)` を使った方法が望ましいと考える。
+  --------------------------------------------------------------------------- */
+
   /* プリミティブカラー */
   --white: #ffffff;
-  --sea-1200: #00004F; --sea-1100: #000060; --sea-1000: #000071; --sea-900: #0000be;
-  --sea-800: #0024ce; --sea-700: #0031d8; --sea-600: #003ee5; --sea-500: #0946f1;
-  --sea-400: #4979f5; --sea-300: #7096f8; --sea-200: #9db7f9; --sea-100: #c5d7fb;
+  --sea-1200: #00004F;
+  --sea-1100: #000060;
+  --sea-1000: #000071;
+  --sea-900: #0000be;
+  --sea-800: #0024ce;
+  --sea-700: #0031d8;
+  --sea-600: #003ee5;
+  --sea-500: #0946f1;
+  --sea-400: #4979f5;
+  --sea-300: #7096f8;
+  --sea-200: #9db7f9;
+  --sea-100: #c5d7fb;
   --sea-50: #e8f1fe;
-  --sumi-1200: #000000; --sumi-1100: #080808; --sumi-1000: #111111; --sumi-900: #1a1a1c;
-  --sumi-800: #414143; --sumi-700: #626264; --sumi-600: #757578; --sumi-500: #949497;
-  --sumi-400: #b4b4b7; --sumi-300: #d8d8db; --sumi-200: #e8e8eb; --sumi-100: #f1f1f4;
+  --sumi-1200: #000000;
+  --sumi-1100: #080808;
+  --sumi-1000: #111111;
+  --sumi-900: #1a1a1c;
+  --sumi-800: #414143;
+  --sumi-700: #626264;
+  --sumi-600: #757578;
+  --sumi-500: #949497;
+  --sumi-400: #b4b4b7;
+  --sumi-300: #d8d8db;
+  --sumi-200: #e8e8eb;
+  --sumi-100: #f1f1f4;
   --sumi-50: #f8f8fb;
-  --forest-1200: #032213; --forest-1100: #08351f; --forest-1000: #0c472a; --forest-900: #115a36;
-  --forest-800: #197a4b; --forest-700: #1a8b56; --forest-600: #259d63; --forest-500: #2cac6e;
-  --forest-400: #51b883; --forest-300: #71c598; --forest-200: #9bd4b5; --forest-100: #c2e5d1;
+  --forest-1200: #032213;
+  --forest-1100: #08351f;
+  --forest-1000: #0c472a;
+  --forest-900: #115a36;
+  --forest-800: #197a4b;
+  --forest-700: #1a8b56;
+  --forest-600: #259d63;
+  --forest-500: #2cac6e;
+  --forest-400: #51b883;
+  --forest-300: #71c598;
+  --forest-200: #9bd4b5;
+  --forest-100: #c2e5d1;
   --forest-50: #e6f5ec;
-  --wood-1200: #662e00; --wood-1100: #833b00; --wood-1000: #9c4600; --wood-900: #b65200;
-  --wood-800: #c16800; --wood-700: #c87504; --wood-600: #cd820a; --wood-500: #d18d0f;
-  --wood-400: #d69c2b; --wood-300: #dcac4d; --wood-200: #e5c47f; --wood-100: #efdbb1;
+  --wood-1200: #662e00;
+  --wood-1100: #833b00;
+  --wood-1000: #9c4600;
+  --wood-900: #b65200;
+  --wood-800: #c16800;
+  --wood-700: #c87504;
+  --wood-600: #cd820a;
+  --wood-500: #d18d0f;
+  --wood-400: #d69c2b;
+  --wood-300: #dcac4d;
+  --wood-200: #e5c47f;
+  --wood-100: #efdbb1;
   --wood-50: #f8f1e0;
-  --sun-1200: #640101; --sun-1100: #890101; --sun-1000: #af0000; --sun-900: #d50000;
-  --sun-800: #ec0000; --sun-700: #fa1606; --sun-600: #ff220d; --sun-500: #ff4b36;
-  --sun-400: #ff5838; --sun-300: #ff7b5c; --sun-200: #ffa28b; --sun-100: #ffc8b8;
+  --sun-1200: #640101;
+  --sun-1100: #890101;
+  --sun-1000: #af0000;
+  --sun-900: #d50000;
+  --sun-800: #ec0000;
+  --sun-700: #fa1606;
+  --sun-600: #ff220d;
+  --sun-500: #ff4b36;
+  --sun-400: #ff5838;
+  --sun-300: #ff7b5c;
+  --sun-200: #ffa28b;
+  --sun-100: #ffc8b8;
   --sun-50: #ffe7e6;
+
   /* セマンティックカラー */
   --sc_txt_body: var(--sumi-900);
-  --sc_txt_body__small: var(--sumi-1200); /* 小さな文字の場合はコントラスト比を上げる */
+  --sc_txt_body__small: var(--sumi-1200); /* 小さな文字用 */
   --sc_txt_desc: var(--sumi-700);
   --sc_txt_placeholder: var(--sumi-600);
   --sc_txt_onFill: var(--white);
@@ -132,48 +153,48 @@ Version: 1.0
   --sc_bg_disabled: var(--sumi-500);
   --sc_bg_alert: var(--sun-800);
   --sc_bg_shadow: var(--sumi-700);
-
-  /* セマンティックカラー（ダークモード時） */
-  &.is_darkMode {
-    --sc_txt_body: var(--white);
-    --sc_txt_body__small: var(--white);
-    --sc_txt_desc: var(--sumi-400);
-    --sc_txt_placeholder: var(--sumi-500);
-    --sc_txt_onFill: var(--white);
-    --sc_txt_link: var(--sea-300);
-    --sc_txt_link__hover: var(--sea-200);
-    --sc_txt_link__active: var(--sea-200);
-    --sc_txt_link__visited: var(--sea-200);
-    --sc_txt_alert: var(--sun-500);
-    --sc_txt_disabled: var(--sumi-600);
-    --sc_txt_icon: var(--white);
-    --sc_txt_btn__primary: var(--white);
-    --sc_txt_btn__secondary: var(--sea-300);
-    --sc_txt_btn__tertiary: var(--sea-300);
-    --sc_border_field: 1px solid var(--white);
-    --sc_border_divider: 1px solid var(--sumi-700);
-    --sc_border_focused: 2px solid var(--wood-600);
-    --sc_border_selected: 2px solid var(--sea-300);
-    --sc_border_disabled: 1px solid var(--sumi-300);
-    --sc_border_alert: 2px solid var(--sun-500);
-    --sc_bg_body__primary: var(--sumi-900);
-    --sc_bg_body__secondary: var(--sumi-700);
-    --sc_bg_body__tertiary: var(--sumi-800);
-    --sc_bg_btn__primary: var(--sea-300);
-    --sc_bg_btn__secondary: var(--sea-1100);
-    --sc_bg_disabled: var(--sumi-600);
-    --sc_bg_alert: var(--sun-500);
-  	--sc_bg_shadow: var(--white);
-  }
 }
 
-/*≡≡≡ ▀▄ ベース設定 ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* セマンティックカラー（ダークモード時） */
+:root.is_darkMode {
+  --sc_txt_body: var(--white);
+  --sc_txt_body__small: var(--white);
+  --sc_txt_desc: var(--sumi-400);
+  --sc_txt_placeholder: var(--sumi-500);
+  --sc_txt_onFill: var(--white);
+  --sc_txt_link: var(--sea-300);
+  --sc_txt_link__hover: var(--sea-200);
+  --sc_txt_link__active: var(--sea-200);
+  --sc_txt_link__visited: var(--sea-200);
+  --sc_txt_alert: var(--sun-500);
+  --sc_txt_disabled: var(--sumi-600);
+  --sc_txt_icon: var(--white);
+  --sc_txt_btn__primary: var(--white);
+  --sc_txt_btn__secondary: var(--sea-300);
+  --sc_txt_btn__tertiary: var(--sea-300);
+  --sc_border_field: 1px solid var(--white);
+  --sc_border_divider: 1px solid var(--sumi-700);
+  --sc_border_focused: 2px solid var(--wood-600);
+  --sc_border_selected: 2px solid var(--sea-300);
+  --sc_border_disabled: 1px solid var(--sumi-300);
+  --sc_border_alert: 2px solid var(--sun-500);
+  --sc_bg_body__primary: var(--sumi-900);
+  --sc_bg_body__secondary: var(--sumi-700);
+  --sc_bg_body__tertiary: var(--sumi-800);
+  --sc_bg_btn__primary: var(--sea-300);
+  --sc_bg_btn__secondary: var(--sea-1100);
+  --sc_bg_disabled: var(--sumi-600);
+  --sc_bg_alert: var(--sun-500);
+  --sc_bg_shadow: var(--white);
+}
+
+/* ≡≡≡ ▀▄ ベース設定 ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     ベースとなる処理を施す
     + セマンティックカラーの設定（基本となる要素に施し、最低限の見栄えを確保）
     + 不要なデフォルトのスタイルを剥ぐ
-  ---------------------------------------------------------------------------*/
-*,:after,:before {
+---------------------------------------------------------------------------- */
+*,::after,::before {
   box-sizing: border-box
 }
 
@@ -192,52 +213,65 @@ address,
 p {
   color: var(--sc_txt_body);
 }
+
 body {
   background-color: var(--sc_bg_body__primary);
 }
+
 img {
   max-width: 100%;
 }
+
 svg {
-  fill: currentColor;
+  fill: currentcolor;
 }
 
 /* デフォルトのスタイルを剥ぐ */
-summary {list-style-type: none;}
-summary::-webkit-details-marker { display: none; }
+summary {
+  list-style-type: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
 button {
   padding: 0;
-  border: none;
-  outline: none;
   font: inherit;
   color: inherit;
-  background: none
+  background: none;
+  border: none;
+  outline: none
 }
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  &::-ms-expand {
-    display: none;
-  }
 }
+
+select::-ms-expand {
+  display: none;
+}
+
 
 /* フォーカス時のスタイル */
 *:focus{
-  animation-name: focusEffect;
-  animation-duration: 0.3s;
   outline: var(--sc_border_focused);
   outline-offset: 2px;
+  animation-name: focusEffect;
+  animation-duration: 0.3s;
 }
 
 @keyframes focusEffect {
   from {
-    outline-offset: 8px;
     outline-width: 1px;
+    outline-offset: 8px;
   }
+
   to {
-    outline-offset: 2px;
     outline-width: 2px;
+    outline-offset: 2px;
   }
 }
 
@@ -245,7 +279,7 @@ select {
 
 
 
-/*≡≡≡ ▀▄ wp_blockContent ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ⚠ wp_blockContent ⚠ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     WordPressのブロックエディタ用のスタイル
 		（投稿、固定ページの `the_content()` 箇所を囲う形で使用）
@@ -256,81 +290,102 @@ select {
     + theme.json 側での処理も考えているが、各ブロックに直接書いていくのは現実的でないと判断。
     + そのためここでは、必要最小限となる要素にのみスタイルをつけている。
     + 上記より、エディタ側とのスタイルの違いが生じるという問題が生じている。
------------------------------------------------------------------------------*/
-.wp_blockContent {
-  & h1 {
-    font-size: 2rem;
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: 0.04em;
-    margin-top: var(--space_8);
-    margin-bottom: var(--space_3);
-    @media (width >=960px) {
-      font-size: 2.25rem;
-      font-weight: 400;
-      line-height: 1.4;
-    }
-  }
-  & h2 {
-    font-size: 1.75rem;
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: 0.04em;
-    margin-top: var(--space_8);
-    margin-bottom: var(--space_3);
-    @media (width >=960px) {
-      font-size: 2rem;
-      font-weight: 400;
-    }
-  }
-  & h3 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: 0.04em;
-    margin-top: var(--space_5);
-    margin-bottom: var(--space_3);
-    @media (width >=960px) {
-      font-size: 1.75rem;
-      font-weight: 400;
-    }
-  }
-  & h4 {
-    font-size: 1.25rem;
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: 0.04em;
-    margin-top: var(--space_5);
-    margin-bottom: var(--space_2);
-    @media (width >=960px) {
-      font-size: 1.5rem;
-      font-weight: 400;
-    }
-  }
-  & h5 {
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.7;
-    letter-spacing: 0.04em;
-    margin-top: var(--space_5);
-    margin-bottom: var(--space_2);
-    @media (width >=960px) {
-      font-size: 1.25rem;
-      font-weight: 400;
-      line-height: 1.5;
-    }
-  }
-  & h6 {
-    font-size: 1rem;
+---------------------------------------------------------------------------- */
+.wp_blockContent h1 {
+  margin-top: var(--space_8);
+  margin-bottom: var(--space_3);
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 960px) {
+  .wp_blockContent h1 {
+    font-size: 2.25rem;
     font-weight: 400;
-    line-height: 1.7;
-    letter-spacing: 0.04em;
-    margin-top: var(--space_3);
-    margin-bottom: var(--space_2);;
-    @media (width >=960px) {
-      font-size: 1rem;
-      font-weight: 500;
-    }
+    line-height: 1.4;
+  }
+}
+
+.wp_blockContent h2 {
+  margin-top: var(--space_8);
+  margin-bottom: var(--space_3);
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 960px) {
+  .wp_blockContent h2 {
+    font-size: 2rem;
+    font-weight: 400;
+  }
+}
+
+.wp_blockContent h3 {
+  margin-top: var(--space_5);
+  margin-bottom: var(--space_3);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 960px) {
+  .wp_blockContent h3 {
+    font-size: 1.75rem;
+    font-weight: 400;
+  }
+}
+
+.wp_blockContent h4 {
+  margin-top: var(--space_5);
+  margin-bottom: var(--space_2);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 960px) {
+  .wp_blockContent h4 {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+}
+
+.wp_blockContent h5 {
+  margin-top: var(--space_5);
+  margin-bottom: var(--space_2);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 960px) {
+  .wp_blockContent h5 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+}
+
+.wp_blockContent h6 {
+  margin-top: var(--space_3);
+  margin-bottom: var(--space_2);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 960px) {
+  .wp_blockContent h6 {
+    font-size: 1rem;
+    font-weight: 500;
   }
 }
 
@@ -338,63 +393,77 @@ select {
 
 
 
-/*≡≡≡ ◲ ly_mainArea ◲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ◲ ly_mainArea ◲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     フッターなどを除く、メインとなるエリアのレイアウトを構成する
-    「トップページ」と「それ以外のページ」の２種あり、それぞれでモバイル画面とデスクトップ画面で変化
+    レイアウトは大別すると「トップページ」と「それ以外のページ」の２種
+		それぞれでモバイル画面とデスクトップ画面で変化
   ■ 構成
     ly_mainArea : 全体
-      ly_mainArea_header : ヘッダーレイアウト（12Grid の 左3、モバイル画面では画面上部に固定）
+      ly_mainArea_header : ヘッダーレイアウト（12Grid の 1行 1〜3列目、モバイル画面では画面上部に固定）
         bl_header : ヘッダー
           bl_header_siteTitle : ロゴとサイト名
           bl_header_mobileMenu : 「検索」「メニュー」ボタン（モバイル画面時のみ表示）
-      ly_mainArea_leftSidebar : 左サイドバーのレイアウト（12Grid の 左3）
-      ly_mainArea_rightSidebar : 右サイドバーのレイアウト（12Grid の 右3）
-      ly_mainArea_content : メインコンテンツのレイアウト（各ページに応じて変化）
-      -> ly_mainArea_content__middle : トップページに利用（12Grid の 左9）
-      -> ly_mainArea_content__left : それ以外のページに利用（12Gridの 中央6）
-  ---------------------------------------------------------------------------*/
+      ly_mainArea_leftSidebar : 左サイドバーのレイアウト（12Grid の 2行 1〜3列目）
+      ly_mainArea_rightSidebar : 右サイドバーのレイアウト（12Grid の 2行 10〜12列目）
+      ly_mainArea_content : メインコンテンツのレイアウト（各ページレイアウトに応じて変化）
+      -> ly_mainArea_content__middle : トップページに利用（12Grid の 2行 4〜9列目）
+      -> ly_mainArea_content__left : それ以外のページに利用（12Gridの 2行 1〜9列目）
+---------------------------------------------------------------------------- */
 .ly_mainArea {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-flow: row;
+  gap: 0 4px;
   max-width: 1024px;
+  padding: 0 24px;
   margin-right: auto;
   margin-left: auto;
+}
 
-  display: grid;
-  grid-auto-flow: row;
-  grid-template-columns: repeat(12,1fr);
-  grid-template-rows: auto auto 1fr;
-
-  padding: 0 24px;
-  gap: 0 4px;
-  @media (width >= 560px) {
-    padding: 0 40px;
+@media (min-width: 560px) {
+  .ly_mainArea {
     gap: 0 8px;
-  }
-  @media (width >= 960px) {
-    padding: 64px 40px 0;
-    gap: 0 16px;
-  }
-  @media (width >= 1120px) {
-    padding-left: 0;
-    padding-right: 0;
-    gap: 0 32px;
+    padding: 0 40px;
   }
 }
+
+@media (min-width: 960px) {
+  .ly_mainArea {
+    gap: 0 16px;
+    padding: 64px 40px 0;
+  }
+}
+
+@media (min-width: 1120px) {
+  .ly_mainArea {
+    gap: 0 32px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
 .ly_mainArea_header {
-  z-index: 2;
   position: fixed;
   top: 0;
   left: 0;
-  height:64px;
+  z-index: 2;
   width: 100%;
-  padding: 8px 24px 8px;
+  height: 64px;
+  padding: 8px 24px;
   background-color: var(--sc_bg_body__primary);
-  box-shadow:  0px 4px 16px -8px var(--sc_bg_shadow);
+  box-shadow: 0 4px 16px -8px var(--sc_bg_shadow);
+}
 
-  @media (520px <= width < 960px) {
-    padding: 8px 40px 8px;
+@media (min-width: 520px) {
+  .ly_mainArea_header {
+    padding: 8px 40px;
   }
-  @media (width >= 960px) {
+}
+
+@media (min-width: 960px) {
+  .ly_mainArea_header {
     position: inherit;
     grid-area: 1/1/auto/span 3;
     height: auto;
@@ -402,81 +471,103 @@ select {
     box-shadow: none;
   }
 }
+
 .bl_header {
   display: flex;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-flow: row nowrap;
   gap: 8px;
+  align-items: center;
 }
+
 .bl_header_siteTitle {
-  flex: none;
   display: flex;
-  align-items: center;
+  flex: none;
   gap: 8px;
-  text-decoration: none;
+  align-items: center;
   color: var(--sc_txt_body);
+  text-decoration: none;
 }
+
 .bl_header_siteTitle > img {
-	max-height: 36px;
 	width: auto;
+	max-height: 36px;
 }
+
 .bl_header_siteTitle > h1,
 .bl_header_siteTitle > span {
-	font-size: 24px;
 	margin: 0;
+	font-size: 24px;
 	font-weight: 700;
 }
+
 .bl_header_mobileMenu {
-  flex: none;
   display: flex;
-  align-items: center;
-  justify-content:end;
+  flex: none;
   gap: 8px;
+  align-items: center;
+  justify-content: end;
   margin-left: auto;
-  @media (width >= 960px) {
+}
+
+@media (min-width: 960px) {
+  .bl_header_mobileMenu {
     display: none;
   }
 }
+
 .bl_header_btnIcon {
   display: flex;
   flex-direction: column;
+  gap: 2px;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  height: 48px;
   width: 48px;
+  height: 48px;
   font-size: 10px;
   color: var(--sc_txt_body);
   text-decoration: none;
 	cursor: pointer;
 }
+
 .ly_mainArea_leftSidebar {
   display: none;
-  @media (width >= 960px){
+}
+
+@media (min-width: 960px) {
+  .ly_mainArea_leftSidebar {
     display: block;
     grid-area: 2/1/auto/span 3;
     padding-top: 64px;
   }
 }
+
 .ly_mainArea_rightSidebar {
   display: none;
-  @media (width >= 960px){
+}
+
+@media (min-width: 960px) {
+  .ly_mainArea_rightSidebar {
     display: block;
     grid-area: 2/10/auto/span 3;
   }
 }
+
 .ly_mainArea_content {
   grid-area: 2/1/auto/span 12;
   margin-top: 64px;
-  @media (width >= 960px){
+}
+
+@media (min-width: 960px) {
+  .ly_mainArea_content {
     margin-top: 0;
-    &.ly_mainArea_content__left {
-      grid-area: 2/1/auto/span 9;
-    }
-    &.ly_mainArea_content__middle {
-      grid-area: 2/4/auto/span 6;
-    }
+  }
+
+  .ly_mainArea_content.ly_mainArea_content__left {
+    grid-area: 2/1/auto/span 9;
+  }
+
+  .ly_mainArea_content.ly_mainArea_content__middle {
+    grid-area: 2/4/auto/span 6;
   }
 }
 
@@ -484,207 +575,245 @@ select {
 
 
 
-/*≡≡≡ ◲ ly_footer ◲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ◲ ly_footer ◲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    フッター部のレイアウト構成
-  ■ バリエーション
+    フッター部のレイアウトを構成する
+		デスクトップ画面の時は、横に `3:6:3` の比率で3つのウィジェットを並べる。
+		モバイル画面の時は、ウィジェットは縦1列に並べる
+  ■ 構成
     ly_footer_wrapper : ラッパー
-    -> ly_footer : ベース部
-      -> ly_footer_widget3fr : 3fr使うウィジェット
-      -> ly_footer_widget6fr : 6fr使うウィジェット
-        -> ly_footer_headerTitle : ウィジェット先頭のタイトル要素
------------------------------------------------------------------------------*/
+			ly_footer : ベース
+				ly_footer_widget3fr : 3fr使うウィジェット
+				ly_footer_widget6fr : 6fr使うウィジェット
+					ly_footer_headerTitle : ウィジェット先頭のタイトル要素
+---------------------------------------------------------------------------- */
 .ly_footer_wrapper {
-  background-color: var(--sc_bg_body__tertiary);
   padding: 64px 24px;
   margin-top: 40px;
+  background-color: var(--sc_bg_body__tertiary);
 }
+
 .ly_footer {
   display: grid;
+  grid-template-columns: repeat(12, 1fr);
   grid-auto-flow: row;
-  grid-template-columns: repeat(12,1fr);
   gap: 1rem 0;
   max-width: 1024px;
   margin-right: auto;
   margin-left: auto;
-  @media (width >= 560px) {
+}
+
+@media (min-width: 560px) {
+  .ly_footer {
     padding: 0 40px;
   }
-  @media (width >= 960px) {
-    padding: 0;
+}
+
+@media (min-width: 960px) {
+  .ly_footer {
     gap: 0 2rem;
+    padding: 0;
   }
 }
+
 .ly_footer_widget3fr {
   grid-area: span 1/span 12;
-  @media (width >= 960px) {
+}
+
+@media (min-width: 960px) {
+  .ly_footer_widget3fr {
     grid-area: span 1/span 3;
   }
 }
+
 .ly_footer_widget6fr {
   grid-area: span 1/span 12;
-  @media (width >= 960px) {
+}
+
+@media (min-width: 960px) {
+  .ly_footer_widget6fr {
     grid-area: span 1/span 6;
   }
 }
+
 .ly_footer_headerTitle {
   display: flex;
   flex-direction: row;
   gap: 8px;
   margin-top: 0;
   margin-bottom: 1.75rem;
-  text-decoration: none;
-  color: var(--sc_txt_body);
   font-size: 1.75rem;
+  color: var(--sc_txt_body);
+  text-decoration: none;
 }
-.ly_footer_headerTitle > img{
-	max-height: 1.75rem;
+
+.ly_footer_headerTitle > img {
+  max-height: 1.75rem;
 }
 
 
 
 
 
-/*≡≡≡ ❒ ly_dialog ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ ly_dialog ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    dialogタグを使ったモーダルダイアログ
-    （モーダル機能に関しては、`common.js` を参照）
+    dialogタグを使ったモーダルダイアログ（モーダル機能に関しては、`common.js` を参照）
+		モバイル画面の時にヘッダーに表示される「メニュー」ボタンから呼び出される
+		画面全体をモーダルダイアログで覆い、デスクトップ画面でのサイドバーの内容を表示
   ■ 構成
-    ly_dialog_wrapper : ラッパー
+    ly_dialog_wrapper[#menu] : ラッパー（※詳細度の関係からIDと併用）
       ly_dialog : ダイアログ本体
         bl_menuHeader : メニューヘッダー
           bl_menuHeader_title : メニュー名
           bl_menuHeader_btnIcon : 「閉じる」ボタン
------------------------------------------------------------------------------*/
+----------------------------------------------------------------------------- */
+
+/* ダイアログ表示中は、裏側にあるページをスクロールさせない */
 html:has(dialog[open]) {
-  /* ダイアログ表示中は、裏側にあるページをスクロールさせない */
   overflow: hidden;
 }
+
 .ly_dialog_wrapper {
-	position: fixed;
-	top: 0;
-	left: 0;
-	border: none;
-	padding: 0;
-	&::backdrop {
-    backdrop-filter: blur(4px);
-	}
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0;
+  border: none;
 }
-#menu {
-	/*
-	 * ここでIDセレクタを使っているのは、詳細度を高めるため
-	 * デフォルトのスタイル（例：`dialog:-internal-dialog-in-top-layer`）に `max-width` や `max-height` があり、
-	 * そこに em 関係が使われているため、ルートフォントが大きいと余白も大きくなり、折り返しが生じやすくなっていた。
-	 */
-	max-width: 100dvw;
-	max-height: 100dvh;
-	width: 100dvw;
-	height: 100dvh;
+
+.ly_dialog_wrapper::backdrop {
+  backdrop-filter: blur(4px);
 }
+
 .ly_dialog_wrapper:not([open]) {
 	display: none;
 }
+
+/*
+ * ここでIDセレクタを使っているのは、詳細度を高めるため
+ * デフォルトのスタイル（例：`dialog:-internal-dialog-in-top-layer`）に `max-width` や `max-height` があり、
+ * そこに em 関係が使われているため、ルートフォントが大きいと余白も大きくなり、折り返しが生じやすくなっていた。
+ */
+#menu {
+	width: 100dvw;
+	max-width: 100dvw;
+	height: 100dvh;
+	max-height: 100dvh;
+}
+
 .ly_dialog {
   padding: 16px;
+  overflow-y: auto;
   background-color: var(--sc_bg_body__primary);
   border: var(--sc_border_field);
-  overflow-y: auto;
-  & > * {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  & *:first-child {
-    margin-top: 0;
-  }
-  & *:last-child {
-    margin-bottom: 0;
-  }
 }
+
+.ly_dialog > * {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ly_dialog *:first-child {
+  margin-top: 0;
+}
+
+.ly_dialog *:last-child {
+  margin-bottom: 0;
+}
+
 .bl_menuHeader {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
 	align-items: center;
+	justify-content: space-between;
 }
+
 .bl_menuHeader_title {
-	font-size: 1.75rem;
-	margin: 0;
 	padding: 0;
+	margin: 0;
+	font-size: 1.75rem;
 	line-height: 1.5;
 }
+
 .bl_menuHeader_btnIcon {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+	width: 2.625rem; /* bl_header と違い画面占有率を気にしない為 rem */
+	height: 2.625rem;
 	padding: 0;
 	margin: 0;
-	/* アイコンサイズは rem で制御（bl_header と違い画面占有率を気にしなくていいため） */
-	width: 2.625rem;
-	height: 2.625rem;
   font-size: 0.7rem;
   color: var(--sc_txt_body);
   text-decoration: none;
 	cursor: pointer;
 }
+
 .bl_menuHeader_btnIcon > svg {
-	height: 1.625rem;
 	width: 1.625rem;
+	height: 1.625rem;
 }
 
 
 
 
 
-/*≡≡≡ ❒ bl_accordion ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_accordion ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     アコーディオンブロック
-  ■ バリエーション
-    bl_accordion : アコーディオン本体
-    -> bl_accordion__dummy : カテゴリ一覧等、アコーディオンと並ぶ要素をそろえるためのダミー
+		detailsタグとsummaryタグを用いるため、開閉動作にJavascriptを必要としない
+  ■ 構成
+    bl_accordion : ベース
+    -> bl_accordion__dummy : アーカイブ一覧用のダミー要素
       bl_accordion_summary : サマリー要素
-      -> bl_accordion_summary__accent : 連続した場合に見分けがつくよう、色を付与
       bl_accordion_description : 格納されている要素
----------------------------------------------------------------------------*/
+  ■ 注意
+		カラーモードに対応するため、`is_darkMode` クラスを使用している
+		`prefers-color-scheme` の手法に変更時は、こちらも変えること
+---------------------------------------------------------------------------- */
 .bl_accordion {
-  border-bottom: var(--sc_border_divider);
-  padding: .5em 0;
+  padding: 0.5em 0;
   font-size: 1rem;
-  & a {
-    color: var(--sc_txt_body);
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+  border-bottom: var(--sc_border_divider);
 }
+
+.bl_accordion a {
+  color: var(--sc_txt_body);
+  text-decoration: none;
+}
+
+.bl_accordion a:hover {
+  text-decoration: underline;
+}
+
 .bl_accordion_summary {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  cursor: pointer;
+  flex-flow: row nowrap;
   color: var(--sc_txt_body);
-  &::after{
-    content: "";
-    width: 1em;
-    height: 1em;
-    margin-right: .1em;
-    margin-left: auto;
-    transition: all 0.3s ease;
-    background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
-  }
-  .is_darkMode &::after {
-    background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
-  }
-  &.bl_accordion_summary__accent {
-    background-color: var(--sc_bg_body__tertiary);
-  }
+  cursor: pointer;
 }
-/* インナーブロックを考慮して子結合子を使用 */
+
+.bl_accordion_summary::after {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.1em;
+  margin-left: auto;
+  content: "";
+  background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
+  transition: all 0.3s ease;
+}
+
+.is_darkMode .bl_accordion_summary::after {
+  background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
+}
+
+/* WordPressブロック化の際、インナーブロックを考慮して子結合子にしている */
 .bl_accordion[open] > .bl_accordion_summary::after {
   transform: rotate(180deg);
   translate:0 -12.5%;
 }
+
 .bl_accordion_description {
   margin-top: 0.3rem;
 }
@@ -693,10 +822,14 @@ html:has(dialog[open]) {
 
 
 
-/*≡≡≡ ❒ bl_blockSkip ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_blockSkip ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    ブロックスキップをモーダルダイアログっぽく表示
-  ■ バリエーション
+    ブロックスキップ
+		スクリーンリーダーだけでなくキー操作者にも見えるよう、モーダルダイアログっぽく画面中央に表示する
+		使用する場面は 2箇所
+		+ ヘッダー直後に配置、各種ランドマークへ移動可能
+		+ 投稿ページの記事タイトル直後、記事に関する補足情報を飛ばして記事本文に移動可能
+  ■ 構成
     共通パーツ
     bl_blockSkip_wrapper : ラッパー
       bl_blockSkip : ベース
@@ -706,85 +839,107 @@ html:has(dialog[open]) {
           bl_blockSkip_linkItem : リンクアイテム
           -> bl_blockSkip_linkItem__isMobile : モバイル画面のみ表示
           -> bl_blockSkip_linkItem__isDesktop : デスクトップ画面のみ表示
------------------------------------------------------------------------------*/
-.bl_blockSkip_wrapper {
-  /* フォーカスを受け取るまで外に配置し、フォーカス時は周囲をぼかすフィルターを展開 */
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  clip-path: inset(100%);
+---------------------------------------------------------------------------- */
 
+/* フォーカスを受け取るまで外に配置し、フォーカス時は周囲をぼかすフィルターを展開 */
+.bl_blockSkip_wrapper {
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &:focus-within {
-    top:50dvh;
-    left: 50dvw;
-    width: 95dvw;
-    height: 95dvh;
-    clip-path: none;
-    transform:translate(-51%, -51%);
-    z-index: 100;
-    backdrop-filter: blur(4px);
-  }
+  width: 1px;
+  height: 1px;
+  clip-path: inset(100%);
 }
+
+.bl_blockSkip_wrapper:focus-within {
+  top: 50dvh;
+  left: 50dvw;
+  z-index: 100;
+  width: 95dvw;
+  height: 95dvh;
+  clip-path: none;
+  backdrop-filter: blur(4px);
+  transform: translate(-51%, -51%);
+}
+
 .bl_blockSkip{
+  padding: 12px;
+  margin-right: 24px;
+  margin-left: 24px;
   background-color: var(--sc_bg_body__primary);
   border: var(--sc_border_field);
   border-radius: 12px;
-  margin-right: 24px;
-  margin-left: 24px;
-  padding: 12px;
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30),
-              0 15px 12px rgba(0,0,0,0.22);
-  @media (width >= 560px) {
-    padding: 12px 16px;
-  }
+  box-shadow: 0 19px 38px rgba(0 0 0 0.30),
+              0 15px 12px rgba(0 0 0 0.22);
 }
+
+@media (min-width: 560px) {
+	.bl_blockSkip {
+		padding: 12px 16px;
+	}
+}
+
 .bl_blockSkip_title {
   margin-top: 16px;
   margin-bottom: 16px;
-
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  @media (width >= 960px) {
+}
+
+@media (min-width: 960px) {
+  .bl_blockSkip_title {
     font-size: 1.75rem;
     font-weight: 400;
   }
 }
+
 .bl_blockSkip_description {
-  color: var(--sc_txt_body);
+	margin-bottom: 24px;
   font-size: 0.75rem;
   font-weight: 400;
-  margin-bottom: 20px;
-  @media screen and (max-width: 560px) {
-    margin-bottom: 24px;
+  color: var(--sc_txt_body);
+}
+
+@media (min-width: 560px) {
+  .bl_blockSkip_description {
+		margin-bottom: 20px;
   }
 }
+
 .bl_blockSkip_linkList {
   padding-inline-start: 1rem;
 }
+
 .bl_blockSkip_linkItem {
   padding: 4px;
   margin: 0;
-  & > a {
-    text-decoration: none;
-    color: var(--sc_txt_link);
-  }
-  &.bl_blockSkip_linkItem__isMobile {
-    display: list-item;
-    @media screen and (min-width: 960px) {
-      display: none;
-    }
-  }
-  &.bl_blockSkip_linkItem__isDesktop {
+}
+
+.bl_blockSkip_linkItem > a {
+  color: var(--sc_txt_link);
+  text-decoration: none;
+}
+
+.bl_blockSkip_linkItem.bl_blockSkip_linkItem__isMobile {
+  display: list-item;
+}
+
+@media (min-width: 960px) {
+  .bl_blockSkip_linkItem.bl_blockSkip_linkItem__isMobile {
     display: none;
-    @media screen and (min-width: 960px) {
-      display: list-item;
-    }
+  }
+}
+
+.bl_blockSkip_linkItem.bl_blockSkip_linkItem__isDesktop {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .bl_blockSkip_linkItem.bl_blockSkip_linkItem__isDesktop {
+    display: list-item;
   }
 }
 
@@ -792,190 +947,235 @@ html:has(dialog[open]) {
 
 
 
-/*≡≡≡ ❒ bl_card ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_card ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     カードのコンポーネント、下記の場所で使用される
-      + トップページの記事一覧
-      + フッターの最新記事
-      + アーカイブページの記事一覧
-      + 検索ページでヒットした記事一覧
-  ■ バリエーション
+      + トップページの記事一覧（サムネイル、カテゴリ、タイトル、要旨、投稿日）
+      + フッターの最新記事（タイトル、カテゴリ、投稿日）
+      + アーカイブページの記事一覧（カテゴリ、タイトル、要旨、投稿日）
+      + 検索ページでヒットした記事一覧（カテゴリ、タイトル、要旨、投稿日）
+  ■ 構成
     bl_card_wrapper : ラッパー
-      bl_card : ベースとなるスタイル
+      bl_card : ベース
       -> bl_card__clickable : カード全体にリンク属性を付与する場合に
       -> bl_card__sticky : 先頭に固定表示されたカード
       -> bl_card__s : フッターにある、最新記事用
-        bl_card_category : 投稿のカテゴリ
         bl_card_thumbnail : 投稿のサムネイル画像
         bl_card_body : コンテンツのベース
+					bl_card_category : 投稿のカテゴリ
           bl_card_title : 投稿タイトル
-          bl_card_date : 投稿日
           bl_card_content : 投稿の要旨
------------------------------------------------------------------------------*/
+          bl_card_date : 投稿日
+---------------------------------------------------------------------------- */
 .bl_card_wrapper {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+/*
+ * カスタムプロパティ `--card_r` は カード内のR値で、自身の幅に応じ変化
+ * + ～40px 		 : R4
+ * + 40px～120px : R8
+ * + 120px～     : R12
+ */
 .bl_card {
-  /* カード内のR値、自身の幅に応じ変化「～40px : R4」「40px～120px : R8」「120px～ : R12」*/
   --card_r: max(
-    min(4px, calc(40px - 100%)*9999),
-    min(8px, calc(100% - 40px)*9999, calc(120px - 100%)*9999),
-    min(12px, calc(100% - 120px)*9999));
+    min(4px, calc(40px - 100%) * 9999),
+    min(8px, calc(100% - 40px) * 9999, calc(120px - 100%) * 9999),
+    min(12px, calc(100% - 120px) * 9999)
+  );
 
   display: block;
   font-size: 1rem;
   border: var(--sc_border_divider);
   border-radius: var(--card_r, 0);
-  &.bl_card__s {
-    /* フッターの最新記事は文字サイズが少し小さめ、そのため文字色のコントラストを上げている */
-    font-size: 0.75rem;
-    color: var(--sc_txt_body__small);
-    &.bl_card__clickable {
-      background-color: var(--sc_bg_body__primary);
-    }
-  }
-  &.bl_card__clickable {
-    text-decoration: none;
-    background-color: var(--sc_bg_body__tertiary);
-    &:hover {background-color: var(--sc_bg_body__secondary);}
-  }
-  &.bl_card__sticky {
-    border: var(--sc_border_alert);
-  }
 }
+
+.bl_card.bl_card__clickable {
+  text-decoration: none;
+  background-color: var(--sc_bg_body__tertiary);
+}
+
+.bl_card.bl_card__clickable:hover {
+  background-color: var(--sc_bg_body__secondary);
+}
+
+.bl_card.bl_card__s {
+  font-size: 0.75rem;
+  color: var(--sc_txt_body__small);
+}
+
+.bl_card.bl_card__s.bl_card__clickable {
+  background-color: var(--sc_bg_body__primary);
+}
+
+.bl_card.bl_card__sticky {
+  border: var(--sc_border_alert);
+}
+
 .bl_card_thumbnail {
-  border-top-right-radius: var(--card_r, 0);
-  border-top-left-radius: var(--card_r, 0);
   overflow: hidden;
-  & > img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    vertical-align: bottom;
-  }
+  border-top-left-radius: var(--card_r, 0);
+  border-top-right-radius: var(--card_r, 0);
 }
+
+.bl_card_thumbnail > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  vertical-align: bottom;
+}
+
 .bl_card_body {
   padding: 12px;
+}
 
-  .bl_card_category {
-    display: block;
-    color: var(--sc_txt_desc);
-    font-size: 0.75em;
+.bl_card_body .bl_card_category {
+  display: block;
+  margin-top: var(--space_1, 0.5rem);
+  margin-bottom: var(--space_1, 0.5rem);
+  font-size: 0.75em;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--sc_txt_desc);
+  letter-spacing: 0.02em;
+}
+
+.bl_card_body .bl_card_title {
+  margin-top: var(--space_1, 0.5rem);
+  margin-bottom: var(--space_1, 0.5rem);
+  font-size: 1.5em;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 960px) {
+  .bl_card_body .bl_card_title {
+    font-size: 1.75em;
     font-weight: 400;
-    line-height: 1.7;
-    letter-spacing: 0.02em;
-    margin-top: var(--space_1) 0.5rem;
-    margin-bottom: var(--space_1) 0.5rem;
   }
-  .bl_card_title {
-    font-size: 1.5em;
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: 0.04em;
-    margin-top: var(--space_1) 0.5rem;
-    margin-bottom: var(--space_1) 0.5rem;
+}
 
-    @media (width >= 960px) {
-      font-size: 1.75em;
-      font-weight: 400;
-    }
-  }
+.bl_card_body .bl_card_content {
+  font-size: 0.875em;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+}
 
-  .bl_card_content {
-    font-size: 0.875em;
-    font-weight: 400;
-    line-height: 1.7;
-    letter-spacing: 0.04em;
-  }
-
-  .bl_card_date {
-    color: var(--sc_txt_desc);
-    font-size: 0.75em;
-    font-weight: 400;
-    line-height: 1.7;
-    letter-spacing: 0.02em;
-  }
+.bl_card_body .bl_card_date {
+  font-size: 0.75em;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--sc_txt_desc);
+  letter-spacing: 0.02em;
 }
 
 
 
 
 
-/*≡≡≡ ❒ bl_pager ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_pager ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    アーカイブ、検索ページ等で、ページ送り用に使うページネーション要素
+		ページネーション要素
+    アーカイブ、検索ページで記事数が1ページに入り切らない際に使用される
   ■構成
     bl_pager : ベース
+      bl_pager_center : 現在位置
       bl_pager_left : 左側（前）
-      bl_pager_center : 現在地
-      bl_pager_right : 右側（後ろ）
+      bl_pager_right : 右側（後）
         bl_pager_btn : 「最初（最後）」「前（次）」「各ページ数」用のボタン
-        -> bl_pager_btn__extended : モバイル画面時、非表示となる要素
------------------------------------------------------------------------------*/
+        -> bl_pager_btn__extended : モバイル画面時、非表示となる要素（＝「各ページ数」）
+---------------------------------------------------------------------------- */
 .bl_pager {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
+  flex-flow: row nowrap;
+  gap: 4px;
   align-items: center;
+  justify-content: center;
   margin-top: var(--space_5);
   margin-bottom: var(--space_5);
-  gap: 4px;
-  @media (width >= 960px) {
+}
+
+@media (min-width: 960px) {
+  .bl_pager {
     gap: 8px;
   }
 }
+
+/*
+ * flex-basis に適当な数値(48px)を入れているのは中央揃えのため
+ *（auto だと、要素無しの場合 左右のズレが生じる）
+ */
 .bl_pager_left {
-  /* flex-basis に適当な数値(48px)を入れているのは中央揃えのため
-   *（auto だと、要素無しの場合 左右のズレが生じる）*/
-  flex: 1 0 48px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex: 1 0 48px;
+  flex-flow: row nowrap;
+  gap: 4px;
+  align-items: center;
   justify-content: end;
-  align-items: center;
-  gap: 4px;
-  @media (width >= 960px) {
+}
+
+@media (min-width: 960px) {
+  .bl_pager_left {
     gap: 8px;
   }
 }
+
 .bl_pager_center {
-  flex:none;
+  flex: none;
 }
+
 .bl_pager_right {
-  flex: 1 0 48px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: start;
-  align-items: center;
+  flex: 1 0 48px;
+  flex-flow: row nowrap;
   gap: 4px;
-  @media (width >= 960px) {
+  align-items: center;
+  justify-content: start;
+}
+
+@media (min-width: 960px) {
+  .bl_pager_right {
     gap: 8px;
   }
 }
+
 .bl_pager_btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 48px;
   width: 48px;
-  border-radius: 50%;
-  border: var(--sc_border_divider);
-  text-decoration: none;
+  height: 48px;
   color: var(--sc_txt_link);
-  &:hover {color: var(--sc_txt_link__hover);
-    border-color: var(--sc_border_selected);
-    background-color: var(--sc_bg_btn__secondary);}
-  &:active {color: var(--sc_txt_link__active);}
-  &:visited {color: var(--sc_txt_link__visited);}
-  &.bl_pager_btn__extended {
-    display: none;
-    @media (width >= 960px) {
-      display: flex;
-    }
+  text-decoration: none;
+  border: var(--sc_border_divider);
+  border-radius: 50%;
+}
+
+.bl_pager_btn:hover {
+  color: var(--sc_txt_link__hover);
+  background-color: var(--sc_bg_btn__secondary);
+  border-color: var(--sc_border_selected);
+}
+
+.bl_pager_btn:active {
+  color: var(--sc_txt_link__active);
+}
+
+.bl_pager_btn:visited {
+  color: var(--sc_txt_link__visited);
+}
+
+.bl_pager_btn.bl_pager_btn__extended {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .bl_pager_btn.bl_pager_btn__extended {
+    display: flex;
   }
 }
 
@@ -983,230 +1183,246 @@ html:has(dialog[open]) {
 
 
 
-/*≡≡≡ ❒ bl_postData ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_postData ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    投稿ページのタイトル下に表示される情報欄で、「公開日」「カテゴリ」「タグ」の３種
-  ■ バリエーション
+    投稿ページのタイトル下に表示される情報欄
+		記事の補足情報である「公開日」「カテゴリ」「タグ」を表示
+  ■ 構成
     bl_postData : ベーススタイル
 			bl_postData_item : 公開日、カテゴリ、タグ それぞれの情報スペース
 				bl_postData_name : item の名前「カテゴリ」「タグ」
 				bl_postData_values : item の中身、（ul 要素に付与、下位の li アイテムを制御）
------------------------------------------------------------------------------*/
+---------------------------------------------------------------------------- */
 .bl_postData {
   margin-bottom: var(--space_2);
 }
+
 .bl_postData_item {
   display: flex;
-  flex-direction: row;
-	flex-wrap: wrap;
-	column-gap: 0.25rem;
-	row-gap: 0.125rem;
+  flex-flow: row wrap;
+  gap: 0.125rem 0.25rem;
   margin-bottom: 0.5rem;
-  & a {
-    color: var(--sc_txt_body);
-  }
 }
+
+.bl_postData_item a {
+  color: var(--sc_txt_body);
+}
+
 .bl_postData_name {
   flex: 0 0 8ch;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: var(--sc_txt_body);
-  &::after {
-    content: ":";
-  }
 }
+
+.bl_postData_name::after {
+  content: ":";
+}
+
 .bl_postData_values {
-  flex: auto;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-	column-gap: 0.3rem;
-	row-gap: 0.1rem;
-  margin: 0;
+  flex: auto;
+  flex-flow: row wrap;
+  gap: 0.1rem 0.3rem;
   padding: 0;
-  list-style-type: none;
+  margin: 0;
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.5;
-  & > li {
-    flex: none;
-  }
+  list-style-type: none;
+}
+
+.bl_postData_values > li {
+  flex: none;
 }
 
 
 
 
 
-/*≡≡≡ ❒ bl_searchForm ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_searchForm ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    検索用のフォーム
-    （※デザインシステムの他のフォームと共通化できるスタイルが少ないため、専用モジュール化している）
-  ■ バリエーション
-    共通パーツ
+    検索ページ用の専用フォーム
+    （※デザインシステムの他のフォームと共通化できるスタイルが少ないため）
+  ■ 構成
     bl_searchForm_wrapper : ラッパー
-      bl_searchForm : ベーススタイル
+      bl_searchForm : ベース
         bl_searchForm_label : 各種フォームのラベル
-        bl_searchForm_inputSelect : セレクト要素
-        bl_searchForm_input : テキスト入力とボタンを持つ
+        bl_searchForm_inputSelect : 表示件数
+        bl_searchForm_input : 検索キーワードと検索ボタン
           bl_searchForm_inputText : テキスト入力
           bl_searchForm_btn : ボタン
------------------------------------------------------------------------------*/
+---------------------------------------------------------------------------- */
 .bl_searchForm_wrapper {
   display: block;
   margin-top: 1rem;
   margin-bottom: 1rem;
+
   --searchForm_base: 3rem;
 }
+
 .bl_searchForm {
   margin-top: 1rem;
   margin-bottom: 0.75rem;
 }
+
 .bl_searchForm_label {
   display: block;
-  font-weight: 500;
+  margin-bottom: 0.1rem;
   font-size: 0.75rem;
+  font-weight: 500;
   line-height: 1.5;
   color: var(--sc_txt_body__small);
-  margin-bottom: 0.1rem;
 }
-.bl_searchForm_inputSelect {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  cursor: pointer;
-  /* relative なのは、after要素の position:absolute; のため */
-  position: relative;
 
-  & > select {
-    width: 100%;
-    height: var(--searchForm_base, 3rem);
-    color: var(--sc_txt_body);
-    text-indent: 1ch;
-    background-color: var(--sc_bg_body__primary);
-    border: var(--sc_border_field);
-    border-radius: max(
-      min(4px, calc(40px - 100%)*9999),
-      min(8px, calc(100% - 40px)*9999, calc(120px - 100%)*9999),
-      min(12px, calc(100% - 120px)*9999));
-    &:disabled {
-      border: var(--sc_border_disabled);
-      pointer-events: none;
-    }
-  }
-  /*
-   * after要素について
-   * + ブラウザのスタイルは剥いだうえで、背景としてSVGの矢印を使用（アクセシビリティとしては無視される）
-   * + 幅が200px以下になると、矢印がoption要素に衝突してしまうので、暫定的ではあるが display:none; にしている
-   */
-  &::after{
-    content: "";
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 1rem;
-    height: 1rem;
-    background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
-  }
-  .is_darkMode &::after {
-    background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
-  }
-  @media (width < 200px) {
-    &::after {
-      display: none;
-    }
-  }
+.bl_searchForm_inputSelect {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  cursor: pointer;
 }
+
+.bl_searchForm_inputSelect > select {
+  width: 100%;
+  height: var(--searchForm_base, 3rem);
+  color: var(--sc_txt_body);
+  text-indent: 1ch;
+  background-color: var(--sc_bg_body__primary);
+  border: var(--sc_border_field);
+  border-radius: max(
+    min(4px, calc(40px - 100%) * 9999),
+    min(8px, calc(100% - 40px) * 9999, calc(120px - 100%) * 9999),
+    min(12px, calc(100% - 120px) * 9999)
+  );
+}
+
+.bl_searchForm_inputSelect > select:disabled {
+	pointer-events: none;
+	border: var(--sc_border_disabled);
+}
+
+/*
+ * after要素について
+ * デフォルトのスタイルは剥いだうえで、背景としてSVGの矢印を使用
+ * （アクセシビリティとしては無視される）
+ * 画面幅がおおよそ 200px 以下になると、矢印がoption要素に衝突してしまうので、
+ * 暫定的ではあるが `display:none;` にしている
+ */
+.bl_searchForm_inputSelect::after {
+	display: none;
+}
+
+@media (min-width: 200px) {
+  .bl_searchForm_inputSelect::after {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		display: flexbox;
+		width: 1rem;
+		height: 1rem;
+		content: "";
+		background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
+  }
+
+	.is_darkMode .bl_searchForm_inputSelect::after {
+		background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
+	}
+}
+
 .bl_searchForm_input {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-flow: row wrap;
   gap: 4px;
   min-height: var(--searchForm_base, 3rem);
   margin: 0;
 }
+
 .bl_searchForm_inputText {
-  height: var(--searchForm_base, 3rem);
-  flex-grow: 999;
-  flex-shrink: 0;
-  flex-basis: var(--searchForm_base, 3rem);
+  flex: 999 0 var(--searchForm_base, 3rem);
   min-width: var(--searchForm_base, 3rem);
-  background-color: var(--sc_bg_body__primary);
+  height: var(--searchForm_base, 3rem);
   color: var(--sc_txt_body);
   text-indent: 1ch;
+  background-color: var(--sc_bg_body__primary);
   border: var(--sc_border_field);
   border-radius: max(
-    min(4px, calc(40px - 100%)*9999),
-    min(8px, calc(100% - 40px)*9999, calc(120px - 100%)*9999),
-    min(12px, calc(100% - 120px)*9999));
-  &:disabled {
-    border: var(--sc_border_disabled);
-    pointer-events: none;
-  }
+    min(4px, calc(40px - 100%) * 9999),
+    min(8px, calc(100% - 40px) * 9999, calc(120px - 100%) * 9999),
+    min(12px, calc(100% - 120px) * 9999)
+  );
 }
+
+.bl_searchForm_inputText:disabled {
+	pointer-events: none;
+	border: var(--sc_border_disabled);
+}
+
 .bl_searchForm_btn {
   display: flex;
+  flex: 1 1 var(--searchForm_base, 3rem);
   flex-direction: column;
+  gap: 0.1rem;
   align-items: center;
   justify-content: center;
-
   height: var(--searchForm_base, 3rem);
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: var(--searchForm_base, 3rem);
-  gap: 0.1rem;
   padding: 0.1rem;
-  background-color: var(--sc_bg_btn__primary);
   text-decoration: none;
+  cursor: pointer;
+  background-color: var(--sc_bg_btn__primary);
   border: 2px solid transparent;
   border-radius: max(
-    min(4px, calc(40px - 100%)*9999),
-    min(8px, calc(100% - 40px)*9999, calc(120px - 100%)*9999),
-    min(12px, calc(100% - 120px)*9999));
-  cursor: pointer;
-  & > svg {
-    color:var(--sc_txt_btn__primary);
-    height: 2rem;
-    width: 2rem;
-  }
-  & > span {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 0.75rem;
-    line-height: 1.25;
-    letter-spacing: 0.04em;
-    color:var(--sc_txt_btn__primary);
-  }
-  &:hover,
-  &:active {
-    filter: brightness(87%);
-  }
-  &:disabled {
-    background-color: var(--sc_bg_disabled);
-    pointer-events: none;
-  }
+    min(4px, calc(40px - 100%) * 9999),
+    min(8px, calc(100% - 40px) * 9999, calc(120px - 100%) * 9999),
+    min(12px, calc(100% - 120px) * 9999)
+  );
+}
+
+.bl_searchForm_btn:hover,
+.bl_searchForm_btn:active {
+  filter: brightness(87%);
+}
+
+.bl_searchForm_btn:disabled {
+  pointer-events: none;
+  background-color: var(--sc_bg_disabled);
+}
+
+.bl_searchForm_btn > svg {
+  width: 2rem;
+  height: 2rem;
+  color: var(--sc_txt_btn__primary);
+}
+
+.bl_searchForm_btn > span {
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--sc_txt_btn__primary);
+  letter-spacing: 0.04em;
 }
 
 
 
 
 
-/*≡≡≡ ❒ bl_snsIcon ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_snsIcon ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    複数のSNSアイコンを一覧表示する
+    SNSアイコン一覧
   ■ 構成
     bl_snsIcon : アイコン群を並べて入れるためのラッパー
       bl_snsIcon_item : アイコン本体
------------------------------------------------------------------------------*/
+---------------------------------------------------------------------------- */
 .bl_snsIcon {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   gap: 4px;
 }
+
 .bl_snsIcon_item {
-  height: 48px;
   width: 48px;
+  height: 48px;
   padding: 8px;
 }
 
@@ -1214,110 +1430,140 @@ html:has(dialog[open]) {
 
 
 
-/*≡≡≡ ❒ bl_tagMenu ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_tagMenu ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    各サイドバーで使われているリンクリスト
-    WordPressではカスタムメニューとして使う
-
-  ■ バリエーション
+		メニューの一覧
+    各サイドバー、メニューダイアログで使われている
+    ※ WordPressではカスタムメニューとして使う
+  ■ 構成
     bl_tagMenu : 全体
       bl_tagMenu_title : タイトル
       bl_tagMenu_list : リスト
       -> bl_tagMenu_list__indented : ネストされたリスト（WordPress用、未検証）
         bl_tagMenu_item : リストアイテム
           bl_tagMenu_link : リンク文
----------------------------------------------------------------------------*/
+--------------------------------------------------------------------------- */
 .bl_tagMenu {
   margin-bottom: 40px;
 }
+
 .bl_tagMenu_title {
   display: block;
+  margin-bottom: 0.2rem;
   font-size: 0.7rem;
   color: var(--sc_txt_desc);
-  margin-bottom: 0.2rem;
 }
+
 .bl_tagMenu_list {
+  padding: 0;
   margin: 0;
   list-style-type: none;
-  padding: 0;
-  &.bl_tagMenu_list__indented {
-    padding-left: 1em;
-  }
 }
+
+.bl_tagMenu_list.bl_tagMenu_list__indented {
+  padding-left: 1em;
+}
+
 .bl_tagMenu_item {
   margin-bottom: 0.75em;
 }
+
 .bl_tagMenu_link {
   font-size: 0.9rem;
   font-weight: 700;
   color: var(--sc_txt_body);
   text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
+}
+
+.bl_tagMenu_link:hover {
+  text-decoration: underline;
 }
 
 
 
 
 
-/*≡≡≡ ❒ el_btn ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ☐ el_btn ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    クリックできるボタン
-  ■ バリエーション
-    el_btn : ベーススタイル
-      -> el_btn__primary : プライマリボタン、ページ内で最も重要なアクションに使用（例：同意、送信、応募）
-      -> el_btn__secondary : セカンダリボタン、プライマリより優先度が低いアクション（例：問い合わせ）
-      -> el_btn__tertiary : ターシャリボタン、セカンダリより優先度が低いアクション（例：キャンセル）
------------------------------------------------------------------------------*/
+    ボタン
+		aタグ、buttonタグで使うことを想定
+  ■ 構成
+    el_btn : ベース（下記のモディファイアと組み合わせることを想定）
+		-> el_btn__primary : プライマリボタン、ページ内で最も重要なアクションに使用（例：同意、送信、応募）
+		-> el_btn__secondary : セカンダリボタン、プライマリより優先度が低いアクション（例：問い合わせ）
+		-> el_btn__tertiary : ターシャリボタン、セカンダリより優先度が低いアクション（例：キャンセル）
+---------------------------------------------------------------------------- */
 .el_btn {
   display: block;
-  box-sizing: border-box;
-  border: 2px solid transparent;
-  border-radius: max(
-    min(4px, calc(40px - 100%)*9999),
-    min(8px, calc(100% - 40px)*9999, calc(120px - 100%)*9999),
-    min(12px, calc(100% - 120px)*9999));
   padding: 16px;
-  cursor: pointer;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 700;
-  font-size: 1rem;
   line-height: 1.5;
-  letter-spacing: 0.04em;
   text-align: center;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: max(
+    min(4px, calc(40px - 100%) * 9999),
+    min(8px, calc(100% - 40px) * 9999, calc(120px - 100%) * 9999),
+    min(12px, calc(100% - 120px) * 9999)
+  );
   transition: .25s;
-
-  &:disabled {pointer-events: none;}
-
-  /* Modifier */
-  &.el_btn__primary {
-    text-decoration: none;
-    color:var(--sc_txt_btn__primary);
-    background-color: var(--sc_bg_btn__primary);
-    &:hover,
-    &:active {filter: brightness(87%);}
-    &:disabled {background-color: var(--sc_bg_disabled);}
-  }
-  &.el_btn__secondary {
-    text-decoration: none;
-    color: var(--sc_txt_btn__secondary);
-    border-color: currentColor;
-    background-color: transparent;
-    &:hover,
-    &:active {background-color: var(--sc_bg_btn__secondary);}
-    &:disabled {color: var(--sc_txt_disabled);}
-  }
-  &.el_btn__tertiary {
-    text-decoration: underline;
-    color: var(--sc_txt_btn__tertiary);
-    background-color: transparent;
-    &:hover,
-    &:active {color: var(--sc_txt_link__active);}
-    &:disabled {color: var(--sc_txt_disabled);}
-  }
 }
+
+.el_btn:disabled {
+  pointer-events: none;
+}
+
+.el_btn.el_btn__primary {
+  color: var(--sc_txt_btn__primary);
+  text-decoration: none;
+  background-color: var(--sc_bg_btn__primary);
+}
+
+.el_btn.el_btn__primary:hover,
+.el_btn.el_btn__primary:active {
+  filter: brightness(87%);
+}
+
+.el_btn.el_btn__primary:disabled {
+  background-color: var(--sc_bg_disabled);
+}
+
+.el_btn.el_btn__secondary {
+  color: var(--sc_txt_btn__secondary);
+  text-decoration: none;
+  background-color: transparent;
+  border-color: currentcolor;
+}
+
+.el_btn.el_btn__secondary:hover,
+.el_btn.el_btn__secondary:active {
+  background-color: var(--sc_bg_btn__secondary);
+}
+
+.el_btn.el_btn__secondary:disabled {
+  color: var(--sc_txt_disabled);
+}
+
+.el_btn.el_btn__tertiary {
+  color: var(--sc_txt_btn__tertiary);
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.el_btn.el_btn__tertiary:hover,
+.el_btn.el_btn__tertiary:active {
+  color: var(--sc_txt_link__active);
+}
+
+.el_btn.el_btn__tertiary:disabled {
+  color: var(--sc_txt_disabled);
+}
+
 button.el_btn {
+	width: -moz-available;
   width: -webkit-fill-available;
 }
 
@@ -1325,81 +1571,105 @@ button.el_btn {
 
 
 
-/*≡≡≡ ☐ el_header_lv* ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ☐ el_header_lv* ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    見出し要素（投稿、固定ページ以外で使用することを想定）
-    ※投稿、固定ページ（ブロックエディタ）と同じスタイルにすることで、統一感を持たせる
----------------------------------------------------------------------------*/
+    見出し（投稿、固定ページのブロックエディタコンテンツと同じスタイル）
+		これは、他のページと投稿、固定ページとでスタイルを統一させるためのもの
+		※なので投稿、固定ページ以外で使用することを想定
+---------------------------------------------------------------------------- */
 .el_header_lv1 {
+  margin-top: var(--space_8);
+  margin-bottom: var(--space_3);
   font-size: 2rem;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  margin-top: var(--space_8);
-  margin-bottom: var(--space_3);
-  @media (width >=960px) {
+}
+
+@media (min-width: 960px) {
+  .el_header_lv1 {
     font-size: 2.25rem;
     font-weight: 400;
     line-height: 1.4;
   }
 }
+
 .el_header_lv2 {
+  margin-top: var(--space_8);
+  margin-bottom: var(--space_3);
   font-size: 1.75rem;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  margin-top: var(--space_8);
-  margin-bottom: var(--space_3);
-  @media (width >=960px) {
+}
+
+@media (min-width: 960px) {
+  .el_header_lv2 {
     font-size: 2rem;
     font-weight: 400;
   }
 }
+
 .el_header_lv3 {
+  margin-top: var(--space_5);
+  margin-bottom: var(--space_3);
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  margin-top: var(--space_5);
-  margin-bottom: var(--space_3);
-  @media (width >=960px) {
+}
+
+@media (min-width: 960px) {
+  .el_header_lv3 {
     font-size: 1.75rem;
     font-weight: 400;
   }
 }
+
 .el_header_lv4 {
+  margin-top: var(--space_5);
+  margin-bottom: var(--space_2);
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  margin-top: var(--space_5);
-  margin-bottom: var(--space_2);
-  @media (width >=960px) {
+}
+
+@media (min-width: 960px) {
+  .el_header_lv4 {
     font-size: 1.5rem;
     font-weight: 400;
   }
 }
+
 .el_header_lv5 {
+  margin-top: var(--space_5);
+  margin-bottom: var(--space_2);
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.7;
   letter-spacing: 0.04em;
-  margin-top: var(--space_5);
-  margin-bottom: var(--space_2);
-  @media (width >=960px) {
+}
+
+@media (min-width: 960px) {
+  .el_header_lv5 {
     font-size: 1.25rem;
     font-weight: 400;
     line-height: 1.5;
   }
 }
+
 .el_header_lv6 {
+  margin-top: var(--space_3);
+  margin-bottom: var(--space_2);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.7;
   letter-spacing: 0.04em;
-  margin-top: var(--space_3);
-  margin-bottom: var(--space_2);;
-  @media (width >=960px) {
+}
+
+@media (min-width: 960px) {
+  .el_header_lv6 {
     font-size: 1rem;
     font-weight: 500;
   }
@@ -1409,30 +1679,36 @@ button.el_btn {
 
 
 
-/*≡≡≡ ☐ el_link ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ☐ el_link ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     リンク要素
-  ■ 構成
-    el_link : ベース
----------------------------------------------------------------------------*/
+---------------------------------------------------------------------------- */
 .el_link {
-  text-decoration: underline;
   color: var(--sc_txt_link);
-  &:active {color: var(--sc_txt_link__active);}
-  &:visited {color:var(--sc_txt_link__visited)}
-  &:hover {color: var(--sc_txt_link__hover);}
+  text-decoration: underline;
+}
+
+.el_link:active {
+  color: var(--sc_txt_link__active);
+}
+
+.el_link:visited {
+  color: var(--sc_txt_link__visited);
+}
+
+.el_link:hover {
+  color: var(--sc_txt_link__hover);
 }
 
 
 
 
 
-/*≡≡≡ ☐ el_thumbnail ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ☐ el_thumbnail ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     サムネイル画像
-  ■ 構成
-    el_thumbnail : ベース
----------------------------------------------------------------------------*/
+		トップページのカード、投稿ページでのサムネイルに使用する
+---------------------------------------------------------------------------- */
 .el_thumbnail > img {
 	width: 100%;
 	height: auto;
@@ -1445,34 +1721,38 @@ button.el_btn {
 
 
 
-/*≡≡≡ ☐ pagetop ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ⚠ js_pageTop ⚠ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     ページ右下に常駐する「ページトップに戻る」ボタン
     （機能については、`common.js` の方を参照）
------------------------------------------------------------------------------*/
-#pagetop {
+---------------------------------------------------------------------------- */
+#js_pageTop {
   position: fixed;
-  bottom:24px;
   right: 24px;
+  bottom: 24px;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 56px;
   width: 56px;
-  z-index: 10;
+  height: 56px;
+  color: var(--sea-900);
   cursor: pointer;
   background-color: #fff;
   border: 1px solid #0028b5;
   border-radius: 50%;
-  color: var(--sea-900);
-  transition: background-color .5s cubic-bezier(.4,.4,0,1);
-  &:hover {
-    background-color: #e7eefd;
-    border-color: #0f41af
-  }
-  @media (width >= 960px){
-    /* デスクトップ画面では余裕があるので少し内側に寄せる */
-    bottom: 40px;
+  transition: background-color 0.5s cubic-bezier(0.4, 0.4, 0, 1);
+}
+
+#pagetop:hover {
+  background-color: #e7eefd;
+  border-color: #0f41af;
+}
+
+/* デスクトップ画面では余裕があるので少し内側に寄せる */
+@media (min-width: 960px) {
+  #pagetop {
     right: 40px;
+    bottom: 40px;
   }
 }
