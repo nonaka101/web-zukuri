@@ -3,56 +3,28 @@
 /*
 Theme Name: Web-Zukuri
 Author: nonaka101
-Description: デジタル庁公開の情報を基にWordPressへ落とし込んだテストデータ
+Author URI: https://github.com/nonaka101
+Description: デジタル庁公開のデザインシステムをベースに試作したテーマです。
 Requires PHP: 8.0
+License: MIT License
+License URI: https://opensource.org/license/mit/
 Version: 1.0
 */
 
 /* ▄▀▄▀▄▀ Description ▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄
 # CSS設計
 
-## 主なクラスについて
+本テーマでは `PRECSS` を参考にしており、基本的なモジュールは下記の接頭辞を使用している。
 
-  ◲ ly_* : Layout モジュール
-    役割
-      レイアウトを扱う最上位のモジュール
-    責任範囲
-      + 主に、レイアウトに関するプロパティ
-      （top, left, right, bottom, margin, flex, grid 等）
++ ◲ ly_* : Layout モジュール
++ ❒ bl_* : Block モジュール
++ ☐ el_* : Element モジュール
++ ⚠ wp_* : WordPress用クラス
 
-  ❒ bl_* : Block モジュール
-    役割
-      複数の要素を束ねて1つのブロックを構成する
-    責任範囲
-      + ブロック内部のレイアウト
-      + ブロック外のレイアウトに関しては、上位のコンテキストが責任を持つ
+各モジュールの先頭に概要や構成を書いたコメントを用意しているので、詳細についてはそちらを参照。
+構成に関しては、インデントで親子関係を表し、`->` はそのクラスのモディファイアとする。
 
-  ☐ el_* : Element モジュール
-    役割
-      単体の要素であり、独立して機能するブロック
-    責任範囲
-      + 内部のレイアウト
-      + 外のレイアウトに関しては、上位のコンテキストが責任を持つ
-
-  ⚠ hp_* : Helper クラス
-    役割
-      特殊な場合に使用される、単体のプロパティを適用させるためのもので、強制的な上書きを行う
-    責任範囲
-      基本的には単体のプロパティ（セットで使うことが当然に認められるは複数でも許容）
-      必ず適用させる都合上、全てのプロパティに !important を使用することになる
-
-	▀▄ wp_* : WordPress用クラス
-		役割
-			WordPress用の特殊なクラス
-			現在は、ブロックエディタでのコンテンツを出力する wp_blockContent のみ存在
-
-## モディファイアについて
-
-  `クラス名__モディファイア名` のように、末尾にアンダーバーが2つ付与されているものは、モディファイアである。
-  これは、そのクラスの基本から振る舞いやあしらいが変わるものである。
-  使う場合には、そのクラスと同じ場所に加えるものとする。
-  （例：<a href="#" class="el_btn el_btn__primary">プライマリボタン</a>）
-
+モバイル画面とデスクトップ画面の2種でレイアウトを考え、その境界は 960px とする。
 */
 
 
@@ -71,14 +43,14 @@ Version: 1.0
   --space_8: 4rem;
   --space_13:6.5rem;
 
-  /* ≡≡≡ ▀▄ カラーシステム（DesignSystem 1.3.2 準拠）▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+  /* ≡≡≡ ▀▄ カラーシステム（DesignSystem 1.3.2 準拠）▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    ダークモードを使えるよう、色に関してはセマンティックカラーを採用している。
-    要素の色に関しては、原則としてセマンティックカラーを使用すること。
-    （※カラーモードに関係ない要素に関しては、プリミティブカラーからも可）
+    カラーモードを切り替えられるよう、カスタムプロパティでセマンティックカラーを再現している。
+    原則として、クラスの色に関してはセマンティックカラーを使用すること。
+    （※カラーモードに関係ない要素に関しては、プリミティブカラーからも可とする）
   ■ 注意
     現在は開発用に、ルート要素にクラス 'is_darkMode' を使っている。
-    本来は、`@media (prefers-color-scheme: dark)` を使った方法が望ましい。
+    本来は、`@media (prefers-color-scheme: dark)` を使った方法が望ましいと考える。
   --------------------------------------------------------------------------- */
 
   /* プリミティブカラー */
@@ -214,12 +186,12 @@ Version: 1.0
   --sc_bg_shadow: var(--white);
 }
 
-/* ≡≡≡ ▀▄ ベース設定 ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ▀▄ ベース設定 ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     ベースとなる処理を施す
     + セマンティックカラーの設定（基本となる要素に施し、最低限の見栄えを確保）
     + 不要なデフォルトのスタイルを剥ぐ
-  --------------------------------------------------------------------------- */
+---------------------------------------------------------------------------- */
 *,::after,::before {
   box-sizing: border-box
 }
@@ -305,7 +277,7 @@ select::-ms-expand {
 
 
 
-/* ≡≡≡ ▀▄ wp_blockContent ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ⚠ wp_blockContent ⚠ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     WordPressのブロックエディタ用のスタイル
 		（投稿、固定ページの `the_content()` 箇所を囲う形で使用）
@@ -316,7 +288,7 @@ select::-ms-expand {
     + theme.json 側での処理も考えているが、各ブロックに直接書いていくのは現実的でないと判断。
     + そのためここでは、必要最小限となる要素にのみスタイルをつけている。
     + 上記より、エディタ側とのスタイルの違いが生じるという問題が生じている。
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 .wp_blockContent h1 {
   margin-top: var(--space_8);
   margin-bottom: var(--space_3);
@@ -422,19 +394,20 @@ select::-ms-expand {
 /* ≡≡≡ ◲ ly_mainArea ◲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     フッターなどを除く、メインとなるエリアのレイアウトを構成する
-    「トップページ」と「それ以外のページ」の２種あり、それぞれでモバイル画面とデスクトップ画面で変化
+    レイアウトは大別すると「トップページ」と「それ以外のページ」の２種
+		それぞれでモバイル画面とデスクトップ画面で変化
   ■ 構成
     ly_mainArea : 全体
-      ly_mainArea_header : ヘッダーレイアウト（12Grid の 左3、モバイル画面では画面上部に固定）
+      ly_mainArea_header : ヘッダーレイアウト（12Grid の 1行 1〜3列目、モバイル画面では画面上部に固定）
         bl_header : ヘッダー
           bl_header_siteTitle : ロゴとサイト名
           bl_header_mobileMenu : 「検索」「メニュー」ボタン（モバイル画面時のみ表示）
-      ly_mainArea_leftSidebar : 左サイドバーのレイアウト（12Grid の 左3）
-      ly_mainArea_rightSidebar : 右サイドバーのレイアウト（12Grid の 右3）
-      ly_mainArea_content : メインコンテンツのレイアウト（各ページに応じて変化）
-      -> ly_mainArea_content__middle : トップページに利用（12Grid の 左9）
-      -> ly_mainArea_content__left : それ以外のページに利用（12Gridの 中央6）
-  --------------------------------------------------------------------------- */
+      ly_mainArea_leftSidebar : 左サイドバーのレイアウト（12Grid の 2行 1〜3列目）
+      ly_mainArea_rightSidebar : 右サイドバーのレイアウト（12Grid の 2行 10〜12列目）
+      ly_mainArea_content : メインコンテンツのレイアウト（各ページレイアウトに応じて変化）
+      -> ly_mainArea_content__middle : トップページに利用（12Grid の 2行 4〜9列目）
+      -> ly_mainArea_content__left : それ以外のページに利用（12Gridの 2行 1〜9列目）
+---------------------------------------------------------------------------- */
 .ly_mainArea {
   display: grid;
   grid-template-rows: auto auto 1fr;
@@ -600,16 +573,18 @@ select::-ms-expand {
 
 
 
-/* ≡≡≡ ◲ ly_footer ◲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ◲ ly_footer ◲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    フッター部のレイアウト構成
-  ■ バリエーション
+    フッター部のレイアウトを構成する
+		デスクトップ画面の時は、横に `3:6:3` の比率で3つのウィジェットを並べる。
+		モバイル画面の時は、ウィジェットは縦1列に並べる
+  ■ 構成
     ly_footer_wrapper : ラッパー
-			-> ly_footer : ベース部
-				-> ly_footer_widget3fr : 3fr使うウィジェット
-				-> ly_footer_widget6fr : 6fr使うウィジェット
-					-> ly_footer_headerTitle : ウィジェット先頭のタイトル要素
------------------------------------------------------------------------------ */
+			ly_footer : ベース
+				ly_footer_widget3fr : 3fr使うウィジェット
+				ly_footer_widget6fr : 6fr使うウィジェット
+					ly_footer_headerTitle : ウィジェット先頭のタイトル要素
+---------------------------------------------------------------------------- */
 .ly_footer_wrapper {
   padding: 64px 24px;
   margin-top: 40px;
@@ -680,10 +655,11 @@ select::-ms-expand {
 
 /* ≡≡≡ ❒ ly_dialog ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    dialogタグを使ったモーダルダイアログ
-    （モーダル機能に関しては、`common.js` を参照）
+    dialogタグを使ったモーダルダイアログ（モーダル機能に関しては、`common.js` を参照）
+		モバイル画面の時にヘッダーに表示される「メニュー」ボタンから呼び出される
+		画面全体をモーダルダイアログで覆い、デスクトップ画面でのサイドバーの内容を表示
   ■ 構成
-    ly_dialog_wrapper : ラッパー
+    ly_dialog_wrapper[#menu] : ラッパー（※詳細度の関係からIDと併用）
       ly_dialog : ダイアログ本体
         bl_menuHeader : メニューヘッダー
           bl_menuHeader_title : メニュー名
@@ -707,6 +683,10 @@ html:has(dialog[open]) {
   backdrop-filter: blur(4px);
 }
 
+.ly_dialog_wrapper:not([open]) {
+	display: none;
+}
+
 /*
  * ここでIDセレクタを使っているのは、詳細度を高めるため
  * デフォルトのスタイル（例：`dialog:-internal-dialog-in-top-layer`）に `max-width` や `max-height` があり、
@@ -717,10 +697,6 @@ html:has(dialog[open]) {
 	max-width: 100dvw;
 	height: 100dvh;
 	max-height: 100dvh;
-}
-
-.ly_dialog_wrapper:not([open]) {
-	display: none;
 }
 
 .ly_dialog {
@@ -781,16 +757,19 @@ html:has(dialog[open]) {
 
 
 
-/* ≡≡≡ ❒ bl_accordion ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_accordion ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     アコーディオンブロック
-  ■ バリエーション
-    bl_accordion : アコーディオン本体
-    -> bl_accordion__dummy : カテゴリ一覧等、アコーディオンと並ぶ要素をそろえるためのダミー
+		detailsタグとsummaryタグを用いるため、開閉動作にJavascriptを必要としない
+  ■ 構成
+    bl_accordion : ベース
+    -> bl_accordion__dummy : アーカイブ一覧用のダミー要素
       bl_accordion_summary : サマリー要素
-      -> bl_accordion_summary__accent : 連続した場合に見分けがつくよう、色を付与
       bl_accordion_description : 格納されている要素
---------------------------------------------------------------------------- */
+  ■ 注意
+		カラーモードに対応するため、`is_darkMode` クラスを使用している
+		`prefers-color-scheme` の手法に変更時は、こちらも変えること
+---------------------------------------------------------------------------- */
 .bl_accordion {
   padding: 0.5em 0;
   font-size: 1rem;
@@ -827,11 +806,7 @@ html:has(dialog[open]) {
   background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
 }
 
-.bl_accordion_summary.bl_accordion_summary__accent {
-  background-color: var(--sc_bg_body__tertiary);
-}
-
-/* インナーブロックを考慮して子結合子を使用 */
+/* WordPressブロック化の際、インナーブロックを考慮して子結合子にしている */
 .bl_accordion[open] > .bl_accordion_summary::after {
   transform: rotate(180deg);
   translate:0 -12.5%;
@@ -845,10 +820,14 @@ html:has(dialog[open]) {
 
 
 
-/* ≡≡≡ ❒ bl_blockSkip ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_blockSkip ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    ブロックスキップをモーダルダイアログっぽく表示
-  ■ バリエーション
+    ブロックスキップ
+		スクリーンリーダーだけでなくキー操作者にも見えるよう、モーダルダイアログっぽく画面中央に表示する
+		使用する場面は 2箇所
+		+ ヘッダー直後に配置、各種ランドマークへ移動可能
+		+ 投稿ページの記事タイトル直後、記事に関する補足情報を飛ばして記事本文に移動可能
+  ■ 構成
     共通パーツ
     bl_blockSkip_wrapper : ラッパー
       bl_blockSkip : ベース
@@ -858,7 +837,7 @@ html:has(dialog[open]) {
           bl_blockSkip_linkItem : リンクアイテム
           -> bl_blockSkip_linkItem__isMobile : モバイル画面のみ表示
           -> bl_blockSkip_linkItem__isDesktop : デスクトップ画面のみ表示
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 /* フォーカスを受け取るまで外に配置し、フォーカス時は周囲をぼかすフィルターを展開 */
 .bl_blockSkip_wrapper {
@@ -966,129 +945,43 @@ html:has(dialog[open]) {
 
 
 
-/* ≡≡≡ ❒ el_btn ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-  ■ 概要
-    クリックできるボタン
-  ■ バリエーション
-    el_btn_wrapper : ラッパー（複数配置する場合のレイアウトを制御）
-    el_btn : ベーススタイル
-		-> el_btn__primary : プライマリボタン、ページ内で最も重要なアクションに使用（例：同意、送信、応募）
-		-> el_btn__secondary : セカンダリボタン、プライマリより優先度が低いアクション（例：問い合わせ）
-		-> el_btn__tertiary : ターシャリボタン、セカンダリより優先度が低いアクション（例：キャンセル）
------------------------------------------------------------------------------ */
-
-.el_btn {
-  box-sizing: border-box;
-  display: block;
-  padding: 16px;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 1.5;
-  text-align: center;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  border: 2px solid transparent;
-  border-radius: max(
-    min(4px, calc(40px - 100%) * 9999),
-    min(8px, calc(100% - 40px) * 9999, calc(120px - 100%) * 9999),
-    min(12px, calc(100% - 120px) * 9999));
-  transition: .25s;
-}
-
-.el_btn:disabled {
-  pointer-events: none;
-}
-
-.el_btn.el_btn__primary {
-  color: var(--sc_txt_btn__primary);
-  text-decoration: none;
-  background-color: var(--sc_bg_btn__primary);
-}
-
-.el_btn.el_btn__primary:hover,
-.el_btn.el_btn__primary:active {
-  filter: brightness(87%);
-}
-
-.el_btn.el_btn__primary:disabled {
-  background-color: var(--sc_bg_disabled);
-}
-
-.el_btn.el_btn__secondary {
-  color: var(--sc_txt_btn__secondary);
-  text-decoration: none;
-  background-color: transparent;
-  border-color: currentcolor;
-}
-
-.el_btn.el_btn__secondary:hover,
-.el_btn.el_btn__secondary:active {
-  background-color: var(--sc_bg_btn__secondary);
-}
-
-.el_btn.el_btn__secondary:disabled {
-  color: var(--sc_txt_disabled);
-}
-
-.el_btn.el_btn__tertiary {
-  color: var(--sc_txt_btn__tertiary);
-  text-decoration: underline;
-  background-color: transparent;
-}
-
-.el_btn.el_btn__tertiary:hover,
-.el_btn.el_btn__tertiary:active {
-  color: var(--sc_txt_link__active);
-}
-
-.el_btn.el_btn__tertiary:disabled {
-  color: var(--sc_txt_disabled);
-}
-
-button.el_btn {
-	width: -moz-available;
-  width: -webkit-fill-available;
-}
-
-
-
-
-
-/* ≡≡≡ ❒ bl_card ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_card ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     カードのコンポーネント、下記の場所で使用される
-      + トップページの記事一覧
-      + フッターの最新記事
-      + アーカイブページの記事一覧
-      + 検索ページでヒットした記事一覧
-  ■ バリエーション
+      + トップページの記事一覧（サムネイル、カテゴリ、タイトル、要旨、投稿日）
+      + フッターの最新記事（タイトル、カテゴリ、投稿日）
+      + アーカイブページの記事一覧（カテゴリ、タイトル、要旨、投稿日）
+      + 検索ページでヒットした記事一覧（カテゴリ、タイトル、要旨、投稿日）
+  ■ 構成
     bl_card_wrapper : ラッパー
-      bl_card : ベースとなるスタイル
+      bl_card : ベース
       -> bl_card__clickable : カード全体にリンク属性を付与する場合に
       -> bl_card__sticky : 先頭に固定表示されたカード
       -> bl_card__s : フッターにある、最新記事用
-        bl_card_category : 投稿のカテゴリ
         bl_card_thumbnail : 投稿のサムネイル画像
         bl_card_body : コンテンツのベース
+					bl_card_category : 投稿のカテゴリ
           bl_card_title : 投稿タイトル
-          bl_card_date : 投稿日
           bl_card_content : 投稿の要旨
------------------------------------------------------------------------------ */
+          bl_card_date : 投稿日
+---------------------------------------------------------------------------- */
 .bl_card_wrapper {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
 /*
- * `--card_r` は、カード内のR値
- * 自身の幅に応じ変化「～40px : R4」「40px～120px : R8」「120px～ : R12」
+ * カスタムプロパティ `--card_r` は カード内のR値で、自身の幅に応じ変化
+ * + ～40px 		 : R4
+ * + 40px～120px : R8
+ * + 120px～     : R12
  */
 .bl_card {
   --card_r: max(
-    min(4px, calc(40px - 100%)*9999),
-    min(8px, calc(100% - 40px)*9999, calc(120px - 100%)*9999),
-    min(12px, calc(100% - 120px)*9999));
+    min(4px, calc(40px - 100%) * 9999),
+    min(8px, calc(100% - 40px) * 9999, calc(120px - 100%) * 9999),
+    min(12px, calc(100% - 120px) * 9999)
+  );
 
   display: block;
   font-size: 1rem;
@@ -1182,17 +1075,18 @@ button.el_btn {
 
 
 
-/* ≡≡≡ ❒ bl_pager ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_pager ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    アーカイブ、検索ページ等で、ページ送り用に使うページネーション要素
+		ページネーション要素
+    アーカイブ、検索ページで記事数が1ページに入り切らない際に使用される
   ■構成
     bl_pager : ベース
+      bl_pager_center : 現在位置
       bl_pager_left : 左側（前）
-      bl_pager_center : 現在地
-      bl_pager_right : 右側（後ろ）
+      bl_pager_right : 右側（後）
         bl_pager_btn : 「最初（最後）」「前（次）」「各ページ数」用のボタン
-        -> bl_pager_btn__extended : モバイル画面時、非表示となる要素
------------------------------------------------------------------------------ */
+        -> bl_pager_btn__extended : モバイル画面時、非表示となる要素（＝「各ページ数」）
+---------------------------------------------------------------------------- */
 .bl_pager {
   display: flex;
   flex-flow: row nowrap;
@@ -1287,15 +1181,16 @@ button.el_btn {
 
 
 
-/* ≡≡≡ ❒ bl_postData ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_postData ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    投稿ページのタイトル下に表示される情報欄で、「公開日」「カテゴリ」「タグ」の３種
-  ■ バリエーション
+    投稿ページのタイトル下に表示される情報欄
+		記事の補足情報である「公開日」「カテゴリ」「タグ」を表示
+  ■ 構成
     bl_postData : ベーススタイル
 			bl_postData_item : 公開日、カテゴリ、タグ それぞれの情報スペース
 				bl_postData_name : item の名前「カテゴリ」「タグ」
 				bl_postData_values : item の中身、（ul 要素に付与、下位の li アイテムを制御）
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 .bl_postData {
   margin-bottom: var(--space_2);
 }
@@ -1344,20 +1239,19 @@ button.el_btn {
 
 
 
-/* ≡≡≡ ❒ bl_searchForm ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_searchForm ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    検索用のフォーム
-    （※デザインシステムの他のフォームと共通化できるスタイルが少ないため、専用モジュール化している）
-  ■ バリエーション
-    共通パーツ
+    検索ページ用の専用フォーム
+    （※デザインシステムの他のフォームと共通化できるスタイルが少ないため）
+  ■ 構成
     bl_searchForm_wrapper : ラッパー
-      bl_searchForm : ベーススタイル
+      bl_searchForm : ベース
         bl_searchForm_label : 各種フォームのラベル
-        bl_searchForm_inputSelect : セレクト要素
-        bl_searchForm_input : テキスト入力とボタンを持つ
+        bl_searchForm_inputSelect : 表示件数
+        bl_searchForm_input : 検索キーワードと検索ボタン
           bl_searchForm_inputText : テキスト入力
           bl_searchForm_btn : ボタン
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 .bl_searchForm_wrapper {
   display: block;
   margin-top: 1rem;
@@ -1388,16 +1282,17 @@ button.el_btn {
 }
 
 .bl_searchForm_inputSelect > select {
-    width: 100%;
-    height: var(--searchForm_base, 3rem);
-    color: var(--sc_txt_body);
-    text-indent: 1ch;
-    background-color: var(--sc_bg_body__primary);
-    border: var(--sc_border_field);
-    border-radius: max(
-      min(4px, calc(40px - 100%)*9999),
-      min(8px, calc(100% - 40px)*9999, calc(120px - 100%)*9999),
-      min(12px, calc(100% - 120px)*9999));
+  width: 100%;
+  height: var(--searchForm_base, 3rem);
+  color: var(--sc_txt_body);
+  text-indent: 1ch;
+  background-color: var(--sc_bg_body__primary);
+  border: var(--sc_border_field);
+  border-radius: max(
+    min(4px, calc(40px - 100%) * 9999),
+    min(8px, calc(100% - 40px) * 9999, calc(120px - 100%) * 9999),
+    min(12px, calc(100% - 120px) * 9999)
+  );
 }
 
 .bl_searchForm_inputSelect > select:disabled {
@@ -1407,8 +1302,10 @@ button.el_btn {
 
 /*
  * after要素について
- * + ブラウザのスタイルは剥いだうえで、背景としてSVGの矢印を使用（アクセシビリティとしては無視される）
- * + 幅が200px以下になると、矢印がoption要素に衝突してしまうので、暫定的ではあるが display:none; にしている
+ * デフォルトのスタイルは剥いだうえで、背景としてSVGの矢印を使用
+ * （アクセシビリティとしては無視される）
+ * 画面幅がおおよそ 200px 以下になると、矢印がoption要素に衝突してしまうので、
+ * 暫定的ではあるが `display:none;` にしている
  */
 .bl_searchForm_inputSelect::after {
 	display: none;
@@ -1450,7 +1347,8 @@ button.el_btn {
   border-radius: max(
     min(4px, calc(40px - 100%) * 9999),
     min(8px, calc(100% - 40px) * 9999, calc(120px - 100%) * 9999),
-    min(12px, calc(100% - 120px) * 9999));
+    min(12px, calc(100% - 120px) * 9999)
+  );
 }
 
 .bl_searchForm_inputText:disabled {
@@ -1472,12 +1370,14 @@ button.el_btn {
   background-color: var(--sc_bg_btn__primary);
   border: 2px solid transparent;
   border-radius: max(
-    min(4px, calc(40px - 100%)*9999),
-    min(8px, calc(100% - 40px)*9999, calc(120px - 100%)*9999),
-    min(12px, calc(100% - 120px)*9999));
+    min(4px, calc(40px - 100%) * 9999),
+    min(8px, calc(100% - 40px) * 9999, calc(120px - 100%) * 9999),
+    min(12px, calc(100% - 120px) * 9999)
+  );
 }
 
-.bl_searchForm_btn:hover, .bl_searchForm_btn:active {
+.bl_searchForm_btn:hover,
+.bl_searchForm_btn:active {
   filter: brightness(87%);
 }
 
@@ -1505,13 +1405,13 @@ button.el_btn {
 
 
 
-/* ≡≡≡ ❒ bl_snsIcon ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_snsIcon ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    複数のSNSアイコンを一覧表示する
+    SNSアイコン一覧
   ■ 構成
     bl_snsIcon : アイコン群を並べて入れるためのラッパー
       bl_snsIcon_item : アイコン本体
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 .bl_snsIcon {
   display: flex;
   flex-flow: row wrap;
@@ -1530,10 +1430,10 @@ button.el_btn {
 
 /* ≡≡≡ ❒ bl_tagMenu ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    各サイドバーで使われているリンクリスト
-    WordPressではカスタムメニューとして使う
-
-  ■ バリエーション
+		メニューの一覧
+    各サイドバー、メニューダイアログで使われている
+    ※ WordPressではカスタムメニューとして使う
+  ■ 構成
     bl_tagMenu : 全体
       bl_tagMenu_title : タイトル
       bl_tagMenu_list : リスト
@@ -1581,11 +1481,100 @@ button.el_btn {
 
 
 
-/* ≡≡≡ ☐ el_header_lv* ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ☐ el_btn ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
-    見出し要素（投稿、固定ページ以外で使用することを想定）
-    ※投稿、固定ページ（ブロックエディタ）と同じスタイルにすることで、統一感を持たせる
---------------------------------------------------------------------------- */
+    ボタン
+		aタグ、buttonタグで使うことを想定
+  ■ 構成
+    el_btn : ベース（下記のモディファイアと組み合わせることを想定）
+		-> el_btn__primary : プライマリボタン、ページ内で最も重要なアクションに使用（例：同意、送信、応募）
+		-> el_btn__secondary : セカンダリボタン、プライマリより優先度が低いアクション（例：問い合わせ）
+		-> el_btn__tertiary : ターシャリボタン、セカンダリより優先度が低いアクション（例：キャンセル）
+---------------------------------------------------------------------------- */
+.el_btn {
+  display: block;
+  padding: 16px;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: max(
+    min(4px, calc(40px - 100%) * 9999),
+    min(8px, calc(100% - 40px) * 9999, calc(120px - 100%) * 9999),
+    min(12px, calc(100% - 120px) * 9999)
+  );
+  transition: .25s;
+}
+
+.el_btn:disabled {
+  pointer-events: none;
+}
+
+.el_btn.el_btn__primary {
+  color: var(--sc_txt_btn__primary);
+  text-decoration: none;
+  background-color: var(--sc_bg_btn__primary);
+}
+
+.el_btn.el_btn__primary:hover,
+.el_btn.el_btn__primary:active {
+  filter: brightness(87%);
+}
+
+.el_btn.el_btn__primary:disabled {
+  background-color: var(--sc_bg_disabled);
+}
+
+.el_btn.el_btn__secondary {
+  color: var(--sc_txt_btn__secondary);
+  text-decoration: none;
+  background-color: transparent;
+  border-color: currentcolor;
+}
+
+.el_btn.el_btn__secondary:hover,
+.el_btn.el_btn__secondary:active {
+  background-color: var(--sc_bg_btn__secondary);
+}
+
+.el_btn.el_btn__secondary:disabled {
+  color: var(--sc_txt_disabled);
+}
+
+.el_btn.el_btn__tertiary {
+  color: var(--sc_txt_btn__tertiary);
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.el_btn.el_btn__tertiary:hover,
+.el_btn.el_btn__tertiary:active {
+  color: var(--sc_txt_link__active);
+}
+
+.el_btn.el_btn__tertiary:disabled {
+  color: var(--sc_txt_disabled);
+}
+
+button.el_btn {
+	width: -moz-available;
+  width: -webkit-fill-available;
+}
+
+
+
+
+
+/* ≡≡≡ ☐ el_header_lv* ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+  ■ 概要
+    見出し（投稿、固定ページのブロックエディタコンテンツと同じスタイル）
+		これは、他のページと投稿、固定ページとでスタイルを統一させるためのもの
+		※なので投稿、固定ページ以外で使用することを想定
+---------------------------------------------------------------------------- */
 .el_header_lv1 {
   margin-top: var(--space_8);
   margin-bottom: var(--space_3);
@@ -1688,12 +1677,10 @@ button.el_btn {
 
 
 
-/* ≡≡≡ ☐ el_link ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ☐ el_link ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     リンク要素
-  ■ 構成
-    el_link : ベース
---------------------------------------------------------------------------- */
+---------------------------------------------------------------------------- */
 .el_link {
   color: var(--sc_txt_link);
   text-decoration: underline;
@@ -1715,12 +1702,11 @@ button.el_btn {
 
 
 
-/* ≡≡≡ ☐ el_thumbnail ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ☐ el_thumbnail ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     サムネイル画像
-  ■ 構成
-    el_thumbnail : ベース
---------------------------------------------------------------------------- */
+		トップページのカード、投稿ページでのサムネイルに使用する
+---------------------------------------------------------------------------- */
 .el_thumbnail > img {
 	width: 100%;
 	height: auto;
@@ -1733,11 +1719,11 @@ button.el_btn {
 
 
 
-/* ≡≡≡ ☐ pagetop ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ☐ pagetop ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   ■ 概要
     ページ右下に常駐する「ページトップに戻る」ボタン
     （機能については、`common.js` の方を参照）
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 #pagetop {
   position: fixed;
   right: 24px;
