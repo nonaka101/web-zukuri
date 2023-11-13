@@ -33,6 +33,7 @@ Version: 1.0
 
 :root {
   font-family: "Noto Sans JP", "Segoe UI", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", meiryo, sans-serif;
+  line-height: 1.5;
 
   /* スペース */
   --space_0: 0.25rem;
