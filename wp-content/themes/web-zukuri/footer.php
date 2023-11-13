@@ -92,7 +92,7 @@
   </footer>
   <!-- /.ly_footer_wrapper -->
 
-  <button type="button" id="pagetop" aria-label="ページトップに戻る">
+  <button type="button" id="js_pageTop" aria-label="ページトップに戻る">
     <svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
       viewBox="0 0 16 16">
       <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0
@@ -104,25 +104,28 @@
 
   <div class="bl_devToolBox" id="js_toolBox">
     <div class="bl_devToolBox_btn">
-      <input type="checkbox" name="" id="js_toolBoxChkbox">
+      <input type="checkbox" name="" id="js_toolBox_chkbox">
     </div>
     <!-- /.bl_devToolBox_btn -->
     <div class="bl_devToolBox_utils">
+			<div id="js_fontSize_controller">
+				<input type="range" name="size" id="js_fontSize_range" value="16" max="32" min="10" step="1">
+				<output id="js_fontSize_result"></output>
+			</div>
+      <hr>
+      <div>
+        <label for="js_fontSize_chkbox">
+          <input type="checkbox" name="fontSize" id="js_fontSize_chkbox">
+          フォントサイズ
+        </label>
+			</div>
+			<hr>
       <div>
         <label for="js_darkMode">
           <input type="checkbox" name="darkMode" id="js_darkMode">
-          Dark Mode
+          ダークモード
         </label>
       </div>
-      <hr>
-      <div>
-        <div>
-          <span>Font-Size : </span>
-          <output id="js_fontSizeResult"></output>
-        </div>
-        <input type="range" name="size" id="js_fontSizeRange" value="16" max="32" min="10" step="1">
-      </div>
-    </div>
     <!-- /.bl_debToolBox_utils -->
   </div>
   <!-- /.bl_devToolBox -->
