@@ -1310,23 +1310,23 @@ html:has(dialog[open]) {
  * 暫定的ではあるが `display:none;` にしている
  */
 .bl_searchForm_inputSelect::after {
-	display: none;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	display: flexbox;
+	width: 1rem;
+	height: 1rem;
+	content: "";
+	background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
 }
 
-@media (min-width: 200px) {
-  .bl_searchForm_inputSelect::after {
-		position: absolute;
-		top: 1rem;
-		right: 1rem;
-		display: flexbox;
-		width: 1rem;
-		height: 1rem;
-		content: "";
-		background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
-  }
+.is_darkMode .bl_searchForm_inputSelect::after {
+	background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
+}
 
-	.is_darkMode .bl_searchForm_inputSelect::after {
-		background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
+@media (max-width: 200px) {
+	.bl_searchForm_inputSelect::after {
+		display: none;
 	}
 }
 
