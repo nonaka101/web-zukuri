@@ -517,97 +517,179 @@
       <!-- Component:Card -->
       <div class="bl_component_box">
         <h3 class="bl_component_caption">カード</h3>
+
         <div class="bl_component_box">
-          <h4 class="bl_component_caption">サムネイル無、クリック不可、スティッキー</h4>
-          <article class="bl_card_wrapper">
-            <div class="bl_card bl_card__sticky">
-              <div class="bl_card_body">
-                <span class="bl_card_category">カテゴリー欄</span>
-                <h2 class="bl_card_title">タイトル欄</h2>
-                <p class="bl_card_content">記事の要旨欄</p>
-                <time class="bl_card_date" datetime="2023-07-21">2023/07/21</time>
-              </div>
-              <!-- /.bl_card_body -->
-            </div>
-            <!-- /.bl_card bl_card__sticky -->
-          </article>
+          <h4 class="bl_component_caption">クリック不可、サムネイル無、スティッキー</h4>
+
+					<article class="bl_card bl_card__sticky" aria-label="固定表示に設定された記事">
+						<div class="bl_card_main">
+							<div class="bl_card_body">
+								<h2 class="bl_card_title">タイトル欄</h2>
+								<p class="bl_card_content">記事の要旨欄</p>
+							</div>
+							<!-- /.bl_card_body -->
+						</div>
+						<!-- /.bl_card_main -->
+					</article>
+					<!-- /.bl_card bl_card__sticky -->
+
         </div>
 
         <div class="bl_component_box">
-          <h4 class="bl_component_caption">サムネイル付、クリック不可</h4>
-          <article class="bl_card_wrapper">
-            <div class="bl_card">
-              <div class="bl_card_thumbnail">
-                <img src="./assets/images/m_02_white.png" />
-              </div>
-              <!-- /.bl_card_thumbnail -->
-              <div class="bl_card_body">
-                <span class="bl_card_category">Webアクセシビリティ</span>
-                <h2 class="bl_card_title">このサイトについて</h2>
-                <p class="bl_card_content">
-                  このサイトは、デジタル庁の「デザインシステム」を基に試作したものになります。
-                </p>
-                <time class="bl_card_date" datetime="2023-07-21">2023/07/21</time>
-              </div>
-              <!-- /.bl_card_body -->
-            </div>
-            <!-- /.bl_card -->
-          </article>
-          <!-- /.bl_card_wrapper -->
+          <h4 class="bl_component_caption">クリック不可、基本形（サムネイル、タイトル、要旨、日付データ）</h4>
+
+					<article class="bl_card">
+						<div class="bl_card_main">
+							<div class="bl_card_thumbnail">
+								<img src="./assets/images/m_02_white.png">
+							</div>
+							<!-- /.bl_card_thumbnail -->
+							<div class="bl_card_body">
+								<h2 class="bl_card_title">このサイトについて</h2>
+								<p class="bl_card_content">このサイトは、デジタル庁の「デザインシステム」を基に試作したものになります。</p>
+								<div class="bl_card_dates">
+									<div class="bl_card_date">
+										<span>投稿</span>
+										<time datetime="2023-10-16">2023/10/16</time>
+									</div>
+									<!-- /.bl_card_date -->
+									<div class="bl_card_date">
+										<span>更新</span>
+										<time datetime="2023-11-15">2023/11/15</time>
+									</div>
+									<!-- /.bl_card_date -->
+								</div>
+								<!-- /.bl_card_dates -->
+							</div>
+							<!-- /.bl_card_body -->
+						</div>
+						<!-- /.bl_card_main -->
+					</article>
+					<!-- /.bl_card -->
+
         </div>
 
         <div class="bl_component_box">
-          <h4 class="bl_component_caption">サムネイル付、クリック可能</h4>
-          <article class="bl_card_wrapper">
-            <a class="bl_card bl_card__clickable" href="#">
-              <div class="bl_card_thumbnail">
-                <img src="./assets/images/m_02_white.png" />
-              </div>
-              <!-- /.bl_card_thumbnail -->
-              <div class="bl_card_body">
-                <span class="bl_card_category">サンプルページ</span>
-                <h2 class="bl_card_title">サンプル：固定ページ</h2>
-                <p class="bl_card_content">
-                  このページは 固定ページ用のサンプルページとなります。
-                </p>
-                <time class="bl_card_date" datetime="2023-07-21">2023/07/21</time>
-              </div>
-              <!-- /.bl_card_body -->
-            </a>
-            <!-- /.bl_card bl_card__clickable -->
-          </article>
-          <!-- /.bl_card_wrapper -->
+          <h4 class="bl_component_caption">クリック可、基本形にメタ情報付与</h4>
+
+					<article class="bl_card bl_card__clickable">
+						<a class="bl_card_main" href="./page.html">
+							<div class="bl_card_thumbnail">
+								<img src="./assets/images/m_02_white.png">
+							</div>
+							<!-- /.bl_card_thumbnail -->
+							<div class="bl_card_body">
+								<h2 class="bl_card_title">サンプル：固定ページ</h2>
+								<p class="bl_card_content">
+									このページは 固定ページ用のサンプルページとなります。
+									ここでは、本テーマで使用しているコンポーネントの一部を、一覧として掲示しております。
+								</p>
+								<div class="bl_card_dates">
+									<div class="bl_card_date">
+										<span>投稿</span>
+										<time datetime="2023-10-16">2023/10/16</time>
+									</div>
+									<!-- /.bl_card_date -->
+									<div class="bl_card_date">
+										<span>更新</span>
+										<time datetime="2023-11-01">2023/10/21</time>
+									</div>
+									<!-- /.bl_card_date -->
+								</div>
+								<!-- /.bl_card_dates -->
+							</div>
+							<!-- /.bl_card_body -->
+						</a>
+						<!-- /.bl_card_main -->
+						<div class="bl_card_meta">
+							<ul class="bl_card_categories" aria-label="カテゴリ">
+								<li><a href="./archive.html">サンプルページ</a></li>
+								<li><a href="./archive.html">コンポーネント</a></li>
+							</ul>
+							<!-- /.bl_card_categories -->
+						</div>
+						<!-- /.bl_card_meta -->
+					</article>
+					<!-- /.bl_card bl_card__clickable -->
+
         </div>
 
         <div class="bl_component_box">
-          <h4 class="bl_component_caption">サムネイル無、クリック可能（アーカイブ、検索ページに使用）</h4>
-          <article class="bl_card_wrapper">
-            <a class="bl_card bl_card__clickable" href="./page.html">
-              <div class="bl_card_body">
-                <p class="bl_card_category">サンプルページ</p>
-                <h2 class="bl_card_title">固定ページ</h2>
-                <time class="bl_card_date" datetime="2020-10-23">2020年10月23日</time>
-              </div>
-              <!-- /.bl_card_body -->
-            </a>
-            <!-- /.bl_card bl_card__clickable -->
-          </article>
-          <!-- /.bl_card_wrapper -->
+          <h4 class="bl_component_caption">クリック可、基本形からサムネイル除去（アーカイブ＆検索ページに使用）</h4>
+
+					<article class="bl_card bl_card__clickable">
+						<a class="bl_card_main" href="./page.html">
+							<div class="bl_card_body">
+								<h2 class="bl_card_title">サンプル：固定ページ</h2>
+								<p class="bl_card_content">
+									このページは 固定ページ用のサンプルページとなります。
+									ここでは、本テーマで使用しているコンポーネントの一部を、一覧として掲示しております。
+								</p>
+								<div class="bl_card_dates">
+									<div class="bl_card_date">
+										<span>投稿</span>
+										<time datetime="2023-10-16">2023/10/16</time>
+									</div>
+									<!-- /.bl_card_date -->
+									<div class="bl_card_date">
+										<span>更新</span>
+										<time datetime="2023-11-01">2023/10/21</time>
+									</div>
+									<!-- /.bl_card_date -->
+								</div>
+								<!-- /.bl_card_dates -->
+							</div>
+							<!-- /.bl_card_body -->
+						</a>
+						<!-- /.bl_card_main -->
+						<div class="bl_card_meta">
+							<ul class="bl_card_categories" aria-label="カテゴリ">
+								<li><a href="./archive.html">サンプルページ</a></li>
+								<li><a href="./archive.html">コンポーネント</a></li>
+							</ul>
+							<!-- /.bl_card_categories -->
+						</div>
+						<!-- /.bl_card_meta -->
+					</article>
+					<!-- /.bl_card bl_card__clickable -->
+
         </div>
 
         <div class="bl_component_box">
-          <h4 class="bl_component_caption">サムネイル無、クリック可能、小サイズ（フッター「最新の投稿」に使用）</h4>
-          <article class="bl_card_wrapper">
-            <a class="bl_card bl_card__s bl_card__clickable" href="#">
-              <div class="bl_card_body">
-                <h2 class="bl_card_title">Read me（サンプル：投稿ページ）</h2>
-                <time class="bl_card_date" datetime="2023-07-21">2023/07/21</time>
-              </div>
-              <!-- /.bl_card_body -->
-            </a>
-            <!-- /.bl_card bl_card__s bl_card__clickable -->
-          </article>
-          <!-- /.bl_card_wrapper -->
+          <h4 class="bl_component_caption">クリック可、上記から小サイズし要旨を除去（フッター「最新の投稿」に使用）</h4>
+
+					<article class="bl_card bl_card__small bl_card__clickable">
+						<a class="bl_card_main" href="./page.html">
+							<div class="bl_card_body">
+								<h3 class="bl_card_title">サンプル：固定ページ</h3>
+								<div class="bl_card_dates">
+									<div class="bl_card_date">
+										<span>投稿</span>
+										<time datetime="2023-10-16">2023/10/16</time>
+									</div>
+									<!-- /.bl_card_date -->
+									<div class="bl_card_date">
+										<span>更新</span>
+										<time datetime="2023-11-01">2023/10/21</time>
+									</div>
+									<!-- /.bl_card_date -->
+								</div>
+								<!-- /.bl_card_dates -->
+							</div>
+							<!-- /.bl_card_body -->
+						</a>
+						<!-- /.bl_card_main -->
+						<div class="bl_card_meta">
+							<ul class="bl_card_categories" aria-label="カテゴリ">
+								<li><a href="./archive.html">サンプルページ</a></li>
+								<li><a href="./archive.html">コンポーネント</a></li>
+							</ul>
+							<!-- /.bl_card_categories -->
+						</div>
+						<!-- /.bl_card_meta -->
+					</article>
+					<!-- /.bl_card bl_card__small bl_card__clickable -->
+
         </div>
       </div>
 
@@ -1583,7 +1665,7 @@
     <div class="ly_footer">
       <div class="ly_footer_widget3fr">
         <div class="ly_footer_headerTitle">
-          <img src="./assets/images/Dummy_logo.PNG" alt="Logo" />
+          <img src="./assets/images/Dummy_logo.PNG" alt="Logo">
           <span>Web-Zukuri</span>
         </div>
         <!-- /.ly_footer_headerTitle -->
@@ -1642,44 +1724,110 @@
         </div>
         <!-- /.bl_tagMenu -->
         <!--≡≡≡ ▲ template-parts/parts-menu.php[main] ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+
       </div>
       <!-- /.ly_footer_widget3fr -->
 
       <div class="ly_footer_widget6fr">
         <h2 class="ly_footer_headerTitle">最新の投稿</h2>
-        <article class="bl_card_wrapper">
-          <a class="bl_card bl_card__s bl_card__clickable" href="./single.html">
-            <div class="bl_card_body">
-              <h2 class="bl_card_title">Read me（サンプル：投稿ページ）</h2>
-              <time class="bl_card_date" datetime="2023-07-21">2023/07/21</time>
-            </div>
-            <!-- /.bl_card_body -->
-          </a>
-          <!-- /.bl_card bl_card__s bl_card__clickable -->
-        </article>
-        <!-- /.bl_card_wrapper -->
-        <article class="bl_card_wrapper">
-          <a class="bl_card bl_card__s bl_card__clickable" href="./page.html">
-            <div class="bl_card_body">
-              <h2 class="bl_card_title">サンプル：固定ページ</h2>
-              <time class="bl_card_date" datetime="2023-07-21">2023/07/21</time>
-            </div>
-            <!-- /.bl_card_body -->
-          </a>
-          <!-- /.bl_card bl_card__s bl_card__clickable -->
-        </article>
-        <!-- /.bl_card_wrapper -->
-        <article class="bl_card_wrapper">
-          <a class="bl_card bl_card__s bl_card__clickable" href="./archive.html">
-            <div class="bl_card_body">
-              <h2 class="bl_card_title">サンプル：アーカイブ</h2>
-              <time class="bl_card_date" datetime="2023-07-21">2023/07/21</time>
-            </div>
-            <!-- /.bl_card_body -->
-          </a>
-          <!-- /.bl_card bl_card__s bl_card__clickable -->
-        </article>
-        <!-- /.bl_card_wrapper -->
+				<div class="bl_cardUnit bl_cardUnit__1col">
+
+					<article class="bl_card bl_card__small bl_card__clickable">
+						<a class="bl_card_main" href="./single.html">
+							<div class="bl_card_body">
+								<h3 class="bl_card_title">Read me</h3>
+								<div class="bl_card_dates">
+									<div class="bl_card_date">
+										<span>投稿</span>
+										<time datetime="2023-10-16">2023/10/16</time>
+									</div>
+									<!-- /.bl_card_date -->
+									<div class="bl_card_date">
+										<span>更新</span>
+										<time datetime="2023-11-08">2023/11/08</time>
+									</div>
+									<!-- /.bl_card_date -->
+								</div>
+								<!-- /.bl_card_dates -->
+							</div>
+							<!-- /.bl_card_body -->
+						</a>
+						<!-- /.bl_card_main -->
+						<div class="bl_card_meta">
+							<ul class="bl_card_categories" aria-label="カテゴリ">
+								<li><a href="./archive.html">サンプルページ</a></li>
+								<li><a href="./archive.html">ReadME</a></li>
+							</ul>
+							<!-- /.bl_card_categories -->
+						</div>
+						<!-- /.bl_card_meta -->
+					</article>
+					<!-- /.bl_card bl_card__small bl_card__clickable -->
+
+					<article class="bl_card bl_card__small bl_card__clickable">
+						<a class="bl_card_main" href="./page.html">
+							<div class="bl_card_body">
+								<h3 class="bl_card_title">サンプル：固定ページ</h3>
+								<div class="bl_card_dates">
+									<div class="bl_card_date">
+										<span>投稿</span>
+										<time datetime="2023-10-16">2023/10/16</time>
+									</div>
+									<!-- /.bl_card_date -->
+									<div class="bl_card_date">
+										<span>更新</span>
+										<time datetime="2023-11-01">2023/10/21</time>
+									</div>
+									<!-- /.bl_card_date -->
+								</div>
+								<!-- /.bl_card_dates -->
+							</div>
+							<!-- /.bl_card_body -->
+						</a>
+						<!-- /.bl_card_main -->
+						<div class="bl_card_meta">
+							<ul class="bl_card_categories" aria-label="カテゴリ">
+								<li><a href="./archive.html">サンプルページ</a></li>
+								<li><a href="./archive.html">コンポーネント</a></li>
+							</ul>
+							<!-- /.bl_card_categories -->
+						</div>
+						<!-- /.bl_card_meta -->
+					</article>
+					<!-- /.bl_card bl_card__small bl_card__clickable -->
+
+					<article class="bl_card bl_card__small bl_card__clickable">
+						<a class="bl_card_main" href="./archive.html">
+							<div class="bl_card_body">
+								<h3 class="bl_card_title">サンプル：アーカイブ</h3>
+								<div class="bl_card_dates">
+									<div class="bl_card_date">
+										<span>投稿</span>
+										<time datetime="2023-10-16">2023/10/16</time>
+									</div>
+									<!-- /.bl_card_date -->
+									<div class="bl_card_date">
+										<span>更新</span>
+										<time datetime="2023-11-01">2023/10/21</time>
+									</div>
+									<!-- /.bl_card_date -->
+								</div>
+								<!-- /.bl_card_dates -->
+							</div>
+							<!-- /.bl_card_body -->
+						</a>
+						<!-- /.bl_card_main -->
+						<div class="bl_card_meta">
+							<ul class="bl_card_categories" aria-label="カテゴリ">
+								<li><a href="./archive.html">サンプルページ</a></li>
+							</ul>
+							<!-- /.bl_card_categories -->
+						</div>
+						<!-- /.bl_card_meta -->
+					</article>
+					<!-- /.bl_card bl_card__small bl_card__clickable -->
+				</div>
+				<!-- /.bl_cardUnit bl_cardUnit__1col -->
       </div>
       <!-- /.ly_footer_widget6fr -->
 
@@ -1692,14 +1840,14 @@
           <a href="#" class="bl_snsIcon_item">
             <svg role="graphics-symbol" aria-label="Twitter" version="1.1" id="Layer_1"
               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-              viewBox="0 0 400 400" style="enable-background: new 0 0 400 400" xml:space="preserve">
+              viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve">
               <style type="text/css">
                 .st0 {
-                  fill: #1b9df0;
+                  fill: #1B9DF0;
                 }
 
                 .st1 {
-                  fill: #ffffff;
+                  fill: #FFFFFF;
                 }
               </style>
               <g id="Dark_Blue">
