@@ -1,9 +1,21 @@
 <?php
 $func_paths = array(
+	// 初期設定
   'functions/init.php',
+
+	// 各種スクリプトを呼び出す
   'functions/scripts.php',
-  'functions/customize.php',
+
+	// カスタマイズ（WordPressのコアに関するもの）
+  'functions/customize-core.php',
+
+	// カスタマイズ（テーマカスタマイザーなど、テーマに関するもの）
+	'functions/customize-theme.php',
+
+	// 自作関数（ページネーションやアーカイブをHTML出力する）
   'functions/theme-func.php',
+
+	// ブロック関係
   'functions/block.php',
 );
 
