@@ -1093,6 +1093,7 @@ html:has(dialog[open]) {
 
 .bl_card_title {
   margin: 0;
+  margin-top: var(--space_1, 0.5rem);
   margin-bottom: var(--space_1, 0.5rem);
   font-size: 1.5em;
   font-weight: 500;
@@ -1108,6 +1109,9 @@ html:has(dialog[open]) {
 }
 
 .bl_card_content {
+	margin: 0;
+  margin-top: var(--space_1, 0.5rem);
+  margin-bottom: var(--space_1, 0.5rem);
   font-size: 0.875em;
   font-weight: 400;
   line-height: 1.7;
@@ -1119,6 +1123,7 @@ html:has(dialog[open]) {
   display: flex;
   flex-flow: row wrap;
   gap: 0.2rem 1rem;
+	margin: 0;
   margin-top: var(--space_1, 0.5rem);
   margin-bottom: var(--space_1, 0.5rem);
 }
@@ -1142,7 +1147,10 @@ html:has(dialog[open]) {
 
 /* 記事に関するメタ情報 */
 .bl_card_meta {
-  display: block;
+  display: flex;
+	flex-flow: column nowrap;
+	gap: 8px;
+  padding: 8px var(--card_space);
   background-color: var(--sc_bg_body__tertiary);
   border: var(--sc_border_divider);
   border-top-style: dashed;
@@ -1152,9 +1160,10 @@ html:has(dialog[open]) {
 
 .bl_card_categories {
   display: flex;
+	flex: none;
   flex-flow: row wrap;
   gap: 0.3rem;
-  padding: 8px var(--card_space);
+  padding: 0;
   margin: 0;
   list-style-type: none;
 }
