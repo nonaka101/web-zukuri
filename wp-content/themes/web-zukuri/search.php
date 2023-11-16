@@ -6,7 +6,10 @@
 	<hr>
 	<h2 class="el_header_lv2">検索結果</h2>
 	<p>「<?php the_search_query(); ?>」の検索結果</p>
+
   <?php if(have_posts()): ?>
+		<div class="bl_cardUnit bl_cardUnit__1col">
+
 		<?php
 		while(have_posts()){
 			the_post();
@@ -14,6 +17,8 @@
 		}
     get_template_part('template-parts/parts', 'pagenation');
 		?>
+
+		</div>
   <?php else: // 検索がヒットしない場合の出力 ?>
     <p>検索単語に一致するものがありませんでした。他のキーワードで再度お試しください。</p>
   <?php endif; ?>

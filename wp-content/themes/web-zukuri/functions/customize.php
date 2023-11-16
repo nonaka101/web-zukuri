@@ -17,13 +17,6 @@ add_action('pre_get_posts','my_pre_get_posts');
 
 
 
-// WP Multibyte Patchを有効化した場合、標準で出力される文字数は110文字。 その文字数を変更
-function new_excerpt_mblength($length) {
-  return 80;
-}
-add_filter('excerpt_mblength', 'new_excerpt_mblength');
-
-
 
 // メニューのカスタマイズ
 // wp_nav_menuのliにclass追加
@@ -45,16 +38,20 @@ function add_additional_class_on_a($classes, $item, $args){
 add_filter('nav_menu_link_attributes', 'add_additional_class_on_a', 1, 3);
 
 
-
+// TODO: $number は、テーマカスタマイザー側で制御できるよう変更
 function get_flexible_excerpt($number){
   // 抜粋文を取得（無ければ本文の内容を取得）
   $value = get_the_excerpt();
   // 第三引数は末尾の文字列
-  $value = wp_trim_words($value, $number, '...');
+  $value = wp_trim_words(
+		$value,
+		$number,
+		'<span aria-label="記事の要旨は、ここまでです">...</span>'
+	);
   return $value;
 }
 
-// 抜粋に改行コードを適用させたい場合は、下記のコードも反映
+// 抜粋に改行コードを適用させるためのコード
 function apply_excerpt_br($value){
   return nl2br($value);
 }

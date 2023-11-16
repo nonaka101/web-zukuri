@@ -12,6 +12,9 @@
 	</h1>
 
   <?php if(have_posts()): ?>
+
+		<div class="bl_cardUnit bl_cardUnit__1col">
+
 		<?php
 		while(have_posts()){
 			the_post();
@@ -19,6 +22,9 @@
 		}
     get_template_part('template-parts/parts', 'pagenation');
 		?>
+
+		</div>
+		
 	<?php else: // 記事がない場合 ?>
 		<p>申し訳ありません、関連する記事がありませんでした。</p>
   <?php endif; ?>

@@ -40,6 +40,8 @@
 
       <div class="ly_footer_widget6fr">
         <h2 class="ly_footer_headerTitle">最新の投稿</h2>
+				<div class="bl_cardUnit bl_cardUnit__1col">
+
         <?php
 				// 最新の投稿3件を取り出し、カード形式で出力
         $sq_args = array(
@@ -60,6 +62,8 @@
           wp_reset_postdata();
           ?>
         <?php endif; ?>
+				
+				</div>
       </div>
       <!-- /.ly_footer_widget6fr -->
 

@@ -1,6 +1,5 @@
-<?php //template-parts/loop-post.php
+<?php
 $is_footer = $args['is_footer'] ? true: false;
-
 $card_class = 'bl_card bl_card__clickable';
 if($is_footer) $card_class .= ' bl_card__small';
 if(is_sticky()) $card_class .= ' bl_card__sticky';
@@ -8,11 +7,11 @@ if(is_sticky()) $card_class .= ' bl_card__sticky';
 <article
 	id="post-<?php the_ID(); ?>"
 	<?php post_class($card_class); ?>
-	<?php if(is_sticky()) echo ' aria-label="固定表示に設定された記事"' ?>
+	<?php if(is_sticky()) echo ' aria-label="固定表示に設定された記事"'; ?>
 >
 	<a class="bl_card_main" href="<?php the_permalink() ;?>">
 
-		<?php if((is_front_page() || is_home()) || has_post_thumbnail()): ?>
+		<?php if(! $is_footer && (is_front_page() || is_home()) && has_post_thumbnail()): ?>
 			<div class="bl_card_thumbnail">
 				<?php the_post_thumbnail('thumbnail'); ?>
 			</div>
@@ -21,15 +20,17 @@ if(is_sticky()) $card_class .= ' bl_card__sticky';
 
 		<div class="bl_card_body">
 
-			<?php // title要素（footerのみ h3、それ以外は h2）
-			$title_tag = $is_footer ? 'h3' : 'h2';
-			$title_text = the_title();
-			echo '<'.$title_tag.' class="bl_card_title">'.$title_text.'</'.$title_tag.'>';
+			<?php // タイトル要素、なおタイトルがない場合は出力自体がされない
+			if($is_footer) {
+				the_title('<h3 class="bl_card_title">', '</h3>', true);
+			} else {
+				the_title('<h2 class="bl_card_title">', '</h2>', true);
+			}
 			?>
 
 			<?php // フッターでなく、かつ きちんと抜粋文が取得できた場合に出力
 			if(! $is_footer){
-				$excerpt = get_flexible_excerpt(40);
+				$excerpt = get_flexible_excerpt(80);
 				if(strlen($excerpt) > 0){
 					echo '<p class="bl_card_content">'.$excerpt.'</p>';
 				}
@@ -73,14 +74,14 @@ if(is_sticky()) $card_class .= ' bl_card__sticky';
 					$current_categories = 1;
 					foreach( $categories as $category ) {
 						if($current_categories > $limit_categories){
-							echo '<!-- カテゴリ出力の制限数に到達 -->'."¥n";
+							echo '<!-- カテゴリ出力の制限数に到達 -->'."\n";
 							break;
 						}
 
 						$cat_link = get_category_link($category->term_id);
 						$cat_name = $category->name;
 
-						echo '<li><a href="'.$cat_link.'">'.$cat_name.'</a></li>'."¥n";
+						echo '<li><a href="'.$cat_link.'">'.$cat_name.'</a></li>'."\n";
 
 						$current_categories++;
 					}
