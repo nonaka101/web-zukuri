@@ -1,31 +1,97 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class('bl_card_wrapper'); ?>>
-<?php
-	$card_class = 'bl_card bl_card__clickable';
-	if(is_sticky()) $card_class .= ' bl_card__sticky';
+<?php //template-parts/loop-post.php
+$is_footer = $args['is_footer'] ? true: false;
+
+$card_class = 'bl_card bl_card__clickable';
+if($is_footer) $card_class .= ' bl_card__small';
+if(is_sticky()) $card_class .= ' bl_card__sticky';
 ?>
-	<a class="<?php echo $card_class ?>" href="<?php the_permalink(); ?>">
-    <div class="bl_card_body">
-      <?php if(has_category()): ?>
-        <?php
-        $zkr_category_list = get_the_category();
-        if($zkr_category_list):
-        ?>
-          <p class="bl_card_category">
-            <?php echo esc_html($zkr_category_list[0]->name);?>
-          </p>
-        <?php endif; ?>
-      <?php endif; ?>
-      <h2 class="bl_card_title">
-        <?php the_title(); ?>
-      </h2>
-      <?php if(has_excerpt()): ?>
-        <p class="bl_card_content">
-          <?php echo esc_html(get_the_excerpt()); ?>
-        </p>
-      <?php endif; ?>
-      <time class="bl_card_date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date(); ?></time>
-    </div>
+<article
+	id="post-<?php the_ID(); ?>"
+	<?php post_class($card_class); ?>
+	<?php if(is_sticky()) echo ' aria-label="固定表示に設定された記事"' ?>
+>
+	<a class="bl_card_main" href="<?php the_permalink() ;?>">
+
+		<?php if((is_front_page() || is_home()) || has_post_thumbnail()): ?>
+			<div class="bl_card_thumbnail">
+				<?php the_post_thumbnail('thumbnail'); ?>
+			</div>
+			<!-- /.bl_card_thumbnail -->
+		<?php endif; ?>
+
+		<div class="bl_card_body">
+
+			<?php // title要素（footerのみ h3、それ以外は h2）
+			$title_tag = $is_footer ? 'h3' : 'h2';
+			$title_text = the_title();
+			echo '<'.$title_tag.' class="bl_card_title">'.$title_text.'</'.$title_tag.'>';
+			?>
+
+			<?php // フッターでなく、かつ きちんと抜粋文が取得できた場合に出力
+			if(! $is_footer){
+				$excerpt = get_flexible_excerpt(40);
+				if(strlen($excerpt) > 0){
+					echo '<p class="bl_card_content">'.$excerpt.'</p>';
+				}
+			}
+			?>
+
+			<div class="bl_card_dates">
+				<div class="bl_card_date">
+					<span>投稿</span>
+					<time datetime="<?php echo get_the_date(format:'Y-m-d'); ?>">
+						<?php echo get_the_date(); ?>
+					</time>
+				</div>
+				<!-- /.bl_card_date -->
+				<div class="bl_card_date">
+					<span>更新</span>
+					<time datetime="<?php echo get_the_modified_date(format:'Y-m-d'); ?>">
+						<?php echo get_the_modified_date(); ?>
+					</time>
+				</div>
+				<!-- /.bl_card_date -->
+			</div>
+			<!-- /.bl_card_dates -->
+
+		</div>
 		<!-- /.bl_card_body -->
-  </a>
+	</a>
+	<!-- /.bl_card_main -->
+
+	<?php if(has_category()): ?>
+		<div class="bl_card_meta">
+			<ul class="bl_card_categories" aria-label="カテゴリ">
+				<?php
+				/*
+				 * カテゴリの出力（テーマカスタマイザーによる制限あり）
+				 * ※カテゴリの役割としていくつもつけるようなものでないため
+				 */
+				$categories = get_the_category();
+				if ( ! empty( $categories ) ) {
+					$limit_categories = 3; // テーマカスタマイザーで制限数を変更できるように
+					$current_categories = 1;
+					foreach( $categories as $category ) {
+						if($current_categories > $limit_categories){
+							echo '<!-- カテゴリ出力の制限数に到達 -->'."¥n";
+							break;
+						}
+
+						$cat_link = get_category_link($category->term_id);
+						$cat_name = $category->name;
+
+						echo '<li><a href="'.$cat_link.'">'.$cat_name.'</a></li>'."¥n";
+
+						$current_categories++;
+					}
+					unset($category);
+				}
+				?>
+			</ul>
+			<!-- /.bl_card_categories -->
+		</div>
+		<!-- /.bl_card_meta -->
+	<?php endif; ?>
+
 </article>
-<!-- /.bl_card -->
+<!-- /.bl_card bl_card__small bl_card__clickable -->

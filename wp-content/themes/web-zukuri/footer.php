@@ -53,22 +53,10 @@
         if($sq -> have_posts()):
         ?>
           <?php
-          while($sq -> have_posts()):
+          while($sq -> have_posts()){
             $sq -> the_post();
-          ?>
-            <article class="bl_card_wrapper">
-              <a class="bl_card bl_card__clickable bl_card__s" href="<?php the_permalink() ;?>">
-                <div class="bl_card_body">
-                  <h2 class="bl_card_title"><?php the_title(); ?></h2>
-                  <time class="bl_card_date" datetime="<?php echo get_the_date(format:'Y-m-d'); ?>"><?php echo get_the_date(); ?></time>
-                </div>
-								<!-- /.bl_card_body -->
-              </a>
-							<!-- /.bl_card bl_card__s bl_card__clickable -->
-            </article>
-						<!-- /.bl_card_wrapper -->
-          <?php
-          endwhile;
+						get_template_part('template-parts/loop','post',array('is_footer'=>true));
+					}
           wp_reset_postdata();
           ?>
         <?php endif; ?>

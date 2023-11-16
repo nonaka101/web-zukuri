@@ -12,14 +12,16 @@
 	</h1>
 
   <?php if(have_posts()): ?>
-    <?php while(have_posts()):
-      the_post();
-      ?>
-      <?php get_template_part('template-parts/loop', 'post'); ?>
-    <?php endwhile; ?>
+		<?php
+		while(have_posts()){
+			the_post();
+			get_template_part('template-parts/loop','post',array('is_footer'=>false));
+		}
+    get_template_part('template-parts/parts', 'pagenation');
+		?>
+	<?php else: // 記事がない場合 ?>
+		<p>申し訳ありません、関連する記事がありませんでした。</p>
   <?php endif; ?>
-
-	<?php get_template_part('template-parts/parts', 'pagenation'); ?>
 </main>
 <!-- /.ly_mainArea_content -->
 

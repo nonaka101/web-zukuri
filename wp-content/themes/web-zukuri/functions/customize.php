@@ -43,3 +43,19 @@ function add_additional_class_on_a($classes, $item, $args){
   return $classes;
 }
 add_filter('nav_menu_link_attributes', 'add_additional_class_on_a', 1, 3);
+
+
+
+function get_flexible_excerpt($number){
+  // 抜粋文を取得（無ければ本文の内容を取得）
+  $value = get_the_excerpt();
+  // 第三引数は末尾の文字列
+  $value = wp_trim_words($value, $number, '...');
+  return $value;
+}
+
+// 抜粋に改行コードを適用させたい場合は、下記のコードも反映
+function apply_excerpt_br($value){
+  return nl2br($value);
+}
+add_filter('get_the_excerpt', 'apply_excerpt_br');
