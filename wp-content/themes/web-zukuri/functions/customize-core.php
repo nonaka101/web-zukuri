@@ -38,7 +38,7 @@ function add_additional_class_on_a($classes, $item, $args){
 add_filter('nav_menu_link_attributes', 'add_additional_class_on_a', 1, 3);
 
 
-// TODO: $number は、テーマカスタマイザー側で制御できるよう変更
+
 function get_flexible_excerpt($number){
   // 抜粋文を取得（無ければ本文の内容を取得）
   $value = get_the_excerpt();
@@ -46,7 +46,7 @@ function get_flexible_excerpt($number){
   $value = wp_trim_words(
 		$value,
 		$number,
-		'<span aria-label="記事の要旨は、ここまでです">...</span>'
+		''
 	);
   return $value;
 }
