@@ -713,11 +713,11 @@ html:has(dialog[open]) {
   margin-bottom: 1rem;
 }
 
-.ly_dialog *:first-child {
+.ly_dialog > *:first-child {
   margin-top: 0;
 }
 
-.ly_dialog *:last-child {
+.ly_dialog > *:last-child {
   margin-bottom: 0;
 }
 
@@ -996,7 +996,6 @@ html:has(dialog[open]) {
   );
 
   /* 最上位にある rem を基準に、残りは em 単位を使用（`__small` の場合とで調整 ） */
-  position: relative;
   display: block;
   font-size: 1rem;
   color: var(--sc_txt_body);
