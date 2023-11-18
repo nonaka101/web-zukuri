@@ -1309,7 +1309,8 @@ html:has(dialog[open]) {
     bl_postData : ベーススタイル
 			bl_postData_item : 公開日、カテゴリ、タグ それぞれの情報スペース
 				bl_postData_name : item の名前「カテゴリ」「タグ」
-				bl_postData_values : item の中身、（ul 要素に付与、下位の li アイテムを制御）
+				bl_postData_values : item の中身欄
+					bl_postData_value : item の中身
 ---------------------------------------------------------------------------- */
 .bl_postData {
   margin-bottom: var(--space_2);
@@ -1319,11 +1320,8 @@ html:has(dialog[open]) {
   display: flex;
   flex-flow: row wrap;
   gap: 0.125rem 0.25rem;
+	align-items: baseline;
   margin-bottom: 0.5rem;
-}
-
-.bl_postData_item a {
-  color: var(--sc_txt_body);
 }
 
 .bl_postData_name {
@@ -1351,8 +1349,13 @@ html:has(dialog[open]) {
   list-style-type: none;
 }
 
-.bl_postData_values > li {
+.bl_postData_value {
   flex: none;
+}
+
+.bl_postData_value > a,
+.bl_postData_value > time {
+  color: var(--sc_txt_body);
 }
 
 
