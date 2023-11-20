@@ -4,11 +4,12 @@
 
 ## 処理
 
-### FontSizeChangerの改修
+### コンポーネント集の「記事情報」を更新
 
-+ 作業範囲：Javascript/WordPress
++ 親：[投稿ページの記事情報欄に](#投稿ページの記事情報欄に)
++ 作業範囲：HTML
 
-`sessionStorage` を使い、フォントサイズの設定情報をセッション中に維持するようにする。
+`page.html` にあるコンポーネント集、そこの記事情報欄の箇所が更新されていないので、更新する。
 
 ## 処理途中
 
@@ -141,3 +142,9 @@ WordPressでは条件分岐でブロックスキップの要素を調整して�
 + 作業範囲：WordPress
 
 HTMLで作成した内容を、WordPress側に落とし込む
+
+### FontSizeChangerの改修
+
++ 作業範囲：Javascript/WordPress
+
+`sessionStorage` を使い、フォントサイズの設定情報をセッション中に維持するようにする。
