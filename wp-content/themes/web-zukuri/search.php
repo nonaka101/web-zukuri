@@ -5,9 +5,32 @@
   <?php get_search_form(); ?>
 	<hr>
 	<h2 class="el_header_lv2">検索結果</h2>
-	<p>「<?php the_search_query(); ?>」の検索結果</p>
 
   <?php if(have_posts()): ?>
+		<p>
+			「<?php the_search_query(); ?>」の検索結果
+			<span>
+				<?php // "（全{1}件中、{2}～{3}件を表示）" の文字を形成
+
+				// {1}
+				$allPostNum = $wp_query->found_posts;
+
+				// {2} : (表示件数 - 1) * (ページ数 - 1) + 1
+				if(isset($_GET['n'])){
+					$currentSelectNum = $_GET['n'];
+				} else {
+					$currentSelectNum = '5';
+				};
+				$currentPagedNum = get_query_var('paged', 1) ? get_query_var('paged', 1) : 1 ;
+				$currentArticleStart = (($currentPagedNum - 1) * $currentSelectNum) + 1;
+
+				// {3} : {2} + ポスト表示件数 - 1
+				$currentPostCount = $wp_query->post_count;
+				$currentArticleEnd = $currentArticleStart + $currentPostCount - 1;
+				echo '（全'.$allPostNum.'件中、'.$currentArticleStart.'～'.$currentArticleEnd,'件を表示）';
+				?>
+			</span>
+		</p>
 		<div class="bl_cardUnit bl_cardUnit__1col">
 
 		<?php
@@ -20,6 +43,7 @@
 
 		</div>
   <?php else: // 検索がヒットしない場合の出力 ?>
+		<p>「<?php the_search_query(); ?>」の検索結果</p>
     <p>検索単語に一致するものがありませんでした。他のキーワードで再度お試しください。</p>
   <?php endif; ?>
 </main>
