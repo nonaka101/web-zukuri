@@ -113,28 +113,48 @@ const fontSizeCtrl = document.getElementById('js_fontSize_controller');
 const fontSizeRange = document.getElementById('js_fontSize_range');
 const fontSizeResult = document.getElementById('js_fontSize_result');
 
-// HTML上の初期値(16)をセット
-fontSizeResult.textContent = fontSizeRange.value;
+/**
+ * セッション中に維持保存される、フォント設定情報
+ *
+ * @param {boolean} isShow - 機能が有効化されているか
+ * @param {int} size - フォントサイズ
+ */
+let currentFontState
+if (sessionStorage.getItem('currentFontState')){
+	currentFontState = sessionStorage.getItem('currentFontState');
+	currentFontState = JSON.parse(currentFontState);
+} else {
+	currentFontState = {
+		isShow: false,
+		size: 16,
+	};
+}
+
+// フォント設定情報からスライダー部のコントロール値を設定
+fontSizeRange.value = currentFontState.size;
+fontSizeResult.textContent = currentFontState.size;
 
 /**
- * フォントサイズ変更機能の有効無効を管理します。
+ * フォントサイズ変更機能の有効無効を管理
  *
- * 機能：スライドレンジの表示、ルートフォントサイズの制御（レンジの値、OS側の設定）
+ * 機能：スライドレンジの表示、ルートフォントサイズの制御（レンジの値、OS側の設定）、フォント設定情報の更新
+ *
  * @param {boolean} isShow - 機能が有効化されているか
  */
 function changeFontSize(isShow){
+	let val = fontSizeRange.value;
 	if(isShow===true){
 		fontSizeCtrl.hidden = false;
-		let val = fontSizeRange.value;
 		document.documentElement.style.fontSize = val + 'px';
 	} else {
 		fontSizeCtrl.hidden = true;
 		document.documentElement.style.fontSize = null;
 	}
+	// 設定情報の更新
+	currentFontState.isShow = isShow;
+	currentFontState.size = val;
+	sessionStorage.setItem('currentFontState', JSON.stringify(currentFontState));
 }
-
-// 初期状態をチェックボックスの状態と合わせる（＝無効）
-changeFontSize(fontSizeChkbox.checked);
 
 // range を変更すると、result 値のサイズでルートフォントサイズが変更
 fontSizeRange.addEventListener('input', (e) => {
@@ -150,3 +170,7 @@ fontSizeChkbox.addEventListener('change', (e) => {
 		changeFontSize(false);
 	}
 })
+
+// chkbox を設定情報の内容に更新し、`changeFontSize()` を通す
+fontSizeChkbox.checked = currentFontState.isShow;
+changeFontSize(fontSizeChkbox.checked);
