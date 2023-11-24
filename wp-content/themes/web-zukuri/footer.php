@@ -62,7 +62,7 @@
           wp_reset_postdata();
           ?>
         <?php endif; ?>
-				
+
 				</div>
       </div>
       <!-- /.ly_footer_widget6fr -->
@@ -118,6 +118,7 @@
           ダークモード
         </label>
       </div>
+		</div>
     <!-- /.bl_debToolBox_utils -->
   </div>
   <!-- /.bl_devToolBox -->

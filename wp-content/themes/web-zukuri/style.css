@@ -1865,14 +1865,14 @@ button.el_btn {
   transition: background-color 0.5s cubic-bezier(0.4, 0.4, 0, 1);
 }
 
-#pagetop:hover {
+#js_pageTop:hover {
   background-color: #e7eefd;
   border-color: #0f41af;
 }
 
 /* デスクトップ画面では余裕があるので少し内側に寄せる */
 @media (min-width: 960px) {
-  #pagetop {
+  #js_pageTop {
     right: 40px;
     bottom: 40px;
   }
