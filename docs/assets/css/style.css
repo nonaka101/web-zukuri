@@ -805,7 +805,7 @@ html:has(dialog[open]) {
 }
 
 .is_darkMode .bl_accordion_summary::after {
-  background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
+  filter: invert(1);
 }
 
 /* WordPressブロック化の際、インナーブロックを考慮して子結合子にしている */

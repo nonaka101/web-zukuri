@@ -4,17 +4,20 @@
 
 ## 処理
 
-### HTML構造の修正（`div`）
-
-+ 作業範囲：HTML/WordPress
-
-`bl_debToolBox_utils` の `div`タグが閉じられていないため構成がおかしくなっている部分を修正
-
-### `js_pageTop`のスタイル微修正
+### `bl_accordion`のスタイル修正
 
 + 作業範囲：CSS/WordPress
 
-ホバーやメディアクエリのスタイルが前の状態のまま（`#pagetop`）なので、正しい形に修正
+現在はCSS `.bl_accordion_summary::after` の `background-image` で色を指定したSVGを使用している。  
+ダークモード用に、色値のみ変えたSVGをもう一つ使っているが、保守性が低い。  
+`filter: invert(1);` で検証し、問題なければ差し替える。
+
+### `input`要素の修正
+
++ 作業範囲：HTML/WordPress
+
+一部の`input`要素で、`name=""` と空欄にしている箇所があるので修正  
+（name属性に大文字をつけないよう他も変更している）
 
 ## 処理途中
 
@@ -86,20 +89,6 @@ Voiceover(iOS)で読み上げ時、記事の情報欄 `投稿：2023/07/01` を�
 1. `hidden` 属性を利用する？
 2. JavaScriptでなく、CSSで表示/非表示のアニメーションを表現（`Keyframe` もしくは `transition`）
 3. `disabled` 属性を利用し、スタイルで `display: none;` を設定
-
-### `bl_accordion`のスタイル修正
-
-+ 作業範囲：CSS/WordPress
-
-現在はCSS `.bl_accordion_summary::after` の `background-image` で色を指定したSVGを使用している。  
-ダークモード用に、色値のみ変えたSVGをもう一つ使っているが、保守性が低い。  
-`filter: invert(1);` で検証し、問題なければ差し替える。
-
-### `input`要素の修正
-
-+ 作業範囲：HTML/WordPress
-
-一部の`input`要素で、`name=""` と空欄にしている箇所があるので修正
 
 ### template
 
@@ -199,3 +188,15 @@ HTMLで作成した内容を、WordPress側に落とし込む
 + 作業範囲：HTML
 
 `page.html` にあるコンポーネント集、そこの記事情報欄の箇所が更新されていないので、更新する。
+
+### HTML構造の修正（`div`）
+
++ 作業範囲：HTML/WordPress
+
+`bl_debToolBox_utils` の `div`タグが閉じられていないため構成がおかしくなっている部分を修正
+
+### `js_pageTop`のスタイル微修正
+
++ 作業範囲：CSS/WordPress
+
+ホバーやメディアクエリのスタイルが前の状態のまま（`#pagetop`）なので、正しい形に修正
