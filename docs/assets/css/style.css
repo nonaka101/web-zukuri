@@ -210,6 +210,7 @@ figcaption,
 caption,
 time,
 address,
+small,
 p {
   color: var(--sc_txt_body);
 }
@@ -224,6 +225,10 @@ img {
 
 svg {
   fill: currentcolor;
+}
+
+small {
+	font-size: 0.8em;
 }
 
 /* デフォルトのスタイルを剥ぐ */
@@ -586,11 +591,29 @@ select::-ms-expand {
 				ly_footer_widget3fr : 3fr使うウィジェット
 				ly_footer_widget6fr : 6fr使うウィジェット
 					ly_footer_headerTitle : ウィジェット先頭のタイトル要素
+				ly_footer_copyright : 最下部のコピーライト用
+					el_copyright : コピーライトテキスト
 ---------------------------------------------------------------------------- */
 .ly_footer_wrapper {
+	position: relative;
   padding: 64px 24px;
   margin-top: 40px;
   background-color: var(--sc_bg_body__tertiary);
+}
+
+.ly_footer_copyright {
+	position: absolute;
+	right: 8px;
+	bottom: 4px;
+	left: 8px;
+	padding: 0;
+	margin: 0;
+}
+
+.el_copyright {
+	font-size: 0.75em;
+	color: var(--sc_txt_body__small);
+	text-align: center;
 }
 
 .ly_footer {
@@ -757,6 +780,44 @@ html:has(dialog[open]) {
 
 
 
+
+
+/* ≡≡≡ ❒ bl_address ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+  ■ 概要
+    アドレス用
+  ■ 構成
+    bl_address : ベース
+			bl_address_title : このモジュール全体のタイトル
+			bl_address_item : アイテム
+				bl_address_neme : アイテム名
+  ■ 注意
+		カラーモードに対応するため、`is_darkMode` クラスを使用している
+		`prefers-color-scheme` の手法に変更時は、こちらも変えること
+---------------------------------------------------------------------------- */
+.bl_address {
+  margin-bottom: 40px;
+}
+
+.bl_address_title {
+	margin: 0 0 0.5rem;
+	font-size: 1.25rem;
+}
+
+.bl_address_item {
+	display: flex;
+	flex-flow: row wrap;
+	margin: 0.5rem 0;
+	font-size: 0.8rem;
+	color: var(--sc_txt_body__small);
+}
+
+.bl_address_name {
+	flex: none;
+}
+
+.bl_address_name::after {
+	content: ": ";
+}
 
 
 /* ≡≡≡ ❒ bl_accordion ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -1522,29 +1583,6 @@ html:has(dialog[open]) {
   line-height: 1.25;
   color: var(--sc_txt_btn__primary);
   letter-spacing: 0.04em;
-}
-
-
-
-
-
-/* ≡≡≡ ❒ bl_snsIcon ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-  ■ 概要
-    SNSアイコン一覧
-  ■ 構成
-    bl_snsIcon : アイコン群を並べて入れるためのラッパー
-      bl_snsIcon_item : アイコン本体
----------------------------------------------------------------------------- */
-.bl_snsIcon {
-  display: flex;
-  flex-flow: row wrap;
-  gap: 4px;
-}
-
-.bl_snsIcon_item {
-  width: 48px;
-  height: 48px;
-  padding: 8px;
 }
 
 
