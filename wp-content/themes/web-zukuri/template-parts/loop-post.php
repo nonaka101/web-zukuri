@@ -30,7 +30,7 @@ if(is_sticky()) $card_class .= ' bl_card__sticky';
 
 			<?php // フッターでなく、かつ きちんと抜粋文が取得できた場合に出力
 			if(! $is_footer){
-				$limit_excerpt = intval(get_theme_mod('zkr-setting-general-card-excerpt', 80));
+				$limit_excerpt = intval(get_theme_mod('zkr-setting-card-excerpt', 80));
 				$excerpt = get_flexible_excerpt($limit_excerpt);
 				if(strlen($excerpt) > 0){
 					echo '<p class="bl_card_content">'.$excerpt.'<span aria-label="記事の要旨は、ここまでです">...</span></p>';
@@ -68,7 +68,7 @@ if(is_sticky()) $card_class .= ' bl_card__sticky';
 		<?php
 		// カテゴリが存在、かつ 出力上限数が 0 でない場合に出力する
 		$categories = get_the_category();
-		$limit_categories = intval(get_theme_mod('zkr-setting-general-card-categories', 3));
+		$limit_categories = intval(get_theme_mod('zkr-setting-card-categories', 3));
 		if ((!empty($categories)) && ($limit_categories > 0)):
 		?>
 			<div class="bl_card_meta">

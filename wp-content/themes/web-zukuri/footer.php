@@ -68,19 +68,125 @@
       <!-- /.ly_footer_widget6fr -->
 
       <div class="ly_footer_widget3fr">
-        <section>
-          <h2 class="el_header__xs">アドレス</h2>
-          <address>〒000-0000 A県B市C区D町123-4</address>
-        </section>
-				<?php get_template_part(
-					'template-parts/parts',
-					'sns'
-					);
+				<h2 class="ly_footer_headerTitle">ユーティリティ</h2>
+				<?php
+				$utilText = get_theme_mod('zkr-setting-utils-text', '');
+				if(strlen($utilText) > 0):
 				?>
+					<small>
+						<?php echo nl2br($utilText); ?>
+					</small>
+				<?php endif; ?>
+
+				<?php
+				// カスタマイザー上で外部URL（テキストとURLセットで登録されているもの）を取得
+				$arr = [];
+				for($i = 1; $i <= 5; $i++){
+					$txt = get_theme_mod('zkr-setting-utils-ex'.$i.'txt', '');
+					$url = get_theme_mod('zkr-setting-utils-ex'.$i.'url', '');
+					if(($txt) && ($url)){
+						array_push($arr, array('txt'=>$txt, 'url'=>$url));
+					}
+				}
+				if($arr):
+				?>
+					<div class="bl_tagMenu">
+						<span class="bl_tagMenu_title">外部リンク</span>
+						<ul class="bl_tagMenu_list">
+
+						<?php
+						// 取得した外部URLを出力
+						foreach($arr as $element){
+							echo '<li class="bl_tagMenu_item">';
+							echo '<a class="bl_tagMenu_link" href="' . esc_url($element['url']) . '">';
+							echo esc_html($element['txt']);
+							echo '</a></li>' . "\n" . '<!-- /.bl_tagMenu_item -->';
+						}
+						?>
+
+						</ul>
+						<!-- /.bl_tagMenu_list -->
+					</div>
+					<!-- /.bl_tagMenu -->
+				<?php endif; ?>
+
+				<div class="bl_tagMenu">
+          <span class="bl_tagMenu_title">サイトナビゲーション</span>
+          <ul class="bl_tagMenu_list">
+            <li class="bl_tagMenu_item">
+              <a href="#" class="bl_tagMenu_link">サイトマップ</a>
+            </li>
+            <!-- /.bl_tagMenu_item -->
+            <li class="bl_tagMenu_item">
+              <a href="#" class="bl_tagMenu_link">各種ポリシー</a>
+            </li>
+            <!-- /.bl_tagMenu_item -->
+            <li class="bl_tagMenu_item">
+              <a href="#" class="bl_tagMenu_link">ご意見・お問い合わせ</a>
+            </li>
+            <!-- /.bl_tagMenu_item -->
+          </ul>
+          <!-- /.bl_tagMenu_list -->
+        </div>
+        <!-- /.bl_tagMenu -->
+
+				<?php
+				// カスタマイザー上で、何かしらのアドレス関係が登録されていれば出力
+				$address = get_theme_mod('zkr-setting-utils-address', '');
+				$tel = get_theme_mod('zkr-setting-utils-tel', '');
+				$mail = get_theme_mod('zkr-setting-utils-mail', '');
+				if(($address) || ($tel) || ($mail)):
+				?>
+					<div class="bl_address">
+						<h3 class="bl_address_title">アドレス</h3>
+
+						<?php if(strlen($address) > 0): ?>
+							<address class="bl_address_item">
+								<span class="bl_address_name">住所</span>
+								<?php echo nl2br($address); ?>
+							</address>
+							<!-- /.bl_address_item -->
+						<?php endif; ?>
+
+						<?php if(strlen($tel) > 0): ?>
+							<p class="bl_address_item">
+								<span class="bl_address_name">Tel</span>
+								<?php echo esc_html($tel); ?>
+							</p>
+							<!-- /.bl_address_item -->
+						<?php endif; ?>
+
+						<?php if(strlen($mail) > 0):?>
+							<p class="bl_address_item">
+								<span class="bl_address_name">Mail</span>
+								<?php echo esc_html($mail); ?>
+							</p>
+							<!-- /.bl_address_item -->
+						<?php endif; ?>
+					</div>
+					<!-- /.bl_address -->
+				<?php endif; ?>
+
       </div>
       <!-- /.ly_footer_widget3fr -->
+
     </div>
     <!-- /.ly_footer -->
+
+		<?php
+		// カスタマイザー上でコピーライト文が登録されていれば出力
+		$copyright = get_theme_mod('zkr-setting-utils-copyright', '');
+		if(strlen($copyright) > 0):
+		?>
+			<div class="ly_footer_copyright">
+				<p class="el_copyright">
+					<?php echo esc_html($copyright); ?>
+				</p>
+				<!-- /.el_copyright -->
+			</div>
+			<!-- /.el_footer_copyright -->
+		<?php endif; ?>
+
   </footer>
   <!-- /.ly_footer_wrapper -->
 
