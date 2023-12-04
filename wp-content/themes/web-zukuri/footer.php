@@ -110,25 +110,12 @@
 					<!-- /.bl_tagMenu -->
 				<?php endif; ?>
 
-				<div class="bl_tagMenu">
-          <span class="bl_tagMenu_title">サイトナビゲーション</span>
-          <ul class="bl_tagMenu_list">
-            <li class="bl_tagMenu_item">
-              <a href="#" class="bl_tagMenu_link">サイトマップ</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="#" class="bl_tagMenu_link">各種ポリシー</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="#" class="bl_tagMenu_link">ご意見・お問い合わせ</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-          </ul>
-          <!-- /.bl_tagMenu_list -->
-        </div>
-        <!-- /.bl_tagMenu -->
+				<?php get_template_part(
+					'template-parts/parts',
+					'menu',
+					array('loc'=>'footer-menu')
+					);
+				?>
 
 				<?php
 				// カスタマイザー上で、何かしらのアドレス関係が登録されていれば出力
@@ -200,34 +187,11 @@
   </button>
   <!-- /#pagetop -->
 
-  <div class="bl_devToolBox" id="js_toolBox">
-    <div class="bl_devToolBox_btn">
-      <input type="checkbox" name="is-show" id="js_toolBox_chkbox">
-    </div>
-    <!-- /.bl_devToolBox_btn -->
-    <div class="bl_devToolBox_utils">
-			<div id="js_fontSize_controller">
-				<input type="range" name="font-size" id="js_fontSize_range" value="16" max="32" min="10" step="1">
-				<output id="js_fontSize_result"></output>
-			</div>
-      <hr>
-      <div>
-        <label for="js_fontSize_chkbox">
-          <input type="checkbox" name="enabled-font-size" id="js_fontSize_chkbox">
-          フォントサイズ
-        </label>
-			</div>
-			<hr>
-      <div>
-        <label for="js_darkMode">
-          <input type="checkbox" name="is-dark-mode" id="js_darkMode">
-          ダークモード
-        </label>
-      </div>
-		</div>
-    <!-- /.bl_debToolBox_utils -->
-  </div>
-  <!-- /.bl_devToolBox -->
-  <?php wp_footer() ; ?>
+  <?php
+	// 開発者ツール（運用時には除去する）
+	get_template_part('template-parts/parts', 'devutils');
+
+	wp_footer();
+	?>
 </body>
 </html>

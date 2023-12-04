@@ -816,8 +816,11 @@ html:has(dialog[open]) {
 }
 
 .bl_address_name::after {
-	content: ": ";
+	content: " : ";
 }
+
+
+
 
 
 /* ≡≡≡ ❒ bl_accordion ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡

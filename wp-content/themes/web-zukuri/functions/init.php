@@ -17,6 +17,7 @@ function zkr_theme_setup() {
 		array(
 			'main-menu' => 'メインメニュー',
 			'sub-menu' => 'サブメニュー',
+			'footer-menu' => 'サイトナビゲーション',
 		)
 	);
 }
