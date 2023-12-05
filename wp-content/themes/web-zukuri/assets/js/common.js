@@ -26,14 +26,12 @@ let pageTopIsShow = true;
 function changeOpacity() {
   if (window.scrollY > 100) {
     if (pageTopIsShow == false) {
-      pageTopBtn.animate([{opacity: '0'}, {opacity: '1'}], 500);
-      pageTopBtn.style.opacity = "1";
+			pageTopBtn.hidden = false;
       pageTopIsShow = true;
     }
   } else {
     if (pageTopIsShow == true) {
-      pageTopBtn.animate([{opacity: '1'}, {opacity: '0'}], 500);
-      pageTopBtn.style.opacity = "0";
+			pageTopBtn.hidden = true;
       pageTopIsShow = false;
     }
   }
