@@ -16,6 +16,7 @@
 		array(
 			'loc' => 'main-menu',
 			'name' => 'メインメニュー',
+			'id' => 'main_menu_in_sidebar',
 			)
 		);
 	?>

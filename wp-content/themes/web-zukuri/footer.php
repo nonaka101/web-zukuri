@@ -35,6 +35,7 @@
 					array(
 						'loc' => 'main-menu',
 						'name' => 'メインメニュー',
+						'id' => 'main_menu_in_footer',
 						)
 					);
 				?>
@@ -94,8 +95,18 @@
 				if($arr):
 				?>
 					<div class="bl_tagMenu">
-						<span class="bl_tagMenu_title">外部リンク</span>
-						<ul class="bl_tagMenu_list">
+						<span
+							class="bl_tagMenu_title"
+							aria-hidden="true"
+							id="external_link_in_footer"
+						>
+							外部リンク
+						</span>
+						<ul
+							class="bl_tagMenu_list"
+							role="list"
+							aria-labelledby="external_link_in_footer"
+						>
 
 						<?php
 						// 取得した外部URLを出力
@@ -119,6 +130,7 @@
 					array(
 						'loc' => 'footer-menu',
 						'name' => 'サイトナビゲーション',
+						'id' => 'footer_menu_in_footer',
 						)
 					);
 				?>

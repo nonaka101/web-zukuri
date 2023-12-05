@@ -126,6 +126,7 @@
 					array(
 						'loc' => 'main-menu',
 						'name' => 'メインメニュー',
+						'id' => 'main_menu_in_dialog',
 						)
 					);
 				?>
@@ -149,6 +150,7 @@
 					array(
 						'loc' => 'sub-menu',
 						'name' => 'サブメニュー',
+						'id' => 'sub_menu_in_dialog',
 						)
 					);
 				?>

@@ -16,6 +16,7 @@
 		array(
 			'loc' => 'sub-menu',
 			'name' => 'サブメニュー',
+			'id' => 'sub_menu_in_sidebar',
 			)
 		);
 	?>
