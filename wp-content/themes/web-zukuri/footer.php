@@ -32,7 +32,10 @@
 				<?php get_template_part(
 					'template-parts/parts',
 					'menu',
-					array('loc'=>'main-menu')
+					array(
+						'loc' => 'main-menu',
+						'name' => 'メインメニュー',
+						)
 					);
 				?>
       </div>
@@ -73,9 +76,9 @@
 				$utilText = get_theme_mod('zkr-setting-utils-text', '');
 				if(strlen($utilText) > 0):
 				?>
-					<small>
+					<p class="el_memo">
 						<?php echo nl2br($utilText); ?>
-					</small>
+					</p>
 				<?php endif; ?>
 
 				<?php
@@ -113,7 +116,10 @@
 				<?php get_template_part(
 					'template-parts/parts',
 					'menu',
-					array('loc'=>'footer-menu')
+					array(
+						'loc' => 'footer-menu',
+						'name' => 'サイトナビゲーション',
+						)
 					);
 				?>
 

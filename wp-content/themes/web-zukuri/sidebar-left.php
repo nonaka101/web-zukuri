@@ -13,7 +13,10 @@
 	<?php get_template_part(
 		'template-parts/parts',
 		'menu',
-		array('loc'=>'main-menu')
+		array(
+			'loc' => 'main-menu',
+			'name' => 'メインメニュー',
+			)
 		);
 	?>
 

@@ -123,7 +123,10 @@
 				<?php get_template_part(
 					'template-parts/parts',
 					'menu',
-					array('loc'=>'main-menu')
+					array(
+						'loc' => 'main-menu',
+						'name' => 'メインメニュー',
+						)
 					);
 				?>
 
@@ -143,7 +146,10 @@
 				<?php get_template_part(
 					'template-parts/parts',
 					'menu',
-					array('loc'=>'sub-menu')
+					array(
+						'loc' => 'sub-menu',
+						'name' => 'サブメニュー',
+						)
 					);
 				?>
 				<?php get_template_part(
