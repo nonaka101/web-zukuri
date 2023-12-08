@@ -2,540 +2,540 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>アーカイブページ</title>
-  <meta name="description" content="アクセシビリティに配慮したサイト設計を目指して">
-  <link rel="stylesheet" href="./assets/css/normalize.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <!-- 開発用 -->
-  <link rel="stylesheet" href="./assets/css/devUtilities.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>アーカイブページ</title>
+	<meta name="description" content="アクセシビリティに配慮したサイト設計を目指して">
+	<link rel="stylesheet" href="./assets/css/normalize.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<!-- 開発用 -->
+	<link rel="stylesheet" href="./assets/css/devUtilities.css">
 </head>
 
 <!-- `archive` は WordPress で出力させるもの、CSSで利用 -->
 <body class="archive">
-  <div class="ly_mainArea">
-    <header class="ly_mainArea_header">
-      <div class="bl_header">
-        <a class="bl_header_siteTitle" href="./index.html" id="js_anchor_header">
-          <img src="./assets/images/Dummy_logo.PNG" alt="Logo">
-          <!-- トップページのみ h1、それ以外は span -->
-          <span>Web-Zukuri</span>
-        </a>
-        <!-- /.bl_header_siteTitle -->
-        <nav class="bl_header_mobileMenu" id="anchor_mobileMenu" aria-label="メニュー">
-          <a href="./search.html" class="bl_header_btnIcon">
-            <svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-              height="24">
-              <path d="M21 20.5L15 14.5C16.2 13.2 16.9 11.4 16.9 9.5C17 5.4 13.6 2 9.5 2C5.4 2 2 5.4
-                  2 9.5C2 13.6 5.3 17 9.5 17C11.2 17 12.7 16.4 14 15.5L20 21.5L21 20.5ZM3.5
-                  9.5C3.5 6.2 6.2 3.5 9.5 3.5C12.8 3.5 15.5 6.2 15.5 9.5C15.5 12.8 12.8 15.5
-                  9.5 15.5C6.2 15.5 3.5 12.8 3.5 9.5Z">
-              </path>
-            </svg>
-            検索
-          </a>
-          <!-- /.bl_header_btnIcon -->
-          <button type="button" aria-controls="menu" id="menu-button" class="bl_header_btnIcon">
-            <svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-              height="24">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M21 5.5H3V7H21V5.5ZM21 11.2998H3V12.7998H21V11.2998ZM3 17H21V18.5H3V17Z"></path>
-            </svg>
-            メニュー
-          </button>
-          <!-- /.bl_header_btnIcon -->
-        </nav>
-        <!-- /.bl_header_mobileMenu -->
-      </div>
-      <!-- /.bl_header -->
-    </header>
-    <!-- /.ly_mainArea_header -->
+	<div class="ly_mainArea">
+		<header class="ly_mainArea_header">
+			<div class="bl_header">
+				<a class="bl_header_siteTitle" href="./index.html" id="js_anchor_header">
+					<img src="./assets/images/Dummy_logo.PNG" alt="Logo">
+					<!-- トップページのみ h1、それ以外は span -->
+					<span>Web-Zukuri</span>
+				</a>
+				<!-- /.bl_header_siteTitle -->
+				<nav class="bl_header_mobileMenu" id="anchor_mobileMenu" aria-label="メニュー">
+					<a href="./search.html" class="bl_header_btnIcon">
+						<svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+							height="24">
+							<path d="M21 20.5L15 14.5C16.2 13.2 16.9 11.4 16.9 9.5C17 5.4 13.6 2 9.5 2C5.4 2 2 5.4
+									2 9.5C2 13.6 5.3 17 9.5 17C11.2 17 12.7 16.4 14 15.5L20 21.5L21 20.5ZM3.5
+									9.5C3.5 6.2 6.2 3.5 9.5 3.5C12.8 3.5 15.5 6.2 15.5 9.5C15.5 12.8 12.8 15.5
+									9.5 15.5C6.2 15.5 3.5 12.8 3.5 9.5Z">
+							</path>
+						</svg>
+						検索
+					</a>
+					<!-- /.bl_header_btnIcon -->
+					<button type="button" aria-controls="menu" id="menu-button" class="bl_header_btnIcon">
+						<svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+							height="24">
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M21 5.5H3V7H21V5.5ZM21 11.2998H3V12.7998H21V11.2998ZM3 17H21V18.5H3V17Z"></path>
+						</svg>
+						メニュー
+					</button>
+					<!-- /.bl_header_btnIcon -->
+				</nav>
+				<!-- /.bl_header_mobileMenu -->
+			</div>
+			<!-- /.bl_header -->
+		</header>
+		<!-- /.ly_mainArea_header -->
 
-    <nav class="bl_blockSkip_wrapper" aria-label="ページ内リンク集">
-      <div class="bl_blockSkip">
-        <p class="bl_blockSkip_title">ブロックスキップ</p>
-        <p class="bl_blockSkip_description">各種ページ位置に移動できます</p>
-        <ul class="bl_blockSkip_linkList">
-          <li class="bl_blockSkip_linkItem">
-            <a href="#anchor_mainContent" class="el_link">このページの本文</a>
-          </li>
-          <!-- /.bl_blockSkip_linkItem -->
-          <li class="bl_blockSkip_linkItem">
-            <a href="#anchor_footer" class="el_link">フッター</a>
-          </li>
-          <!-- /.bl_blockSkip_linkItem -->
-          <li class="bl_blockSkip_linkItem bl_blockSkip_linkItem__isMobile">
-            <a href="#anchor_mobileMenu" class="el_link">メインメニュー</a>
-          </li>
-          <!-- /.bl_blockSkip_linkItem -->
+		<nav class="bl_blockSkip_wrapper" aria-label="ページ内リンク集">
+			<div class="bl_blockSkip">
+				<p class="bl_blockSkip_title">ブロックスキップ</p>
+				<p class="bl_blockSkip_description">各種ページ位置に移動できます</p>
+				<ul class="bl_blockSkip_linkList">
+					<li class="bl_blockSkip_linkItem">
+						<a href="#anchor_mainContent" class="el_link">このページの本文</a>
+					</li>
+					<!-- /.bl_blockSkip_linkItem -->
+					<li class="bl_blockSkip_linkItem">
+						<a href="#anchor_footer" class="el_link">フッター</a>
+					</li>
+					<!-- /.bl_blockSkip_linkItem -->
+					<li class="bl_blockSkip_linkItem bl_blockSkip_linkItem__isMobile">
+						<a href="#anchor_mobileMenu" class="el_link">メインメニュー</a>
+					</li>
+					<!-- /.bl_blockSkip_linkItem -->
 					<!-- このリンクはトップページのみ
-          <li class="bl_blockSkip_linkItem bl_blockSkip_linkItem__isDesktop">
-            <a href="#anchor_desktopMainMenu" class="el_link">メインメニュー</a>
-          </li>
+					<li class="bl_blockSkip_linkItem bl_blockSkip_linkItem__isDesktop">
+						<a href="#anchor_desktopMainMenu" class="el_link">メインメニュー</a>
+					</li>
 					-->
-          <!-- /.bl_blockSkip_linkItem -->
-          <li class="bl_blockSkip_linkItem bl_blockSkip_linkItem__isDesktop">
-            <a href="#anchor_desktopSubMenu" class="el_link">サイドメニュー</a>
-          </li>
-          <!-- /.bl_blockSkip_linkItem -->
-        </ul>
-        <!-- /.bl_blockSkip_linkList -->
-      </div>
-      <!-- /.bl_blockSkip -->
-    </nav>
-    <!-- /.bl_blockSkip_wrapper -->
+					<!-- /.bl_blockSkip_linkItem -->
+					<li class="bl_blockSkip_linkItem bl_blockSkip_linkItem__isDesktop">
+						<a href="#anchor_desktopSubMenu" class="el_link">サイドメニュー</a>
+					</li>
+					<!-- /.bl_blockSkip_linkItem -->
+				</ul>
+				<!-- /.bl_blockSkip_linkList -->
+			</div>
+			<!-- /.bl_blockSkip -->
+		</nav>
+		<!-- /.bl_blockSkip_wrapper -->
 
-    <dialog class="ly_dialog_wrapper" id="menu">
-      <div class="ly_dialog">
+		<dialog class="ly_dialog_wrapper" id="menu">
+			<div class="ly_dialog">
 				<div class="bl_menuHeader">
 					<h2 class="bl_menuHeader_title">メニュー</h2>
 					<button class="bl_menuHeader_btnIcon" type="button" onclick="closeDialog()">
-            <svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+						<svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 24 24" width="24" height="24">
 							<path stroke-width="1.4286" d="M 22,4.0142857 19.985715,2 12,9.9857149 4.0142857,2 2,4.0142857 9.9857149,12 2,19.985715 4.0142857,22 12,14.014286 19.985715,22 22,19.985715 14.014286,12 Z"/>
-            </svg>
-            閉じる
+						</svg>
+						閉じる
 					</button>
 				</div>
 				<!-- /.bl_menuHeader -->
 
-        <!--≡≡≡ ▼ template-parts/parts-menu.php[main] ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
-        <div class="bl_tagMenu">
-          <ul class="bl_tagMenu_list">
-            <li class="bl_tagMenu_item">
-              <a href="./index.html" class="bl_tagMenu_link">Home</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-          </ul>
-          <!-- /.bl_tagMenu_list -->
-        </div>
-        <!-- /.bl_tagMenu -->
-        <div class="bl_tagMenu">
-          <span class="bl_tagMenu_title" aria-hidden="true" id="main_menu1_in_dialog">プロジェクトについて</span>
-          <ul class="bl_tagMenu_list" role="list" aria-labelledby="main_menu1_in_dialog">
-            <li class="bl_tagMenu_item">
-              <a href="./single.html" class="bl_tagMenu_link">Read me</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="https://github.com/nonaka101/web-zukuri" class="bl_tagMenu_link">GitHub</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-          </ul>
-          <!-- /.bl_tagMenu_list -->
-        </div>
-        <!-- /.bl_tagMenu -->
-        <div class="bl_tagMenu">
-          <span class="bl_tagMenu_title" aria-hidden="true" id="main_menu2_in_dialog">サンプルページ一覧</span>
-          <ul class="bl_tagMenu_list" role="list" aria-labelledby="main_menu2_in_dialog">
-            <li class="bl_tagMenu_item">
-              <a href="./single.html" class="bl_tagMenu_link">投稿ページ(Read me)</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="./page.html" class="bl_tagMenu_link">固定ページ</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="./archive.html" class="bl_tagMenu_link">アーカイブ</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="./search.html" class="bl_tagMenu_link">検索</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="./404.html" class="bl_tagMenu_link">404</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-          </ul>
-          <!-- /.bl_tagMenu_list -->
-        </div>
-        <!-- /.bl_tagMenu -->
-        <!--≡≡≡ ▲ template-parts/parts-menu.php[main] ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+				<!--≡≡≡ ▼ template-parts/parts-menu.php[main] ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+				<div class="bl_tagMenu">
+					<ul class="bl_tagMenu_list">
+						<li class="bl_tagMenu_item">
+							<a href="./index.html" class="bl_tagMenu_link">Home</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+					</ul>
+					<!-- /.bl_tagMenu_list -->
+				</div>
+				<!-- /.bl_tagMenu -->
+				<div class="bl_tagMenu">
+					<span class="bl_tagMenu_title" aria-hidden="true" id="main_menu1_in_dialog">プロジェクトについて</span>
+					<ul class="bl_tagMenu_list" role="list" aria-labelledby="main_menu1_in_dialog">
+						<li class="bl_tagMenu_item">
+							<a href="./single.html" class="bl_tagMenu_link">Read me</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="https://github.com/nonaka101/web-zukuri" class="bl_tagMenu_link">GitHub</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+					</ul>
+					<!-- /.bl_tagMenu_list -->
+				</div>
+				<!-- /.bl_tagMenu -->
+				<div class="bl_tagMenu">
+					<span class="bl_tagMenu_title" aria-hidden="true" id="main_menu2_in_dialog">サンプルページ一覧</span>
+					<ul class="bl_tagMenu_list" role="list" aria-labelledby="main_menu2_in_dialog">
+						<li class="bl_tagMenu_item">
+							<a href="./single.html" class="bl_tagMenu_link">投稿ページ(Read me)</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="./page.html" class="bl_tagMenu_link">固定ページ</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="./archive.html" class="bl_tagMenu_link">アーカイブ</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="./search.html" class="bl_tagMenu_link">検索</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="./404.html" class="bl_tagMenu_link">404</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+					</ul>
+					<!-- /.bl_tagMenu_list -->
+				</div>
+				<!-- /.bl_tagMenu -->
+				<!--≡≡≡ ▲ template-parts/parts-menu.php[main] ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
 
-        <hr>
-        <div class="bl_tagMenu">
-          <ul class="bl_tagMenu_list">
-            <li class="bl_tagMenu_item">
-              <a href="./search.html" class="bl_tagMenu_link">サイト内検索</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-          </ul>
-          <!-- /.bl_tagMenu_list -->
-        </div>
-        <!-- /.bl_tagMenu -->
+				<hr>
+				<div class="bl_tagMenu">
+					<ul class="bl_tagMenu_list">
+						<li class="bl_tagMenu_item">
+							<a href="./search.html" class="bl_tagMenu_link">サイト内検索</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+					</ul>
+					<!-- /.bl_tagMenu_list -->
+				</div>
+				<!-- /.bl_tagMenu -->
 
-        <!--≡≡≡ ▼ template-parts/parts-menu.php[sub] ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
-        <div class="bl_tagMenu">
-          <ul class="bl_tagMenu_list">
-            <li class="bl_tagMenu_item">
-              <a href="./index.html" class="bl_tagMenu_link">トップページ</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="./single.html" class="bl_tagMenu_link">Read me</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="https://github.com/nonaka101/web-zukuri" class="bl_tagMenu_link">GitHub</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-          </ul>
-          <!-- /.bl_tagMenu_list -->
-        </div>
-        <!-- /.bl_tagMenu -->
-        <div class="bl_tagMenu">
-          <ul class="bl_tagMenu_list">
-            <li class="bl_tagMenu_item">
-              <a href="./single.html" class="bl_tagMenu_link">投稿ページ(Read me)</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="./page.html" class="bl_tagMenu_link">固定ページ</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="./archive.html" class="bl_tagMenu_link">アーカイブ</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="./search.html" class="bl_tagMenu_link">検索</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="./404.html" class="bl_tagMenu_link">404</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-          </ul>
-          <!-- /.bl_tagMenu_list -->
-        </div>
-        <!-- /.bl_tagMenu -->
-        <!--≡≡≡ ▲ template-parts/parts-menu.php[sub] ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+				<!--≡≡≡ ▼ template-parts/parts-menu.php[sub] ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+				<div class="bl_tagMenu">
+					<ul class="bl_tagMenu_list">
+						<li class="bl_tagMenu_item">
+							<a href="./index.html" class="bl_tagMenu_link">トップページ</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="./single.html" class="bl_tagMenu_link">Read me</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="https://github.com/nonaka101/web-zukuri" class="bl_tagMenu_link">GitHub</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+					</ul>
+					<!-- /.bl_tagMenu_list -->
+				</div>
+				<!-- /.bl_tagMenu -->
+				<div class="bl_tagMenu">
+					<ul class="bl_tagMenu_list">
+						<li class="bl_tagMenu_item">
+							<a href="./single.html" class="bl_tagMenu_link">投稿ページ(Read me)</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="./page.html" class="bl_tagMenu_link">固定ページ</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="./archive.html" class="bl_tagMenu_link">アーカイブ</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="./search.html" class="bl_tagMenu_link">検索</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="./404.html" class="bl_tagMenu_link">404</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+					</ul>
+					<!-- /.bl_tagMenu_list -->
+				</div>
+				<!-- /.bl_tagMenu -->
+				<!--≡≡≡ ▲ template-parts/parts-menu.php[sub] ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
 
-        <!--≡≡≡ ▼ template-parts/parts-categories-and-archives.php ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡-->
-        <div class="bl_tagMenu">
-          <span class="bl_tagMenu_title">アーカイブ</span>
-          <details class="bl_accordion">
-            <summary class="bl_accordion_summary">カテゴリ一覧</summary>
-            <div class="bl_accordion_description">
-              <div class="bl_accordion bl_accordion__dummy">
-                <a href="./archive.html">Uncategorized</a>
-              </div>
-              <!-- /.bl_accordion bl_accordion__dummy -->
-              <div class="bl_accordion bl_accordion__dummy">
-                <a href="./archive.html">えいご</a>
-              </div>
-              <!-- /.bl_accordion bl_accordion__dummy -->
-              <div class="bl_accordion bl_accordion__dummy">
-                <a href="./archive.html">お知らせ</a>
-              </div>
-              <!-- /.bl_accordion bl_accordion__dummy -->
-              <details class="bl_accordion">
-                <summary class="bl_accordion_summary">
-                  <a href="./archive.html">カテゴリー 1</a>
-                </summary>
-                <!-- /.bl_accordion_summary -->
-                <div class="bl_accordion_description">
-                  <div class="bl_accordion bl_accordion__dummy">
-                    <a href="./archive.html">カテゴリー 2</a>
-                  </div>
-                  <!-- /.bl_accordion bl_accordion__dummy -->
-                  <div class="bl_accordion bl_accordion__dummy">
-                    <a href="./archive.html">カテゴリー 3</a>
-                  </div>
-                  <!-- /.bl_accordion bl_accordion__dummy -->
-                </div>
-                <!-- /.bl_accordion_description -->
-              </details>
-              <!-- /.bl_accordion -->
-              <div class="bl_accordion bl_accordion__dummy">
-                <a href="./archive.html">カテゴリー A</a>
-              </div>
-              <!-- /.bl_accordion bl_accordion__dummy -->
-              <div class="bl_accordion bl_accordion__dummy">
-                <a href="./archive.html">カテゴリー B</a>
-              </div>
-              <!-- /.bl_accordion bl_accordion__dummy -->
-              <div class="bl_accordion bl_accordion__dummy">
-                <a href="./archive.html">カテゴリー C</a>
-              </div>
-              <!-- /.bl_accordion bl_accordion__dummy -->
-              <div class="bl_accordion bl_accordion__dummy">
-                <a href="./archive.html">テンプレート</a>
-              </div>
-              <!-- /.bl_accordion bl_accordion__dummy -->
-              <div class="bl_accordion bl_accordion__dummy">
-                <a href="./archive.html">ブログ</a>
-              </div>
-              <!-- /.bl_accordion bl_accordion__dummy -->
-              <div class="bl_accordion bl_accordion__dummy">
-                <a href="./archive.html">未公開</a>
-              </div>
-              <!-- /.bl_accordion bl_accordion__dummy -->
-              <div class="bl_accordion bl_accordion__dummy">
-                <a href="./archive.html">未分類</a>
-              </div>
-              <!-- /.bl_accordion bl_accordion__dummy -->
-              <details class="bl_accordion">
-                <summary class="bl_accordion_summary">
-                  <a href="./archive.html">親カテゴリー</a>
-                </summary>
-                <!-- /.bl_accordion_summary -->
-                <div class="bl_accordion_description">
-                  <div class="bl_accordion bl_accordion__dummy">
-                    <a href="./archive.html">子カテゴリー 01</a>
-                  </div>
-                  <!-- /.bl_accordion bl_accordion__dummy -->
-                  <div class="bl_accordion bl_accordion__dummy">
-                    <a href="./archive.html">子カテゴリー 02</a>
-                  </div>
-                  <!-- /.bl_accordion bl_accordion__dummy -->
-                  <details class="bl_accordion">
-                    <summary class="bl_accordion_summary">
-                      <a href="./archive.html">子カテゴリー 03</a>
-                    </summary>
-                    <!-- /.bl_accordion_summary -->
-                    <div class="bl_accordion_description">
-                      <div class="bl_accordion bl_accordion__dummy">
-                        <a href="./archive.html">孫カテゴリー</a>
-                      </div>
-                      <!-- /.bl_accordion bl_accordion__dummy -->
-                    </div>
-                    <!-- /.bl_accordion_description -->
-                  </details>
-                  <!-- /.bl_accordion -->
-                  <div class="bl_accordion bl_accordion__dummy">
-                    <a href="./archive.html">子カテゴリー 04</a>
-                  </div>
-                  <!-- /.bl_accordion bl_accordion__dummy -->
-                  <div class="bl_accordion bl_accordion__dummy">
-                    <a href="./archive.html">子カテゴリー 05</a>
-                  </div>
-                  <!-- /.bl_accordion bl_accordion__dummy -->
-                </div>
-                <!-- /.bl_accordion_description -->
-              </details>
-              <!-- /.bl_accordion -->
-            </div>
-            <!-- /.bl_accordion_description -->
-          </details>
-          <!-- /.bl_accordion -->
-          <details class="bl_accordion">
-            <summary class="bl_accordion_summary">年月一覧</summary>
-            <div class="bl_accordion_description">
-              <details class="bl_accordion">
-                <summary class="bl_accordion_summary">
-                  <a href="./archive.html">2023 年</a>
-                </summary>
-                <!-- /.bl_accordion_summary -->
-                <div class="bl_accordion_description">
-                  <li>
-                    <a href="./archive.html">9月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">7月</a>&nbsp;(1)
-                  </li>
-                </div>
-                <!-- /.bl_accordion_description -->
-              </details>
-              <!-- /.bl_accordion -->
-              <details class="bl_accordion">
-                <summary class="bl_accordion_summary">
-                  <a href="./archive.html">2022 年</a>
-                </summary>
-                <!-- /.bl_accordion_summary -->
-                <div class="bl_accordion_description">
-                  <li>
-                    <a href="./archive.html">11月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">10月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">9月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">8月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">7月</a>&nbsp;(2)
-                  </li>
-                  <li>
-                    <a href="./archive.html">4月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">3月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">1月</a>&nbsp;(1)
-                  </li>
-                </div>
-                <!-- /.bl_accordion_description -->
-              </details>
-              <!-- /.bl_accordion -->
-              <details class="bl_accordion">
-                <summary class="bl_accordion_summary">
-                  <a href="./archive.html">2021 年</a>
-                </summary>
-                <!-- /.bl_accordion_summary -->
-                <div class="bl_accordion_description">
-                  <li>
-                    <a href="./archive.html">12月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">11月</a>&nbsp;(1)
-                  </li>
-                </div>
-                <!-- /.bl_accordion_description -->
-              </details>
-              <!-- /.bl_accordion -->
-              <details class="bl_accordion">
-                <summary class="bl_accordion_summary">
-                  <a href="./archive.html">2020 年</a>
-                </summary>
-                <!-- /.bl_accordion_summary -->
-                <div class="bl_accordion_description">
-                  <li>
-                    <a href="./archive.html">1月</a>&nbsp;(1)
-                  </li>
-                </div>
-                <!-- /.bl_accordion_description -->
-              </details>
-              <!-- /.bl_accordion -->
-              <details class="bl_accordion">
-                <summary class="bl_accordion_summary">
-                  <a href="./archive.html">2019 年</a>
-                </summary>
-                <!-- /.bl_accordion_summary -->
-                <div class="bl_accordion_description">
-                  <li>
-                    <a href="./archive.html">1月</a>&nbsp;(5)
-                  </li>
-                </div>
-                <!-- /.bl_accordion_description -->
-              </details>
-              <!-- /.bl_accordion -->
-              <details class="bl_accordion">
-                <summary class="bl_accordion_summary">
-                  <a href="./archive.html">2018 年</a>
-                </summary>
-                <!-- /.bl_accordion_summary -->
-                <div class="bl_accordion_description">
-                  <li>
-                    <a href="./archive.html">3月</a>&nbsp;(5)
-                  </li>
-                  <li>
-                    <a href="./archive.html">1月</a>&nbsp;(6)
-                  </li>
-                </div>
-                <!-- /.bl_accordion_description -->
-              </details>
-              <!-- /.bl_accordion -->
-              <details class="bl_accordion">
-                <summary class="bl_accordion_summary">
-                  <a href="./archive.html">2017 年</a>
-                </summary>
-                <!-- /.bl_accordion_summary -->
-                <div class="bl_accordion_description">
-                  <li>
-                    <a href="./archive.html">3月</a>&nbsp;(1)
-                  </li>
-                </div>
-                <!-- /.bl_accordion_description -->
-              </details>
-              <!-- /.bl_accordion -->
-              <details class="bl_accordion">
-                <summary class="bl_accordion_summary">
-                  <a href="./archive.html">2015 年</a>
-                </summary>
-                <!-- /.bl_accordion_summary -->
-                <div class="bl_accordion_description">
-                  <li>
-                    <a href="./archive.html">10月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">9月</a>&nbsp;(2)
-                  </li>
-                  <li>
-                    <a href="./archive.html">8月</a>&nbsp;(3)
-                  </li>
-                  <li>
-                    <a href="./archive.html">7月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">6月</a>&nbsp;(3)
-                  </li>
-                  <li>
-                    <a href="./archive.html">5月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">4月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">3月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">2月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">1月</a>&nbsp;(1)
-                  </li>
-                </div>
-                <!-- /.bl_accordion_description -->
-              </details>
-              <!-- /.bl_accordion -->
-              <details class="bl_accordion">
-                <summary class="bl_accordion_summary">
-                  <a href="./archive.html">2010 年</a>
-                </summary>
-                <!-- /.bl_accordion_summary -->
-                <div class="bl_accordion_description">
-                  <li>
-                    <a href="./archive.html">10月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">9月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">8月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">7月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">6月</a>&nbsp;(1)
-                  </li>
-                  <li>
-                    <a href="./archive.html">5月</a>&nbsp;(1)
-                  </li>
-                </div>
-                <!-- /.bl_accordion_description -->
-              </details>
-              <!-- /.bl_accordion -->
-            </div>
-            <!-- /.bl_accordion_description -->
-          </details>
-          <!-- /.bl_accordion -->
-        </div>
-        <!-- /.bl_tagMenu -->
-        <!--≡≡≡ ▲ template-parts/parts-categories-and-archives.php ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+				<!--≡≡≡ ▼ template-parts/parts-categories-and-archives.php ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+				<div class="bl_tagMenu">
+					<span class="bl_tagMenu_title">アーカイブ</span>
+					<details class="bl_accordion">
+						<summary class="bl_accordion_summary">カテゴリ一覧</summary>
+						<div class="bl_accordion_description">
+							<div class="bl_accordion bl_accordion__dummy">
+								<a href="./archive.html">Uncategorized</a>
+							</div>
+							<!-- /.bl_accordion bl_accordion__dummy -->
+							<div class="bl_accordion bl_accordion__dummy">
+								<a href="./archive.html">えいご</a>
+							</div>
+							<!-- /.bl_accordion bl_accordion__dummy -->
+							<div class="bl_accordion bl_accordion__dummy">
+								<a href="./archive.html">お知らせ</a>
+							</div>
+							<!-- /.bl_accordion bl_accordion__dummy -->
+							<details class="bl_accordion">
+								<summary class="bl_accordion_summary">
+									<a href="./archive.html">カテゴリー 1</a>
+								</summary>
+								<!-- /.bl_accordion_summary -->
+								<div class="bl_accordion_description">
+									<div class="bl_accordion bl_accordion__dummy">
+										<a href="./archive.html">カテゴリー 2</a>
+									</div>
+									<!-- /.bl_accordion bl_accordion__dummy -->
+									<div class="bl_accordion bl_accordion__dummy">
+										<a href="./archive.html">カテゴリー 3</a>
+									</div>
+									<!-- /.bl_accordion bl_accordion__dummy -->
+								</div>
+								<!-- /.bl_accordion_description -->
+							</details>
+							<!-- /.bl_accordion -->
+							<div class="bl_accordion bl_accordion__dummy">
+								<a href="./archive.html">カテゴリー A</a>
+							</div>
+							<!-- /.bl_accordion bl_accordion__dummy -->
+							<div class="bl_accordion bl_accordion__dummy">
+								<a href="./archive.html">カテゴリー B</a>
+							</div>
+							<!-- /.bl_accordion bl_accordion__dummy -->
+							<div class="bl_accordion bl_accordion__dummy">
+								<a href="./archive.html">カテゴリー C</a>
+							</div>
+							<!-- /.bl_accordion bl_accordion__dummy -->
+							<div class="bl_accordion bl_accordion__dummy">
+								<a href="./archive.html">テンプレート</a>
+							</div>
+							<!-- /.bl_accordion bl_accordion__dummy -->
+							<div class="bl_accordion bl_accordion__dummy">
+								<a href="./archive.html">ブログ</a>
+							</div>
+							<!-- /.bl_accordion bl_accordion__dummy -->
+							<div class="bl_accordion bl_accordion__dummy">
+								<a href="./archive.html">未公開</a>
+							</div>
+							<!-- /.bl_accordion bl_accordion__dummy -->
+							<div class="bl_accordion bl_accordion__dummy">
+								<a href="./archive.html">未分類</a>
+							</div>
+							<!-- /.bl_accordion bl_accordion__dummy -->
+							<details class="bl_accordion">
+								<summary class="bl_accordion_summary">
+									<a href="./archive.html">親カテゴリー</a>
+								</summary>
+								<!-- /.bl_accordion_summary -->
+								<div class="bl_accordion_description">
+									<div class="bl_accordion bl_accordion__dummy">
+										<a href="./archive.html">子カテゴリー 01</a>
+									</div>
+									<!-- /.bl_accordion bl_accordion__dummy -->
+									<div class="bl_accordion bl_accordion__dummy">
+										<a href="./archive.html">子カテゴリー 02</a>
+									</div>
+									<!-- /.bl_accordion bl_accordion__dummy -->
+									<details class="bl_accordion">
+										<summary class="bl_accordion_summary">
+											<a href="./archive.html">子カテゴリー 03</a>
+										</summary>
+										<!-- /.bl_accordion_summary -->
+										<div class="bl_accordion_description">
+											<div class="bl_accordion bl_accordion__dummy">
+												<a href="./archive.html">孫カテゴリー</a>
+											</div>
+											<!-- /.bl_accordion bl_accordion__dummy -->
+										</div>
+										<!-- /.bl_accordion_description -->
+									</details>
+									<!-- /.bl_accordion -->
+									<div class="bl_accordion bl_accordion__dummy">
+										<a href="./archive.html">子カテゴリー 04</a>
+									</div>
+									<!-- /.bl_accordion bl_accordion__dummy -->
+									<div class="bl_accordion bl_accordion__dummy">
+										<a href="./archive.html">子カテゴリー 05</a>
+									</div>
+									<!-- /.bl_accordion bl_accordion__dummy -->
+								</div>
+								<!-- /.bl_accordion_description -->
+							</details>
+							<!-- /.bl_accordion -->
+						</div>
+						<!-- /.bl_accordion_description -->
+					</details>
+					<!-- /.bl_accordion -->
+					<details class="bl_accordion">
+						<summary class="bl_accordion_summary">年月一覧</summary>
+						<div class="bl_accordion_description">
+							<details class="bl_accordion">
+								<summary class="bl_accordion_summary">
+									<a href="./archive.html">2023 年</a>
+								</summary>
+								<!-- /.bl_accordion_summary -->
+								<div class="bl_accordion_description">
+									<li>
+										<a href="./archive.html">9月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">7月</a>&nbsp;(1)
+									</li>
+								</div>
+								<!-- /.bl_accordion_description -->
+							</details>
+							<!-- /.bl_accordion -->
+							<details class="bl_accordion">
+								<summary class="bl_accordion_summary">
+									<a href="./archive.html">2022 年</a>
+								</summary>
+								<!-- /.bl_accordion_summary -->
+								<div class="bl_accordion_description">
+									<li>
+										<a href="./archive.html">11月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">10月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">9月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">8月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">7月</a>&nbsp;(2)
+									</li>
+									<li>
+										<a href="./archive.html">4月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">3月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">1月</a>&nbsp;(1)
+									</li>
+								</div>
+								<!-- /.bl_accordion_description -->
+							</details>
+							<!-- /.bl_accordion -->
+							<details class="bl_accordion">
+								<summary class="bl_accordion_summary">
+									<a href="./archive.html">2021 年</a>
+								</summary>
+								<!-- /.bl_accordion_summary -->
+								<div class="bl_accordion_description">
+									<li>
+										<a href="./archive.html">12月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">11月</a>&nbsp;(1)
+									</li>
+								</div>
+								<!-- /.bl_accordion_description -->
+							</details>
+							<!-- /.bl_accordion -->
+							<details class="bl_accordion">
+								<summary class="bl_accordion_summary">
+									<a href="./archive.html">2020 年</a>
+								</summary>
+								<!-- /.bl_accordion_summary -->
+								<div class="bl_accordion_description">
+									<li>
+										<a href="./archive.html">1月</a>&nbsp;(1)
+									</li>
+								</div>
+								<!-- /.bl_accordion_description -->
+							</details>
+							<!-- /.bl_accordion -->
+							<details class="bl_accordion">
+								<summary class="bl_accordion_summary">
+									<a href="./archive.html">2019 年</a>
+								</summary>
+								<!-- /.bl_accordion_summary -->
+								<div class="bl_accordion_description">
+									<li>
+										<a href="./archive.html">1月</a>&nbsp;(5)
+									</li>
+								</div>
+								<!-- /.bl_accordion_description -->
+							</details>
+							<!-- /.bl_accordion -->
+							<details class="bl_accordion">
+								<summary class="bl_accordion_summary">
+									<a href="./archive.html">2018 年</a>
+								</summary>
+								<!-- /.bl_accordion_summary -->
+								<div class="bl_accordion_description">
+									<li>
+										<a href="./archive.html">3月</a>&nbsp;(5)
+									</li>
+									<li>
+										<a href="./archive.html">1月</a>&nbsp;(6)
+									</li>
+								</div>
+								<!-- /.bl_accordion_description -->
+							</details>
+							<!-- /.bl_accordion -->
+							<details class="bl_accordion">
+								<summary class="bl_accordion_summary">
+									<a href="./archive.html">2017 年</a>
+								</summary>
+								<!-- /.bl_accordion_summary -->
+								<div class="bl_accordion_description">
+									<li>
+										<a href="./archive.html">3月</a>&nbsp;(1)
+									</li>
+								</div>
+								<!-- /.bl_accordion_description -->
+							</details>
+							<!-- /.bl_accordion -->
+							<details class="bl_accordion">
+								<summary class="bl_accordion_summary">
+									<a href="./archive.html">2015 年</a>
+								</summary>
+								<!-- /.bl_accordion_summary -->
+								<div class="bl_accordion_description">
+									<li>
+										<a href="./archive.html">10月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">9月</a>&nbsp;(2)
+									</li>
+									<li>
+										<a href="./archive.html">8月</a>&nbsp;(3)
+									</li>
+									<li>
+										<a href="./archive.html">7月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">6月</a>&nbsp;(3)
+									</li>
+									<li>
+										<a href="./archive.html">5月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">4月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">3月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">2月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">1月</a>&nbsp;(1)
+									</li>
+								</div>
+								<!-- /.bl_accordion_description -->
+							</details>
+							<!-- /.bl_accordion -->
+							<details class="bl_accordion">
+								<summary class="bl_accordion_summary">
+									<a href="./archive.html">2010 年</a>
+								</summary>
+								<!-- /.bl_accordion_summary -->
+								<div class="bl_accordion_description">
+									<li>
+										<a href="./archive.html">10月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">9月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">8月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">7月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">6月</a>&nbsp;(1)
+									</li>
+									<li>
+										<a href="./archive.html">5月</a>&nbsp;(1)
+									</li>
+								</div>
+								<!-- /.bl_accordion_description -->
+							</details>
+							<!-- /.bl_accordion -->
+						</div>
+						<!-- /.bl_accordion_description -->
+					</details>
+					<!-- /.bl_accordion -->
+				</div>
+				<!-- /.bl_tagMenu -->
+				<!--≡≡≡ ▲ template-parts/parts-categories-and-archives.php ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡-->
 
-        <button class="el_btn el_btn__primary" type="button" onclick="closeDialog()">メニューを閉じる</button>
-      </div>
-      <!-- /.ly_dialog -->
-    </dialog>
-    <!-- /.ly_dialog_wrapper -->
-    <!--≡≡≡ ▲ header.php ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+				<button class="el_btn el_btn__primary" type="button" onclick="closeDialog()">メニューを閉じる</button>
+			</div>
+			<!-- /.ly_dialog -->
+		</dialog>
+		<!-- /.ly_dialog_wrapper -->
+		<!--≡≡≡ ▲ header.php ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
 
-    <main class="ly_mainArea_content ly_mainArea_content__left" id="anchor_mainContent">
-      <h1 class="el_header_lv1">アーカイブ名（年月、カテゴリなど）</h1>
+		<main class="ly_mainArea_content ly_mainArea_content__left" id="anchor_mainContent">
+			<h1 class="el_header_lv1">アーカイブ名（年月、カテゴリなど）</h1>
 
 			<div class="bl_cardUnit bl_cardUnit__1col">
 
@@ -710,509 +710,509 @@
 			</div>
 			<!-- /.bl_cardUnit bl_cardUnit__1col -->
 
-      <nav class="bl_pager" aria-label="ページ割り">
-        <div class="bl_pager_left">
-          <a class="bl_pager_btn" aria-label="最初のページ" href="#">
-            <svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="24" width="24">
-              <path fill-rule="evenodd"
-                d="M11.854 3.646a.5.5 0 0 1 0 .708L8.207 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0zM4.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5z">
-              </path>
-            </svg>
-          </a>
-          <!-- /.bl_pager_btn -->
-          <a class="bl_pager_btn" aria-label="前のページ" href="#">
-            <svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="24" width="24">
-              <path fill-rule="evenodd"
-                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z">
-              </path>
-            </svg>
-          </a>
-          <!-- /.bl_pager_btn -->
-          <a class="bl_pager_btn bl_pager_btn__extended" href="#">4</a>
-          <!-- /.bl_pager_btn bl_pager_btn__extended -->
-          <a class="bl_pager_btn bl_pager_btn__extended" href="#">5</a>
-          <!-- /.bl_pager_btn bl_pager_btn__extended -->
-          <a class="bl_pager_btn bl_pager_btn__extended" href="#">6</a>
-          <!-- /.bl_pager_btn bl_pager_btn__extended -->
-        </div>
-        <!-- /.bl_pager_left -->
-        <div class="bl_pager_center" aria-current="page">7/15</div>
-        <!-- /.bl_pager_center -->
-        <div class="bl_pager_right">
-          <a class="bl_pager_btn bl_pager_btn__extended" href="#">8</a>
-          <!-- /.bl_pager_btn bl_pager_btn__extended -->
-          <a class="bl_pager_btn bl_pager_btn__extended" href="#">9</a>
-          <!-- /.bl_pager_btn bl_pager_btn__extended -->
-          <a class="bl_pager_btn bl_pager_btn__extended" href="#">10</a>
-          <!-- /.bl_pager_btn bl_pager_btn__extended -->
-          <a class="bl_pager_btn" aria-label="次のページ" href="#">
-            <svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="24" width="24">
-              <path fill-rule="evenodd"
-                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z">
-              </path>
-            </svg>
-          </a>
-          <!-- /.bl_pager_btn -->
-          <a class="bl_pager_btn" aria-label="最後のページ" href="#">
-            <svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="24" width="24">
-              <path fill-rule="evenodd"
-                d="M4.146 3.646a.5.5 0 0 0 0 .708L7.793 8l-3.647 3.646a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708 0zM11.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5z">
-              </path>
-            </svg>
-          </a>
-          <!-- /.bl_pager_btn -->
-        </div>
-        <!-- /.bl_pager_right -->
-      </nav>
-      <!-- /.bl_pager -->
+			<nav class="bl_pager" aria-label="ページ割り">
+				<div class="bl_pager_left">
+					<a class="bl_pager_btn" aria-label="最初のページ" href="#">
+						<svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="24" width="24">
+							<path fill-rule="evenodd"
+								d="M11.854 3.646a.5.5 0 0 1 0 .708L8.207 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0zM4.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5z">
+							</path>
+						</svg>
+					</a>
+					<!-- /.bl_pager_btn -->
+					<a class="bl_pager_btn" aria-label="前のページ" href="#">
+						<svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="24" width="24">
+							<path fill-rule="evenodd"
+								d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z">
+							</path>
+						</svg>
+					</a>
+					<!-- /.bl_pager_btn -->
+					<a class="bl_pager_btn bl_pager_btn__extended" href="#">4</a>
+					<!-- /.bl_pager_btn bl_pager_btn__extended -->
+					<a class="bl_pager_btn bl_pager_btn__extended" href="#">5</a>
+					<!-- /.bl_pager_btn bl_pager_btn__extended -->
+					<a class="bl_pager_btn bl_pager_btn__extended" href="#">6</a>
+					<!-- /.bl_pager_btn bl_pager_btn__extended -->
+				</div>
+				<!-- /.bl_pager_left -->
+				<div class="bl_pager_center" aria-current="page">7/15</div>
+				<!-- /.bl_pager_center -->
+				<div class="bl_pager_right">
+					<a class="bl_pager_btn bl_pager_btn__extended" href="#">8</a>
+					<!-- /.bl_pager_btn bl_pager_btn__extended -->
+					<a class="bl_pager_btn bl_pager_btn__extended" href="#">9</a>
+					<!-- /.bl_pager_btn bl_pager_btn__extended -->
+					<a class="bl_pager_btn bl_pager_btn__extended" href="#">10</a>
+					<!-- /.bl_pager_btn bl_pager_btn__extended -->
+					<a class="bl_pager_btn" aria-label="次のページ" href="#">
+						<svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="24" width="24">
+							<path fill-rule="evenodd"
+								d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z">
+							</path>
+						</svg>
+					</a>
+					<!-- /.bl_pager_btn -->
+					<a class="bl_pager_btn" aria-label="最後のページ" href="#">
+						<svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="24" width="24">
+							<path fill-rule="evenodd"
+								d="M4.146 3.646a.5.5 0 0 0 0 .708L7.793 8l-3.647 3.646a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708 0zM11.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5z">
+							</path>
+						</svg>
+					</a>
+					<!-- /.bl_pager_btn -->
+				</div>
+				<!-- /.bl_pager_right -->
+			</nav>
+			<!-- /.bl_pager -->
 
-    </main>
-    <!-- /.ly_mainArea_content -->
+		</main>
+		<!-- /.ly_mainArea_content -->
 
-    <!--≡≡≡ ▼ sidebar-right.php ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
-    <aside class="ly_mainArea_rightSidebar" id="anchor_desktopSubMenu">
-      <div class="bl_tagMenu">
-        <ul class="bl_tagMenu_list">
-          <li class="bl_tagMenu_item">
-            <a href="./search.html" class="bl_tagMenu_link">サイト内検索</a>
-          </li>
-          <!-- /.bl_tagMenu_item -->
-        </ul>
-        <!-- /.bl_tagMenu_list -->
-      </div>
-      <!-- /.bl_tagMenu -->
+		<!--≡≡≡ ▼ sidebar-right.php ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+		<aside class="ly_mainArea_rightSidebar" id="anchor_desktopSubMenu">
+			<div class="bl_tagMenu">
+				<ul class="bl_tagMenu_list">
+					<li class="bl_tagMenu_item">
+						<a href="./search.html" class="bl_tagMenu_link">サイト内検索</a>
+					</li>
+					<!-- /.bl_tagMenu_item -->
+				</ul>
+				<!-- /.bl_tagMenu_list -->
+			</div>
+			<!-- /.bl_tagMenu -->
 
-      <!--≡≡≡ ▼ template-parts/parts-menu.php[sub] ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
-      <div class="bl_tagMenu">
-        <ul class="bl_tagMenu_list">
-          <li class="bl_tagMenu_item">
-            <a href="./index.html" class="bl_tagMenu_link">トップページ</a>
-          </li>
-          <!-- /.bl_tagMenu_item -->
-          <li class="bl_tagMenu_item">
-            <a href="./single.html" class="bl_tagMenu_link">Read me</a>
-          </li>
-          <!-- /.bl_tagMenu_item -->
+			<!--≡≡≡ ▼ template-parts/parts-menu.php[sub] ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+			<div class="bl_tagMenu">
+				<ul class="bl_tagMenu_list">
+					<li class="bl_tagMenu_item">
+						<a href="./index.html" class="bl_tagMenu_link">トップページ</a>
+					</li>
+					<!-- /.bl_tagMenu_item -->
+					<li class="bl_tagMenu_item">
+						<a href="./single.html" class="bl_tagMenu_link">Read me</a>
+					</li>
+					<!-- /.bl_tagMenu_item -->
 					<li class="bl_tagMenu_item">
 						<a href="https://github.com/nonaka101/web-zukuri" class="bl_tagMenu_link">GitHub</a>
 					</li>
 					<!-- /.bl_tagMenu_item -->
-        </ul>
-        <!-- /.bl_tagMenu_list -->
-      </div>
-      <!-- /.bl_tagMenu -->
-      <div class="bl_tagMenu">
-        <ul class="bl_tagMenu_list">
-          <li class="bl_tagMenu_item">
-            <a href="./single.html" class="bl_tagMenu_link">投稿ページ(Read me)</a>
-          </li>
-          <!-- /.bl_tagMenu_item -->
-          <li class="bl_tagMenu_item">
-            <a href="./page.html" class="bl_tagMenu_link">固定ページ</a>
-          </li>
-          <!-- /.bl_tagMenu_item -->
-          <li class="bl_tagMenu_item">
-            <a href="./archive.html" class="bl_tagMenu_link">アーカイブ</a>
-          </li>
-          <!-- /.bl_tagMenu_item -->
-          <li class="bl_tagMenu_item">
-            <a href="./search.html" class="bl_tagMenu_link">検索</a>
-          </li>
-          <!-- /.bl_tagMenu_item -->
-          <li class="bl_tagMenu_item">
-            <a href="./404.html" class="bl_tagMenu_link">404</a>
-          </li>
-          <!-- /.bl_tagMenu_item -->
-        </ul>
-        <!-- /.bl_tagMenu_list -->
-      </div>
-      <!-- /.bl_tagMenu -->
-      <!--≡≡≡ ▲ template-parts/parts-menu.php[sub] ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
-      <!--≡≡≡ ▼ template-parts/parts-categories-and-archives.php ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡-->
-      <div class="bl_tagMenu">
-        <span class="bl_tagMenu_title">アーカイブ</span>
-        <details class="bl_accordion">
-          <summary class="bl_accordion_summary">カテゴリ一覧</summary>
-          <div class="bl_accordion_description">
-            <div class="bl_accordion bl_accordion__dummy">
-              <a href="./archive.html">Uncategorized</a>
-            </div>
-            <!-- /.bl_accordion bl_accordion__dummy -->
-            <div class="bl_accordion bl_accordion__dummy">
-              <a href="./archive.html">えいご</a>
-            </div>
-            <!-- /.bl_accordion bl_accordion__dummy -->
-            <div class="bl_accordion bl_accordion__dummy">
-              <a href="./archive.html">お知らせ</a>
-            </div>
-            <!-- /.bl_accordion bl_accordion__dummy -->
-            <details class="bl_accordion">
-              <summary class="bl_accordion_summary">
-                <a href="./archive.html">カテゴリー 1</a>
-              </summary>
-              <!-- /.bl_accordion_summary -->
-              <div class="bl_accordion_description">
-                <div class="bl_accordion bl_accordion__dummy">
-                  <a href="./archive.html">カテゴリー 2</a>
-                </div>
-                <!-- /.bl_accordion bl_accordion__dummy -->
-                <div class="bl_accordion bl_accordion__dummy">
-                  <a href="./archive.html">カテゴリー 3</a>
-                </div>
-                <!-- /.bl_accordion bl_accordion__dummy -->
-              </div>
-              <!-- /.bl_accordion_description -->
-            </details>
-            <!-- /.bl_accordion -->
-            <div class="bl_accordion bl_accordion__dummy">
-              <a href="./archive.html">カテゴリー A</a>
-            </div>
-            <!-- /.bl_accordion bl_accordion__dummy -->
-            <div class="bl_accordion bl_accordion__dummy">
-              <a href="./archive.html">カテゴリー B</a>
-            </div>
-            <!-- /.bl_accordion bl_accordion__dummy -->
-            <div class="bl_accordion bl_accordion__dummy">
-              <a href="./archive.html">カテゴリー C</a>
-            </div>
-            <!-- /.bl_accordion bl_accordion__dummy -->
-            <div class="bl_accordion bl_accordion__dummy">
-              <a href="./archive.html">テンプレート</a>
-            </div>
-            <!-- /.bl_accordion bl_accordion__dummy -->
-            <div class="bl_accordion bl_accordion__dummy">
-              <a href="./archive.html">ブログ</a>
-            </div>
-            <!-- /.bl_accordion bl_accordion__dummy -->
-            <div class="bl_accordion bl_accordion__dummy">
-              <a href="./archive.html">未公開</a>
-            </div>
-            <!-- /.bl_accordion bl_accordion__dummy -->
-            <div class="bl_accordion bl_accordion__dummy">
-              <a href="./archive.html">未分類</a>
-            </div>
-            <!-- /.bl_accordion bl_accordion__dummy -->
-            <details class="bl_accordion">
-              <summary class="bl_accordion_summary">
-                <a href="./archive.html">親カテゴリー</a>
-              </summary>
-              <!-- /.bl_accordion_summary -->
-              <div class="bl_accordion_description">
-                <div class="bl_accordion bl_accordion__dummy">
-                  <a href="./archive.html">子カテゴリー 01</a>
-                </div>
-                <!-- /.bl_accordion bl_accordion__dummy -->
-                <div class="bl_accordion bl_accordion__dummy">
-                  <a href="./archive.html">子カテゴリー 02</a>
-                </div>
-                <!-- /.bl_accordion bl_accordion__dummy -->
-                <details class="bl_accordion">
-                  <summary class="bl_accordion_summary">
-                    <a href="./archive.html">子カテゴリー 03</a>
-                  </summary>
-                  <!-- /.bl_accordion_summary -->
-                  <div class="bl_accordion_description">
-                    <div class="bl_accordion bl_accordion__dummy">
-                      <a href="./archive.html">孫カテゴリー</a>
-                    </div>
-                    <!-- /.bl_accordion bl_accordion__dummy -->
-                  </div>
-                  <!-- /.bl_accordion_description -->
-                </details>
-                <!-- /.bl_accordion -->
-                <div class="bl_accordion bl_accordion__dummy">
-                  <a href="./archive.html">子カテゴリー 04</a>
-                </div>
-                <!-- /.bl_accordion bl_accordion__dummy -->
-                <div class="bl_accordion bl_accordion__dummy">
-                  <a href="./archive.html">子カテゴリー 05</a>
-                </div>
-                <!-- /.bl_accordion bl_accordion__dummy -->
-              </div>
-              <!-- /.bl_accordion_description -->
-            </details>
-            <!-- /.bl_accordion -->
-          </div>
-          <!-- /.bl_accordion_description -->
-        </details>
-        <!-- /.bl_accordion -->
-        <details class="bl_accordion">
-          <summary class="bl_accordion_summary">年月一覧</summary>
-          <div class="bl_accordion_description">
-            <details class="bl_accordion">
-              <summary class="bl_accordion_summary">
-                <a href="./archive.html">2023 年</a>
-              </summary>
-              <!-- /.bl_accordion_summary -->
-              <div class="bl_accordion_description">
-                <li>
-                  <a href="./archive.html">9月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">7月</a>&nbsp;(1)
-                </li>
-              </div>
-              <!-- /.bl_accordion_description -->
-            </details>
-            <!-- /.bl_accordion -->
-            <details class="bl_accordion">
-              <summary class="bl_accordion_summary">
-                <a href="./archive.html">2022 年</a>
-              </summary>
-              <!-- /.bl_accordion_summary -->
-              <div class="bl_accordion_description">
-                <li>
-                  <a href="./archive.html">11月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">10月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">9月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">8月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">7月</a>&nbsp;(2)
-                </li>
-                <li>
-                  <a href="./archive.html">4月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">3月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">1月</a>&nbsp;(1)
-                </li>
-              </div>
-              <!-- /.bl_accordion_description -->
-            </details>
-            <!-- /.bl_accordion -->
-            <details class="bl_accordion">
-              <summary class="bl_accordion_summary">
-                <a href="./archive.html">2021 年</a>
-              </summary>
-              <!-- /.bl_accordion_summary -->
-              <div class="bl_accordion_description">
-                <li>
-                  <a href="./archive.html">12月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">11月</a>&nbsp;(1)
-                </li>
-              </div>
-              <!-- /.bl_accordion_description -->
-            </details>
-            <!-- /.bl_accordion -->
-            <details class="bl_accordion">
-              <summary class="bl_accordion_summary">
-                <a href="./archive.html">2020 年</a>
-              </summary>
-              <!-- /.bl_accordion_summary -->
-              <div class="bl_accordion_description">
-                <li>
-                  <a href="./archive.html">1月</a>&nbsp;(1)
-                </li>
-              </div>
-              <!-- /.bl_accordion_description -->
-            </details>
-            <!-- /.bl_accordion -->
-            <details class="bl_accordion">
-              <summary class="bl_accordion_summary">
-                <a href="./archive.html">2019 年</a>
-              </summary>
-              <!-- /.bl_accordion_summary -->
-              <div class="bl_accordion_description">
-                <li>
-                  <a href="./archive.html">1月</a>&nbsp;(5)
-                </li>
-              </div>
-              <!-- /.bl_accordion_description -->
-            </details>
-            <!-- /.bl_accordion -->
-            <details class="bl_accordion">
-              <summary class="bl_accordion_summary">
-                <a href="./archive.html">2018 年</a>
-              </summary>
-              <!-- /.bl_accordion_summary -->
-              <div class="bl_accordion_description">
-                <li>
-                  <a href="./archive.html">3月</a>&nbsp;(5)
-                </li>
-                <li>
-                  <a href="./archive.html">1月</a>&nbsp;(6)
-                </li>
-              </div>
-              <!-- /.bl_accordion_description -->
-            </details>
-            <!-- /.bl_accordion -->
-            <details class="bl_accordion">
-              <summary class="bl_accordion_summary">
-                <a href="./archive.html">2017 年</a>
-              </summary>
-              <!-- /.bl_accordion_summary -->
-              <div class="bl_accordion_description">
-                <li>
-                  <a href="./archive.html">3月</a>&nbsp;(1)
-                </li>
-              </div>
-              <!-- /.bl_accordion_description -->
-            </details>
-            <!-- /.bl_accordion -->
-            <details class="bl_accordion">
-              <summary class="bl_accordion_summary">
-                <a href="./archive.html">2015 年</a>
-              </summary>
-              <!-- /.bl_accordion_summary -->
-              <div class="bl_accordion_description">
-                <li>
-                  <a href="./archive.html">10月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">9月</a>&nbsp;(2)
-                </li>
-                <li>
-                  <a href="./archive.html">8月</a>&nbsp;(3)
-                </li>
-                <li>
-                  <a href="./archive.html">7月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">6月</a>&nbsp;(3)
-                </li>
-                <li>
-                  <a href="./archive.html">5月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">4月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">3月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">2月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">1月</a>&nbsp;(1)
-                </li>
-              </div>
-              <!-- /.bl_accordion_description -->
-            </details>
-            <!-- /.bl_accordion -->
-            <details class="bl_accordion">
-              <summary class="bl_accordion_summary">
-                <a href="./archive.html">2010 年</a>
-              </summary>
-              <!-- /.bl_accordion_summary -->
-              <div class="bl_accordion_description">
-                <li>
-                  <a href="./archive.html">10月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">9月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">8月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">7月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">6月</a>&nbsp;(1)
-                </li>
-                <li>
-                  <a href="./archive.html">5月</a>&nbsp;(1)
-                </li>
-              </div>
-              <!-- /.bl_accordion_description -->
-            </details>
-            <!-- /.bl_accordion -->
-          </div>
-          <!-- /.bl_accordion_description -->
-        </details>
-        <!-- /.bl_accordion -->
-      </div>
-      <!-- /.bl_tagMenu -->
-      <!--≡≡≡ ▲ template-parts/parts-categories-and-archives.php ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+				</ul>
+				<!-- /.bl_tagMenu_list -->
+			</div>
+			<!-- /.bl_tagMenu -->
+			<div class="bl_tagMenu">
+				<ul class="bl_tagMenu_list">
+					<li class="bl_tagMenu_item">
+						<a href="./single.html" class="bl_tagMenu_link">投稿ページ(Read me)</a>
+					</li>
+					<!-- /.bl_tagMenu_item -->
+					<li class="bl_tagMenu_item">
+						<a href="./page.html" class="bl_tagMenu_link">固定ページ</a>
+					</li>
+					<!-- /.bl_tagMenu_item -->
+					<li class="bl_tagMenu_item">
+						<a href="./archive.html" class="bl_tagMenu_link">アーカイブ</a>
+					</li>
+					<!-- /.bl_tagMenu_item -->
+					<li class="bl_tagMenu_item">
+						<a href="./search.html" class="bl_tagMenu_link">検索</a>
+					</li>
+					<!-- /.bl_tagMenu_item -->
+					<li class="bl_tagMenu_item">
+						<a href="./404.html" class="bl_tagMenu_link">404</a>
+					</li>
+					<!-- /.bl_tagMenu_item -->
+				</ul>
+				<!-- /.bl_tagMenu_list -->
+			</div>
+			<!-- /.bl_tagMenu -->
+			<!--≡≡≡ ▲ template-parts/parts-menu.php[sub] ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+			<!--≡≡≡ ▼ template-parts/parts-categories-and-archives.php ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+			<div class="bl_tagMenu">
+				<span class="bl_tagMenu_title">アーカイブ</span>
+				<details class="bl_accordion">
+					<summary class="bl_accordion_summary">カテゴリ一覧</summary>
+					<div class="bl_accordion_description">
+						<div class="bl_accordion bl_accordion__dummy">
+							<a href="./archive.html">Uncategorized</a>
+						</div>
+						<!-- /.bl_accordion bl_accordion__dummy -->
+						<div class="bl_accordion bl_accordion__dummy">
+							<a href="./archive.html">えいご</a>
+						</div>
+						<!-- /.bl_accordion bl_accordion__dummy -->
+						<div class="bl_accordion bl_accordion__dummy">
+							<a href="./archive.html">お知らせ</a>
+						</div>
+						<!-- /.bl_accordion bl_accordion__dummy -->
+						<details class="bl_accordion">
+							<summary class="bl_accordion_summary">
+								<a href="./archive.html">カテゴリー 1</a>
+							</summary>
+							<!-- /.bl_accordion_summary -->
+							<div class="bl_accordion_description">
+								<div class="bl_accordion bl_accordion__dummy">
+									<a href="./archive.html">カテゴリー 2</a>
+								</div>
+								<!-- /.bl_accordion bl_accordion__dummy -->
+								<div class="bl_accordion bl_accordion__dummy">
+									<a href="./archive.html">カテゴリー 3</a>
+								</div>
+								<!-- /.bl_accordion bl_accordion__dummy -->
+							</div>
+							<!-- /.bl_accordion_description -->
+						</details>
+						<!-- /.bl_accordion -->
+						<div class="bl_accordion bl_accordion__dummy">
+							<a href="./archive.html">カテゴリー A</a>
+						</div>
+						<!-- /.bl_accordion bl_accordion__dummy -->
+						<div class="bl_accordion bl_accordion__dummy">
+							<a href="./archive.html">カテゴリー B</a>
+						</div>
+						<!-- /.bl_accordion bl_accordion__dummy -->
+						<div class="bl_accordion bl_accordion__dummy">
+							<a href="./archive.html">カテゴリー C</a>
+						</div>
+						<!-- /.bl_accordion bl_accordion__dummy -->
+						<div class="bl_accordion bl_accordion__dummy">
+							<a href="./archive.html">テンプレート</a>
+						</div>
+						<!-- /.bl_accordion bl_accordion__dummy -->
+						<div class="bl_accordion bl_accordion__dummy">
+							<a href="./archive.html">ブログ</a>
+						</div>
+						<!-- /.bl_accordion bl_accordion__dummy -->
+						<div class="bl_accordion bl_accordion__dummy">
+							<a href="./archive.html">未公開</a>
+						</div>
+						<!-- /.bl_accordion bl_accordion__dummy -->
+						<div class="bl_accordion bl_accordion__dummy">
+							<a href="./archive.html">未分類</a>
+						</div>
+						<!-- /.bl_accordion bl_accordion__dummy -->
+						<details class="bl_accordion">
+							<summary class="bl_accordion_summary">
+								<a href="./archive.html">親カテゴリー</a>
+							</summary>
+							<!-- /.bl_accordion_summary -->
+							<div class="bl_accordion_description">
+								<div class="bl_accordion bl_accordion__dummy">
+									<a href="./archive.html">子カテゴリー 01</a>
+								</div>
+								<!-- /.bl_accordion bl_accordion__dummy -->
+								<div class="bl_accordion bl_accordion__dummy">
+									<a href="./archive.html">子カテゴリー 02</a>
+								</div>
+								<!-- /.bl_accordion bl_accordion__dummy -->
+								<details class="bl_accordion">
+									<summary class="bl_accordion_summary">
+										<a href="./archive.html">子カテゴリー 03</a>
+									</summary>
+									<!-- /.bl_accordion_summary -->
+									<div class="bl_accordion_description">
+										<div class="bl_accordion bl_accordion__dummy">
+											<a href="./archive.html">孫カテゴリー</a>
+										</div>
+										<!-- /.bl_accordion bl_accordion__dummy -->
+									</div>
+									<!-- /.bl_accordion_description -->
+								</details>
+								<!-- /.bl_accordion -->
+								<div class="bl_accordion bl_accordion__dummy">
+									<a href="./archive.html">子カテゴリー 04</a>
+								</div>
+								<!-- /.bl_accordion bl_accordion__dummy -->
+								<div class="bl_accordion bl_accordion__dummy">
+									<a href="./archive.html">子カテゴリー 05</a>
+								</div>
+								<!-- /.bl_accordion bl_accordion__dummy -->
+							</div>
+							<!-- /.bl_accordion_description -->
+						</details>
+						<!-- /.bl_accordion -->
+					</div>
+					<!-- /.bl_accordion_description -->
+				</details>
+				<!-- /.bl_accordion -->
+				<details class="bl_accordion">
+					<summary class="bl_accordion_summary">年月一覧</summary>
+					<div class="bl_accordion_description">
+						<details class="bl_accordion">
+							<summary class="bl_accordion_summary">
+								<a href="./archive.html">2023 年</a>
+							</summary>
+							<!-- /.bl_accordion_summary -->
+							<div class="bl_accordion_description">
+								<li>
+									<a href="./archive.html">9月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">7月</a>&nbsp;(1)
+								</li>
+							</div>
+							<!-- /.bl_accordion_description -->
+						</details>
+						<!-- /.bl_accordion -->
+						<details class="bl_accordion">
+							<summary class="bl_accordion_summary">
+								<a href="./archive.html">2022 年</a>
+							</summary>
+							<!-- /.bl_accordion_summary -->
+							<div class="bl_accordion_description">
+								<li>
+									<a href="./archive.html">11月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">10月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">9月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">8月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">7月</a>&nbsp;(2)
+								</li>
+								<li>
+									<a href="./archive.html">4月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">3月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">1月</a>&nbsp;(1)
+								</li>
+							</div>
+							<!-- /.bl_accordion_description -->
+						</details>
+						<!-- /.bl_accordion -->
+						<details class="bl_accordion">
+							<summary class="bl_accordion_summary">
+								<a href="./archive.html">2021 年</a>
+							</summary>
+							<!-- /.bl_accordion_summary -->
+							<div class="bl_accordion_description">
+								<li>
+									<a href="./archive.html">12月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">11月</a>&nbsp;(1)
+								</li>
+							</div>
+							<!-- /.bl_accordion_description -->
+						</details>
+						<!-- /.bl_accordion -->
+						<details class="bl_accordion">
+							<summary class="bl_accordion_summary">
+								<a href="./archive.html">2020 年</a>
+							</summary>
+							<!-- /.bl_accordion_summary -->
+							<div class="bl_accordion_description">
+								<li>
+									<a href="./archive.html">1月</a>&nbsp;(1)
+								</li>
+							</div>
+							<!-- /.bl_accordion_description -->
+						</details>
+						<!-- /.bl_accordion -->
+						<details class="bl_accordion">
+							<summary class="bl_accordion_summary">
+								<a href="./archive.html">2019 年</a>
+							</summary>
+							<!-- /.bl_accordion_summary -->
+							<div class="bl_accordion_description">
+								<li>
+									<a href="./archive.html">1月</a>&nbsp;(5)
+								</li>
+							</div>
+							<!-- /.bl_accordion_description -->
+						</details>
+						<!-- /.bl_accordion -->
+						<details class="bl_accordion">
+							<summary class="bl_accordion_summary">
+								<a href="./archive.html">2018 年</a>
+							</summary>
+							<!-- /.bl_accordion_summary -->
+							<div class="bl_accordion_description">
+								<li>
+									<a href="./archive.html">3月</a>&nbsp;(5)
+								</li>
+								<li>
+									<a href="./archive.html">1月</a>&nbsp;(6)
+								</li>
+							</div>
+							<!-- /.bl_accordion_description -->
+						</details>
+						<!-- /.bl_accordion -->
+						<details class="bl_accordion">
+							<summary class="bl_accordion_summary">
+								<a href="./archive.html">2017 年</a>
+							</summary>
+							<!-- /.bl_accordion_summary -->
+							<div class="bl_accordion_description">
+								<li>
+									<a href="./archive.html">3月</a>&nbsp;(1)
+								</li>
+							</div>
+							<!-- /.bl_accordion_description -->
+						</details>
+						<!-- /.bl_accordion -->
+						<details class="bl_accordion">
+							<summary class="bl_accordion_summary">
+								<a href="./archive.html">2015 年</a>
+							</summary>
+							<!-- /.bl_accordion_summary -->
+							<div class="bl_accordion_description">
+								<li>
+									<a href="./archive.html">10月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">9月</a>&nbsp;(2)
+								</li>
+								<li>
+									<a href="./archive.html">8月</a>&nbsp;(3)
+								</li>
+								<li>
+									<a href="./archive.html">7月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">6月</a>&nbsp;(3)
+								</li>
+								<li>
+									<a href="./archive.html">5月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">4月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">3月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">2月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">1月</a>&nbsp;(1)
+								</li>
+							</div>
+							<!-- /.bl_accordion_description -->
+						</details>
+						<!-- /.bl_accordion -->
+						<details class="bl_accordion">
+							<summary class="bl_accordion_summary">
+								<a href="./archive.html">2010 年</a>
+							</summary>
+							<!-- /.bl_accordion_summary -->
+							<div class="bl_accordion_description">
+								<li>
+									<a href="./archive.html">10月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">9月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">8月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">7月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">6月</a>&nbsp;(1)
+								</li>
+								<li>
+									<a href="./archive.html">5月</a>&nbsp;(1)
+								</li>
+							</div>
+							<!-- /.bl_accordion_description -->
+						</details>
+						<!-- /.bl_accordion -->
+					</div>
+					<!-- /.bl_accordion_description -->
+				</details>
+				<!-- /.bl_accordion -->
+			</div>
+			<!-- /.bl_tagMenu -->
+			<!--≡≡≡ ▲ template-parts/parts-categories-and-archives.php ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡-->
 
-    </aside>
-    <!-- /.ly_mainArea_rightSidebar -->
-    <!--≡≡≡ ▲ sidebar-right.php ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+		</aside>
+		<!-- /.ly_mainArea_rightSidebar -->
+		<!--≡≡≡ ▲ sidebar-right.php ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
 
-  </div>
-  <!-- /.ly_mainArea -->
+	</div>
+	<!-- /.ly_mainArea -->
 
-  <!--≡≡≡ ▼ footer.php ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
-  <footer class="ly_footer_wrapper" id="anchor_footer">
-    <div class="ly_footer">
-      <div class="ly_footer_widget3fr">
-        <div class="ly_footer_headerTitle">
-          <img src="./assets/images/Dummy_logo.PNG" alt="Logo">
-          <span>Web-Zukuri</span>
-        </div>
-        <!-- /.ly_footer_headerTitle -->
-        <div class="bl_tagMenu">
-          <ul class="bl_tagMenu_list">
-            <li class="bl_tagMenu_item">
-              <a href="./index.html" class="bl_tagMenu_link">Home</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-          </ul>
-          <!-- /.bl_tagMenu_list -->
-        </div>
-        <!-- /.bl_tagMenu -->
+	<!--≡≡≡ ▼ footer.php ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+	<footer class="ly_footer_wrapper" id="anchor_footer">
+		<div class="ly_footer">
+			<div class="ly_footer_widget3fr">
+				<div class="ly_footer_headerTitle">
+					<img src="./assets/images/Dummy_logo.PNG" alt="Logo">
+					<span>Web-Zukuri</span>
+				</div>
+				<!-- /.ly_footer_headerTitle -->
+				<div class="bl_tagMenu">
+					<ul class="bl_tagMenu_list">
+						<li class="bl_tagMenu_item">
+							<a href="./index.html" class="bl_tagMenu_link">Home</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+					</ul>
+					<!-- /.bl_tagMenu_list -->
+				</div>
+				<!-- /.bl_tagMenu -->
 
-        <!--≡≡≡ ▼ template-parts/parts-menu.php[main] ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
-        <div class="bl_tagMenu">
-          <span class="bl_tagMenu_title" aria-hidden="true" id="main_menu1_in_footer">プロジェクトについて</span>
-          <ul class="bl_tagMenu_list" role="list" aria-labelledby="main_menu1_in_footer">
-            <li class="bl_tagMenu_item">
-              <a href="./single.html" class="bl_tagMenu_link">Read me</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="https://github.com/nonaka101/web-zukuri" class="bl_tagMenu_link">GitHub</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-          </ul>
-          <!-- /.bl_tagMenu_list -->
-        </div>
-        <!-- /.bl_tagMenu -->
-        <div class="bl_tagMenu">
-          <span class="bl_tagMenu_title" aria-hidden="true" id="main_menu2_in_footer">サンプルページ一覧</span>
-          <ul class="bl_tagMenu_list" role="list" aria-labelledby="main_menu2_in_footer">
-            <li class="bl_tagMenu_item">
-              <a href="./single.html" class="bl_tagMenu_link">投稿ページ(Read me)</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="./page.html" class="bl_tagMenu_link">固定ページ</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="./archive.html" class="bl_tagMenu_link">アーカイブ</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="./search.html" class="bl_tagMenu_link">検索</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="./404.html" class="bl_tagMenu_link">404</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-          </ul>
-          <!-- /.bl_tagMenu_list -->
-        </div>
-        <!-- /.bl_tagMenu -->
-        <!--≡≡≡ ▲ template-parts/parts-menu.php[main] ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+				<!--≡≡≡ ▼ template-parts/parts-menu.php[main] ▼ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
+				<div class="bl_tagMenu">
+					<span class="bl_tagMenu_title" aria-hidden="true" id="main_menu1_in_footer">プロジェクトについて</span>
+					<ul class="bl_tagMenu_list" role="list" aria-labelledby="main_menu1_in_footer">
+						<li class="bl_tagMenu_item">
+							<a href="./single.html" class="bl_tagMenu_link">Read me</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="https://github.com/nonaka101/web-zukuri" class="bl_tagMenu_link">GitHub</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+					</ul>
+					<!-- /.bl_tagMenu_list -->
+				</div>
+				<!-- /.bl_tagMenu -->
+				<div class="bl_tagMenu">
+					<span class="bl_tagMenu_title" aria-hidden="true" id="main_menu2_in_footer">サンプルページ一覧</span>
+					<ul class="bl_tagMenu_list" role="list" aria-labelledby="main_menu2_in_footer">
+						<li class="bl_tagMenu_item">
+							<a href="./single.html" class="bl_tagMenu_link">投稿ページ(Read me)</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="./page.html" class="bl_tagMenu_link">固定ページ</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="./archive.html" class="bl_tagMenu_link">アーカイブ</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="./search.html" class="bl_tagMenu_link">検索</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="./404.html" class="bl_tagMenu_link">404</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+					</ul>
+					<!-- /.bl_tagMenu_list -->
+				</div>
+				<!-- /.bl_tagMenu -->
+				<!--≡≡≡ ▲ template-parts/parts-menu.php[main] ▲ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡-->
 
-      </div>
-      <!-- /.ly_footer_widget3fr -->
+			</div>
+			<!-- /.ly_footer_widget3fr -->
 
-      <div class="ly_footer_widget6fr">
-        <h2 class="ly_footer_headerTitle">最新の投稿</h2>
+			<div class="ly_footer_widget6fr">
+				<h2 class="ly_footer_headerTitle">最新の投稿</h2>
 				<div class="bl_cardUnit bl_cardUnit__1col">
 
 					<article class="bl_card bl_card__small bl_card__clickable">
@@ -1311,52 +1311,52 @@
 					<!-- /.bl_card bl_card__small bl_card__clickable -->
 				</div>
 				<!-- /.bl_cardUnit bl_cardUnit__1col -->
-      </div>
-      <!-- /.ly_footer_widget6fr -->
+			</div>
+			<!-- /.ly_footer_widget6fr -->
 
-      <div class="ly_footer_widget3fr">
+			<div class="ly_footer_widget3fr">
 				<h2 class="ly_footer_headerTitle">ユーティリティ</h2>
 				<p class="el_memo">
 					このサイトはテスト用のものです。
 				</p>
 				<div class="bl_tagMenu">
-          <span class="bl_tagMenu_title" aria-hidden="true" id="external_link_in_footer">外部リンク</span>
-          <ul class="bl_tagMenu_list" role="list" aria-labelledby="external_link_in_footer">
-            <li class="bl_tagMenu_item">
-              <a href="#" class="bl_tagMenu_link">YouTube</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="#" class="bl_tagMenu_link">X (旧:Twitter)</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="#" class="bl_tagMenu_link">Zenn</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-          </ul>
-          <!-- /.bl_tagMenu_list -->
-        </div>
-        <!-- /.bl_tagMenu -->
+					<span class="bl_tagMenu_title" aria-hidden="true" id="external_link_in_footer">外部リンク</span>
+					<ul class="bl_tagMenu_list" role="list" aria-labelledby="external_link_in_footer">
+						<li class="bl_tagMenu_item">
+							<a href="#" class="bl_tagMenu_link">YouTube</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="#" class="bl_tagMenu_link">X (旧:Twitter)</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="#" class="bl_tagMenu_link">Zenn</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+					</ul>
+					<!-- /.bl_tagMenu_list -->
+				</div>
+				<!-- /.bl_tagMenu -->
 				<div class="bl_tagMenu">
-          <span class="bl_tagMenu_title" aria-hidden="true" id="footer_menu_in_footer">サイトナビゲーション</span>
-          <ul class="bl_tagMenu_list" role="list" aria-labelledby="footer_menu_in_footer">
-            <li class="bl_tagMenu_item">
-              <a href="#" class="bl_tagMenu_link">サイトマップ</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="#" class="bl_tagMenu_link">各種ポリシー</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-            <li class="bl_tagMenu_item">
-              <a href="#" class="bl_tagMenu_link">ご意見・お問い合わせ</a>
-            </li>
-            <!-- /.bl_tagMenu_item -->
-          </ul>
-          <!-- /.bl_tagMenu_list -->
-        </div>
-        <!-- /.bl_tagMenu -->
+					<span class="bl_tagMenu_title" aria-hidden="true" id="footer_menu_in_footer">サイトナビゲーション</span>
+					<ul class="bl_tagMenu_list" role="list" aria-labelledby="footer_menu_in_footer">
+						<li class="bl_tagMenu_item">
+							<a href="#" class="bl_tagMenu_link">サイトマップ</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="#" class="bl_tagMenu_link">各種ポリシー</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+						<li class="bl_tagMenu_item">
+							<a href="#" class="bl_tagMenu_link">ご意見・お問い合わせ</a>
+						</li>
+						<!-- /.bl_tagMenu_item -->
+					</ul>
+					<!-- /.bl_tagMenu_list -->
+				</div>
+				<!-- /.bl_tagMenu -->
 				<div class="bl_address">
 					<h3 class="bl_address_title">アドレス</h3>
 					<address class="bl_address_item">
@@ -1377,11 +1377,11 @@
 					</p>
 					<!-- /.bl_address_item -->
 				</div>
-        <!-- /.bl_address -->
-      </div>
-      <!-- /.ly_footer_widget3fr -->
-    </div>
-    <!-- /.ly_footer -->
+				<!-- /.bl_address -->
+			</div>
+			<!-- /.ly_footer_widget3fr -->
+		</div>
+		<!-- /.ly_footer -->
 		<div class="ly_footer_copyright">
 			<p class="el_copyright">
 				2023 Web-Zukuri（コピーライト用テキスト）
@@ -1389,51 +1389,51 @@
 			<!-- /.el_copyright -->
 		</div>
 		<!-- /.el_footer_copyright -->
-  </footer>
-  <!-- /.ly_footer_wrapper -->
+	</footer>
+	<!-- /.ly_footer_wrapper -->
 
-  <button type="button" id="js_pageTop" aria-label="ページトップに戻る">
-    <svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-      viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0
-        .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z">
-      </path>
-    </svg>
-  </button>
-  <!-- /#js_pagetop -->
+	<button type="button" id="js_pageTop" aria-label="ページトップに戻る">
+		<svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+			viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0
+				.708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z">
+			</path>
+		</svg>
+	</button>
+	<!-- /#js_pagetop -->
 
-  <div class="bl_devToolBox" id="js_toolBox">
-    <div class="bl_devToolBox_btn">
-      <input type="checkbox" name="is-show" id="js_toolBox_chkbox">
-    </div>
-    <!-- /.bl_devToolBox_btn -->
-    <div class="bl_devToolBox_utils">
+	<div class="bl_devToolBox" id="js_toolBox">
+		<div class="bl_devToolBox_btn">
+			<input type="checkbox" name="is-show" id="js_toolBox_chkbox">
+		</div>
+		<!-- /.bl_devToolBox_btn -->
+		<div class="bl_devToolBox_utils">
 			<div id="js_fontSize_controller">
 				<input type="range" name="font-size" id="js_fontSize_range" value="16" max="32" min="10" step="1">
 				<output id="js_fontSize_result"></output>
 			</div>
-      <hr>
-      <div>
-        <label for="js_fontSize_chkbox">
-          <input type="checkbox" name="enabled-font-size" id="js_fontSize_chkbox">
-          フォントサイズ
-        </label>
+			<hr>
+			<div>
+				<label for="js_fontSize_chkbox">
+					<input type="checkbox" name="enabled-font-size" id="js_fontSize_chkbox">
+					フォントサイズ
+				</label>
 			</div>
 			<hr>
-      <div>
-        <label for="js_darkMode">
-          <input type="checkbox" name="is-dark-mode" id="js_darkMode">
-          ダークモード
-        </label>
-      </div>
+			<div>
+				<label for="js_darkMode">
+					<input type="checkbox" name="is-dark-mode" id="js_darkMode">
+					ダークモード
+				</label>
+			</div>
 		</div>
-    <!-- /.bl_debToolBox_utils -->
-  </div>
-  <!-- /.bl_devToolBox -->
+		<!-- /.bl_debToolBox_utils -->
+	</div>
+	<!-- /.bl_devToolBox -->
 
-  <script src="./assets/js/common.js"></script>
-  <!-- 開発用 -->
-  <script src="./assets/js/devUtilities.js"></script>
+	<script src="./assets/js/common.js"></script>
+	<!-- 開発用 -->
+	<script src="./assets/js/devUtilities.js"></script>
 </body>
 
 </html>

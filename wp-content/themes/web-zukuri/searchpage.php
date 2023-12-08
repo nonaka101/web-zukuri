@@ -14,7 +14,7 @@ Template Post Type: page
 <main class="ly_mainArea_content ly_mainArea_content__left" id="anchor_mainContent">
 	<h1 class="el_header_lv1">サイト内検索</h1>
 	<p>検索結果は検索フォームの下に表示されます。</p>
-  <?php get_search_form(); ?>
+	<?php get_search_form(); ?>
 </main>
 <?php get_sidebar('right'); ?>
 <?php get_footer() ;?>

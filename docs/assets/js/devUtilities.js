@@ -1,10 +1,10 @@
 /* ≡≡≡ ▀▄ 開発用ツール ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-  ■ 概要
-    開発する際、容易に検証するためのツール集
-  ■ 機能
-    + ShowToolBox : ツールボックスを表示
-    + DarkMode : ダークモードの切り替え
-    + FontSizeChanger : ルート要素のフォントサイズを変更
+	■ 概要
+		開発する際、容易に検証するためのツール集
+	■ 機能
+		+ ShowToolBox : ツールボックスを表示
+		+ DarkMode : ダークモードの切り替え
+		+ FontSizeChanger : ルート要素のフォントサイズを変更
 ---------------------------------------------------------------------------- */
 
 
@@ -12,8 +12,8 @@
 
 
 /* ≡≡≡ ▀▄ ShowToolBox ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-  ■ 概要
-    開発用機能をまとめたツールボックス要素を、画面右下に固定する
+	■ 概要
+		開発用機能をまとめたツールボックス要素を、画面右下に固定する
 		必要になったときには画面内に出てくるようにし、それ以外は邪魔にならないよう隠しておく
 ---------------------------------------------------------------------------- */
 
@@ -23,11 +23,11 @@ const toolBox = document.getElementById('js_toolBox');
 
 // チェック時には要素を表示範囲内に移動、そうでなければ外側に隠す
 toolBoxChkbox.addEventListener('change', (e) => {
-  if(e.target.checked == true){
-    toolBox.style.right = '-10px';
-  } else {
-    toolBox.style.right = '-200px';
-  }
+	if(e.target.checked == true){
+		toolBox.style.right = '-10px';
+	} else {
+		toolBox.style.right = '-200px';
+	}
 })
 
 
@@ -35,8 +35,8 @@ toolBoxChkbox.addEventListener('change', (e) => {
 
 
 /* ≡≡≡ ▀▄ DarkMode ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-  ■ 概要
-    htmlタグに `is_darkMode` クラスをつけ外しすることで、カラーモードを制御する
+	■ 概要
+		htmlタグに `is_darkMode` クラスをつけ外しすることで、カラーモードを制御する
 		カラーモードの制御には、CSSのカスタムプロパティを使用しているので詳細はそちらを参照
 	■ 備考
 		カラーモードの状態は、ブラウザ（OS）の設定を引き継ぐ
@@ -51,23 +51,23 @@ const darkModeChkbox = document.getElementById("js_darkMode");
 
 /** ダークモードをオンにする（クラス付与、チェックボックスにチェック付与） */
 function darkModeOn() {
-  document.documentElement.classList.add("is_darkMode"); // ルート要素<html>にクラスを追加
-  darkModeChkbox.checked = true;
+	document.documentElement.classList.add("is_darkMode"); // ルート要素<html>にクラスを追加
+	darkModeChkbox.checked = true;
 }
 
 /** ダークモードをオフにする（クラス除去、チェックボックスの解除） */
 function darkModeOff() {
-  document.documentElement.classList.remove("is_darkMode"); // クラスの削除
-  darkModeChkbox.checked = false;
+	document.documentElement.classList.remove("is_darkMode"); // クラスの削除
+	darkModeChkbox.checked = false;
 }
 
 // イベントリスナー
 let listener = (event) => {
-  if (event.matches) {
-    darkModeOn();
-  } else {
-    darkModeOff();
-  }
+	if (event.matches) {
+		darkModeOn();
+	} else {
+		darkModeOff();
+	}
 };
 
 // リスナー登録
@@ -78,20 +78,20 @@ listener(darkModeOS);
 
 // スイッチの操作に応じて切り替え処理
 darkModeChkbox.addEventListener("change", () => {
-  if (darkModeChkbox.checked) {
-    darkModeOn();
-    sessionStorage.setItem("is_darkMode", "on");
-  } else {
-    darkModeOff();
-    sessionStorage.setItem("is_darkMode", "off");
-  }
+	if (darkModeChkbox.checked) {
+		darkModeOn();
+		sessionStorage.setItem("is_darkMode", "on");
+	} else {
+		darkModeOff();
+		sessionStorage.setItem("is_darkMode", "off");
+	}
 });
 
 // ロード時の状況に応じて切り替え
 if (sessionStorage.getItem("is_darkMode") === "on") {
-  darkModeOn();
+	darkModeOn();
 } else if (sessionStorage.getItem("is_darkMode") === "off") {
-  darkModeOff();
+	darkModeOff();
 }
 
 
@@ -99,8 +99,8 @@ if (sessionStorage.getItem("is_darkMode") === "on") {
 
 
 /* ≡≡≡ ▀▄ FontSizeChanger ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-  ■ 概要
-    スタイリングに `rem` と `px` を併用しているので、ルートのフォントサイズの変化による影響を見るためのもの
+	■ 概要
+		スタイリングに `rem` と `px` を併用しているので、ルートのフォントサイズの変化による影響を見るためのもの
 		内部的にはスライダーの値（10px〜32px）を、htmlタグのスタイル `font-size` に適用することで処理している
 	■ 備考
 		OS（ブラウザ）の設定に反応しているかを確認できるように、チェックボックスで機能の有効無効を管理している
@@ -164,7 +164,7 @@ fontSizeRange.addEventListener('input', (e) => {
 
 // chkbox を変更すると、機能の有効無効を切り替え
 fontSizeChkbox.addEventListener('change', (e) => {
-  if(e.target.checked == true){
+	if(e.target.checked == true){
 		changeFontSize(true);
 	} else {
 		changeFontSize(false);

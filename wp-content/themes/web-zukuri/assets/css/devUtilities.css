@@ -1,35 +1,35 @@
 @charset "UTF-8";
 
 /* ≡≡≡ ❒ bl_component ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-  ■ 概要
-    固定ページにある、コンポーネント用のボックス
+	■ 概要
+		固定ページにある、コンポーネント用のボックス
 		（調べやすいよう、リサイズを可能にしている）
-  ■ 構成
-    bl_component_box : ベース
-      bl_component_caption : ボックス上部に固定されたキャプション
+	■ 構成
+		bl_component_box : ベース
+			bl_component_caption : ボックス上部に固定されたキャプション
 ----------------------------------------------------------------------------- */
 .bl_component_box {
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 1rem;
-  overflow-y: auto;
-  resize: horizontal;
-  border: var(--sc_border_field);
-  border-color: var(--sc_bg_btn__primary);
+	padding: 0;
+	margin-top: 0;
+	margin-bottom: 1rem;
+	overflow-y: auto;
+	resize: horizontal;
+	border: var(--sc_border_field);
+	border-color: var(--sc_bg_btn__primary);
 }
 
 .bl_component_box > *:not(.bl_component_caption) {
-  margin: 10px;
+	margin: 10px;
 }
 
 .bl_component_caption {
-  padding: 0.1em 0.5em;
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--sc_txt_btn__primary);
-  background-color: var(--sc_bg_btn__primary);
+	padding: 0.1em 0.5em;
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--sc_txt_btn__primary);
+	background-color: var(--sc_bg_btn__primary);
 }
 
 
@@ -37,49 +37,49 @@
 
 
 /* ≡≡≡ ❒ bl_devToolBox ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-  ■ 概要
-    開発に使うツール
-  ■ 構成
-    bl_devToolBox : ベース
-      bl_devToolBox_btn : ツールボックスを開閉するためのチェックボックス
-      bl_devToolBox_utils : ツール集
+	■ 概要
+		開発に使うツール
+	■ 構成
+		bl_devToolBox : ベース
+			bl_devToolBox_btn : ツールボックスを開閉するためのチェックボックス
+			bl_devToolBox_utils : ツール集
 ----------------------------------------------------------------------------- */
 .bl_devToolBox {
-  position: fixed;
-  right: -200px;
-  bottom: 110px;
-  z-index: 999;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: flex-end;
+	position: fixed;
+	right: -200px;
+	bottom: 110px;
+	z-index: 999;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: flex-end;
 }
 
 .bl_devToolBox * {
-  font-size: 16px;
-  color: var(--sc_txt_body__small);
+	font-size: 16px;
+	color: var(--sc_txt_body__small);
 }
 
 .bl_devToolBox_btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background-color: var(--sc_bg_body__tertiary);
-  border-top: 2px solid var(--sc_bg_btn__primary);
-  border-bottom: 2px solid var(--sc_bg_btn__primary);
-  border-left: 2px solid var(--sc_bg_btn__primary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	background-color: var(--sc_bg_body__tertiary);
+	border-top: 2px solid var(--sc_bg_btn__primary);
+	border-bottom: 2px solid var(--sc_bg_btn__primary);
+	border-left: 2px solid var(--sc_bg_btn__primary);
 }
 
 .bl_devToolBox_btn > input {
-  width: 24px;
-  height: 24px;
+	width: 24px;
+	height: 24px;
 }
 
 .bl_devToolBox_utils {
-  display: block;
-  width: 200px;
-  padding: 4px;
-  background-color: var(--sc_bg_body__tertiary);
-  border: 2px solid var(--sc_bg_btn__primary);
+	display: block;
+	width: 200px;
+	padding: 4px;
+	background-color: var(--sc_bg_body__tertiary);
+	border: 2px solid var(--sc_bg_btn__primary);
 }

@@ -19,7 +19,7 @@
 		</div>
 		<!-- /.bl_searchForm_inputSelect -->
 	</div>
-  <!-- /.bl_searchForm -->
+	<!-- /.bl_searchForm -->
 
 	<div class="bl_searchForm">
 		<label for="txt" class="bl_searchForm_label">検索キーワード</label>
