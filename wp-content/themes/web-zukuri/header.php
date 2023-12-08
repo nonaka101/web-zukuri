@@ -34,7 +34,7 @@
 
 				<nav class="bl_header_mobileMenu" id="anchor_mobileMenu" aria-label="メニュー">
 					<a class="bl_header_btnIcon" href="<?php echo esc_url(url: home_url()).'/zkr-searchpage'; ?>">
-						<svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+						<svg role="graphics-symbol img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
 							height="24">
 							<path d="M21 20.5L15 14.5C16.2 13.2 16.9 11.4 16.9 9.5C17 5.4 13.6 2 9.5 2C5.4 2 2 5.4
 									2 9.5C2 13.6 5.3 17 9.5 17C11.2 17 12.7 16.4 14 15.5L20 21.5L21 20.5ZM3.5
@@ -46,7 +46,7 @@
 					</a>
 					<!-- /.bl_header_btnIcon -->
 					<button type="button" aria-controls="menu" id="menu-button" class="bl_header_btnIcon">
-						<svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+						<svg role="graphics-symbol img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
 							height="24">
 							<path fill-rule="evenodd" clip-rule="evenodd"
 								d="M21 5.5H3V7H21V5.5ZM21 11.2998H3V12.7998H21V11.2998ZM3 17H21V18.5H3V17Z"></path>
@@ -100,7 +100,7 @@
 				<div class="bl_menuHeader">
 					<h2 class="bl_menuHeader_title">メニュー</h2>
 					<button class="bl_menuHeader_btnIcon" type="button" onclick="closeDialog()">
-						<svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+						<svg role="graphics-symbol img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 24 24" width="24" height="24">
 							<path stroke-width="1.4286" d="M 22,4.0142857 19.985715,2 12,9.9857149 4.0142857,2 2,4.0142857 9.9857149,12 2,19.985715 4.0142857,22 12,14.014286 19.985715,22 22,19.985715 14.014286,12 Z"/>
 						</svg>

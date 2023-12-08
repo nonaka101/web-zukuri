@@ -30,7 +30,7 @@ function pagenation( $pages = '', $range = 3 ) {
     // 最初へ
     if ( $paged > $range + 1 ) {
       echo '<a class="bl_pager_btn" aria-label="最初のページ" href="' .get_pagenum_link(1). '">'."\n";
-      echo '<svg role="graphics-symbol" aria-hidden="true" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24">'."\n";
+      echo '<svg role="graphics-symbol img" aria-hidden="true" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24">'."\n";
 			echo '<g transform="translate(-3,-3)">'."\n";
 			echo '<g transform="matrix(.9901 0 0 1 -18.274 -11.411)">'."\n";
 			echo '<g transform="translate(25.178 14.411)">'."\n";
@@ -46,7 +46,7 @@ function pagenation( $pages = '', $range = 3 ) {
     // 前へ
     if ( $paged > 1 ) {
       echo '<a class="bl_pager_btn" aria-label="前のページ" href="' . get_pagenum_link($paged - 1) . '">'."\n";
-      echo '<svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="24" width="24">'."\n";
+      echo '<svg role="graphics-symbol img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="24" width="24">'."\n";
 			echo '<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>'."\n";
 			echo '</svg>'."\n";
 			echo '</a>'."\n";
@@ -68,7 +68,7 @@ function pagenation( $pages = '', $range = 3 ) {
     // 次へ
     if ( $paged < $pages ) {
       echo '<a class="bl_pager_btn" aria-label="次のページ" href="'.get_pagenum_link($paged + 1).'">'."\n";
-      echo '<svg role="graphics-symbol" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="24" width="24">'."\n";
+      echo '<svg role="graphics-symbol img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="24" width="24">'."\n";
 			echo '<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>'."\n";
 			echo '</svg>'."\n";
 			echo '</a>'."\n";
@@ -77,7 +77,7 @@ function pagenation( $pages = '', $range = 3 ) {
     // 最後へ
     if ( $paged + $range < $pages ) {
       echo '<a class="bl_pager_btn" aria-label="最後のページ" href="'.get_pagenum_link( $pages ).'">'."\n";
-      echo '<svg role="graphics-symbol" aria-hidden="true" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24">'."\n";
+      echo '<svg role="graphics-symbol img" aria-hidden="true" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24">'."\n";
       echo '<g transform="translate(-3,-3)">'."\n";
       echo '<g transform="matrix(-.9901 0 0 -1 48.274 41.411)">'."\n";
       echo '<g transform="translate(25.178 14.411)">'."\n";
