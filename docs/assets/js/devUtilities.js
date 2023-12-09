@@ -119,7 +119,7 @@ const fontSizeResult = document.getElementById('js_fontSize_result');
  * @param {boolean} isShow - 機能が有効化されているか
  * @param {int} size - フォントサイズ
  */
-let currentFontState
+let currentFontState;
 if (sessionStorage.getItem('currentFontState')){
 	currentFontState = sessionStorage.getItem('currentFontState');
 	currentFontState = JSON.parse(currentFontState);
