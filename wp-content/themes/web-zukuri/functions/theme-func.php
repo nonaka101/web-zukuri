@@ -120,19 +120,23 @@ function echo_cat_thml($cat_ID){
       $child_categories = get_categories( $args );
       unset($args);
 
-      if (empty($child_categories)){
-        echo '<div class="bl_accordion bl_accordion__dummy">'."\n";
-				echo '<a href="'. $url .'">' . $category->name . '</a>'."\n";
-				echo '</div>';
-      } else {
+      if ($child_categories){
+        echo '<li>'."\n";
         echo '<details class="bl_accordion">'."\n";
-				echo '<summary class="bl_accordion_summary">'."\n";
-				echo '<a href="'. $url .'">' . $category->name . '</a>'."\n";
-				echo '</summary>'."\n";
-				echo '<div class="bl_accordion_description">'."\n";
+				// 親カテゴリのサマリー
+				echo '<summary class="bl_accordion_summary">'. $category->name . '</summary>' ."\n";
+				echo '<ul class="bl_accordion_description">'."\n";
+      }
+
+			echo '<li class="bl_accordion bl_accordion__dummy">'."\n";
+			echo '<a href="'. $url .'">' . $category->name . '</a>'."\n";
+			echo '</li>'."\n";
+
+			if ($child_categories){
         echo_cat_thml($category->cat_ID);
-        echo '</div>'."\n";
+        echo '</ul>'."\n";
 				echo '</details>'."\n";
+				echo '</li>'."\n";
       }
     }
   }
@@ -141,9 +145,9 @@ function echo_cat_thml($cat_ID){
 function zkr_category_list(){
   echo '<details class="bl_accordion">'."\n";
 	echo '<summary class="bl_accordion_summary">カテゴリ一覧</summary>'."\n";
-	echo '<div class="bl_accordion_description">';
+	echo '<ul class="bl_accordion_description">';
   echo_cat_thml(0);
-  echo '</div>'."\n";
+  echo '</ul>'."\n";
 	echo '</details>'."\n";
 }
 
@@ -154,7 +158,7 @@ function zkr_category_list(){
 function zkr_archive_list(){
   echo '<details class="bl_accordion">'."\n";
 	echo '<summary class="bl_accordion_summary">年月アーカイブ</summary>'."\n";
-	echo '<div class="bl_accordion_description">'."\n";
+	echo '<ul class="bl_accordion_description">'."\n";
 
   //1. 年を抽出して配列に格納
   $archives_year = strip_tags(wp_get_archives('type=yearly&show_count=0&format=custom&echo=0'));
@@ -172,11 +176,11 @@ function zkr_archive_list(){
   //1で抽出した年数分繰り返し
   foreach ($archives_year_array as $year_value){
     //<li><a href="/year">で年を表示
+    echo '<li>'."\n";
     echo '<details class="bl_accordion">'."\n";
-		echo '<summary class="bl_accordion_summary">'."\n";
-		echo '<a href="' . home_url( '/' ) . ltrim($year_value) . '">' .ltrim($year_value) . ' 年</a>'."\n";
-		echo '</summary>'."\n";
-		echo '<div class="bl_accordion_description">'."\n";
+		echo '<summary class="bl_accordion_summary">' .ltrim($year_value) . ' 年</summary>'."\n";
+		echo '<ul class="bl_accordion_description">'."\n";
+		echo '<li><a href="' . home_url( '/' ) . ltrim($year_value) . '">' .ltrim($year_value) . ' 年全体</a></li>'."\n";
 
     //月別アーカイブ数分繰り返し
     foreach ( $archives_array as $archives_value) {
@@ -188,8 +192,10 @@ function zkr_archive_list(){
       }
 
     }
+    echo '</ul>'."\n";
     echo '</details>'."\n";
+    echo '</li>'."\n";
   }
-  echo '</div>'."\n";
+  echo '</ul>'."\n";
 	echo '</details>'."\n"; // summary:年月アーカイブ の details 要素
 }
