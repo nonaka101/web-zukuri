@@ -1,6 +1,6 @@
 	</div>
 	<!-- /.ly_mainArea -->
-	<footer class="ly_footer_wrapper" id="anchor_footer">
+	<footer class="ly_footer_wrapper" id="anchor_footer" tabindex="-1">
 		<div class="ly_footer">
 			<div class="ly_footer_widget3fr">
 				<div class="ly_footer_headerTitle">

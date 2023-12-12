@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <?php get_sidebar('left'); ?>
 
-<main class="ly_mainArea_content ly_mainArea_content__middle" id="anchor_mainContent">
+<main class="ly_mainArea_content ly_mainArea_content__middle" id="anchor_mainContent" tabindex="-1">
 	<div class="bl_cardUnit bl_cardUnit__1col">
 
 		<?php if(have_posts()): ?>

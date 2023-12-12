@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main class="ly_mainArea_content ly_mainArea_content__left" id="anchor_mainContent">
+<main class="ly_mainArea_content ly_mainArea_content__left" id="anchor_mainContent" tabindex="-1">
 	<article>
 		<h1 class="el_header_lv1">ページが見つかりません</h1>
 		<p>

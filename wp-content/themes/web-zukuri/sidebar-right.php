@@ -1,4 +1,4 @@
-<aside class="ly_mainArea_rightSidebar" id="anchor_desktopSubMenu">
+<aside class="ly_mainArea_rightSidebar" id="anchor_desktopSubMenu" tabindex="-1">
 	<div class="bl_tagMenu">
 		<ul class="bl_tagMenu_list">
 			<li class="bl_tagMenu_item">

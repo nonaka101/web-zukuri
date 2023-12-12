@@ -32,7 +32,7 @@
 				</a>
 				<!-- /.bl_header_siteTitle -->
 
-				<nav class="bl_header_mobileMenu" id="anchor_mobileMenu" aria-label="メニュー">
+				<nav class="bl_header_mobileMenu" id="anchor_mobileMenu" aria-label="メニュー" tabindex="-1">
 					<a class="bl_header_btnIcon" href="<?php echo esc_url(url: home_url()).'/zkr-searchpage'; ?>">
 						<svg role="graphics-symbol img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
 							height="24">

@@ -1,6 +1,6 @@
 <?php get_header() ;?>
 
-	<main class="ly_mainArea_content ly_mainArea_content__left" id="anchor_mainContent">
+	<main class="ly_mainArea_content ly_mainArea_content__left" id="anchor_mainContent" tabindex="-1">
 	<?php if(have_posts()): ?>
 		<?php
 			while(have_posts()):
@@ -99,7 +99,7 @@
 					</div>
 				<?php endif; ?>
 
-				<div id="anchor_mainArticle" class="wp_blockContent">
+				<div id="anchor_mainArticle" class="wp_blockContent" tabindex="-1">
 					<?php the_content(); ?>
 				</div>
 
