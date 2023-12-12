@@ -139,7 +139,7 @@ fontSizeResult.textContent = currentFontState.size;
  *
  * 機能：スライドレンジの表示、ルートフォントサイズの制御（レンジの値、OS側の設定）、フォント設定情報の更新
  *
- * @param {boolean} isShow - 機能が有効化されているか
+ * @param {boolean} isShow
  */
 function changeFontSize(isShow){
 	let val = fontSizeRange.value;
@@ -164,11 +164,7 @@ fontSizeRange.addEventListener('input', (e) => {
 
 // chkbox を変更すると、機能の有効無効を切り替え
 fontSizeChkbox.addEventListener('change', (e) => {
-	if(e.target.checked == true){
-		changeFontSize(true);
-	} else {
-		changeFontSize(false);
-	}
+	changeFontSize(e.target.checked);
 })
 
 // chkbox を設定情報の内容に更新し、`changeFontSize()` を通す
