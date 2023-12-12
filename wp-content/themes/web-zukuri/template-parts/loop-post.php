@@ -5,7 +5,7 @@ if($is_footer) $card_class .= ' bl_card__small';
 if(is_sticky()) $card_class .= ' bl_card__sticky';
 ?>
 <article
-	<?php if(! $is_footer) echo 'id="post-' . the_ID() . '" '; // フッターにはID重複を避けるため設定しない ?>
+	<?php if(! $is_footer) echo 'id="post-'.get_the_ID().'" '; // フッターにはID重複を避けるため設定しない ?>
 	<?php post_class($card_class); ?>
 	<?php if(is_sticky()) echo ' aria-label="固定表示に設定された記事"'; ?>
 >
