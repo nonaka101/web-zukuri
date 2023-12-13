@@ -261,7 +261,7 @@ select::-ms-expand {
 
 
 /* フォーカス時のスタイル */
-*:focus{
+*:focus-visible{
 	outline: var(--sc_border_focused);
 	outline-offset: 2px;
 	animation-name: focusEffect;
