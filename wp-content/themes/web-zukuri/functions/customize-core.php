@@ -8,7 +8,7 @@ function my_pre_get_posts( $query ) {
   }
   // search.php を使用時、フォームの表示件数(name='n') の情報があればクエリに反映
   if ( $query->is_search() ) {
-    if($_GET['n']){
+    if(isset($_GET['n'])){
       $query->set('posts_per_page', intval($_GET['n']));
     }
   }

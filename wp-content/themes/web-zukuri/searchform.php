@@ -1,4 +1,9 @@
-<form action="<?php echo home_url(); ?>" class="bl_searchForm_wrapper">
+<form
+	role="search"
+	action="<?php echo home_url('/'); ?>"
+	method="get"
+	class="bl_searchForm_wrapper"
+>
 	<div class="bl_searchForm">
 		<label for="num" class="bl_searchForm_label">表示件数</label>
 		<?php // 検索時の抽出件数を引継ぎ
