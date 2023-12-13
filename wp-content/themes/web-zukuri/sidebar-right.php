@@ -2,7 +2,7 @@
 	<div class="bl_tagMenu">
 		<ul class="bl_tagMenu_list">
 			<li class="bl_tagMenu_item">
-				<a class="bl_tagMenu_link" href="<?php echo esc_url(home_url()).'/zkr-searchpage'; ?>">サイト内検索</a>
+				<a class="bl_tagMenu_link" href="javascript:searchform.submit()">サイト内検索</a>
 			</li>
 			<!-- /.bl_tagMenu_item -->
 		</ul>

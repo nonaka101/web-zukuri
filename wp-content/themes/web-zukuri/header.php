@@ -33,7 +33,11 @@
 				<!-- /.bl_header_siteTitle -->
 
 				<nav class="bl_header_mobileMenu" id="anchor_mobileMenu" aria-label="メニュー" tabindex="-1">
-					<a class="bl_header_btnIcon" href="<?php echo esc_url(url: home_url()).'/zkr-searchpage'; ?>">
+					<?php // 下記フォームは検索ページリンク用のもの、下部にあるボタンアイコン、ダイアログ、右サイドバーのaタグに使用している ?>
+					<form name="searchform" role="search" method="get" action="<?php echo home_url('/'); ?>" style="display: none;">
+						<input type="hidden" name="s" value="">
+					</form>
+					<a class="bl_header_btnIcon" href="javascript:searchform.submit()">
 						<svg role="graphics-symbol img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
 							height="24">
 							<path d="M21 20.5L15 14.5C16.2 13.2 16.9 11.4 16.9 9.5C17 5.4 13.6 2 9.5 2C5.4 2 2 5.4
@@ -136,7 +140,7 @@
 				<div class="bl_tagMenu">
 					<ul class="bl_tagMenu_list">
 						<li class="bl_tagMenu_item">
-							<a class="bl_tagMenu_link" href="<?php echo esc_url(home_url()).'/zkr-searchpage'; ?>">サイト内検索</a>
+							<a class="bl_tagMenu_link" href="javascript:searchform.submit()">サイト内検索</a>
 						</li>
 						<!-- /.bl_tagMenu_item -->
 					</ul>
