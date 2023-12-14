@@ -13,7 +13,7 @@ if(is_sticky()) $card_class .= ' bl_card__sticky';
 
 		<?php if(! $is_footer && (is_front_page() || is_home()) && has_post_thumbnail()): ?>
 			<div class="bl_card_thumbnail">
-				<?php the_post_thumbnail('thumbnail'); ?>
+				<?php the_post_thumbnail('zkr-thumbnail'); ?>
 			</div>
 			<!-- /.bl_card_thumbnail -->
 		<?php endif; ?>
