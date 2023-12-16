@@ -115,6 +115,10 @@
 			bl_devToolBox_utils : ツール集
 ----------------------------------------------------------------------------- */
 .bl_devToolBox {
+	--tb_text: #000000;
+	--tb_bg: #f8f8fb;
+	--tb_accent: #0031d8;
+
 	position: fixed;
 	right: -200px;
 	bottom: 110px;
@@ -126,7 +130,7 @@
 
 .bl_devToolBox * {
 	font-size: 16px;
-	color: var(--sc_txt_body__small);
+	color: var(--tb_text);
 }
 
 .bl_devToolBox_btn {
@@ -135,10 +139,10 @@
 	justify-content: center;
 	width: 32px;
 	height: 32px;
-	background-color: var(--sc_bg_body__tertiary);
-	border-top: 2px solid var(--sc_bg_btn__primary);
-	border-bottom: 2px solid var(--sc_bg_btn__primary);
-	border-left: 2px solid var(--sc_bg_btn__primary);
+	background-color: var(--tb_bg);
+	border-top: 2px solid var(--tb_accent);
+	border-bottom: 2px solid var(--tb_accent);
+	border-left: 2px solid var(--tb_accent);
 }
 
 .bl_devToolBox_btn > input {
@@ -150,6 +154,76 @@
 	display: block;
 	width: 200px;
 	padding: 4px;
-	background-color: var(--sc_bg_body__tertiary);
-	border: 2px solid var(--sc_bg_btn__primary);
+	background-color: var(--tb_bg);
+	border: 2px solid var(--tb_accent);
+}
+
+
+
+
+
+/* ≡≡≡ ❒ bl_toggleArea ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+	■ 概要
+		トグルボタンとラベルを持つ、トグルの中身はチェックボックス
+	■ 構成
+		bl_toggleArea : ベース
+			bl_toggleArea_chkbox : トグルボタン
+			bl_toggleArea_label : ラベル
+----------------------------------------------------------------------------- */
+@supports(-webkit-appearance: none) or (-moz-appearance: none) {
+	.bl_toggleArea {
+		display: flex;
+		flex-flow: row nowrap;
+		gap: 8px;
+		padding: 0;
+		margin: 0;
+	}
+
+	.bl_toggleArea_chkbox{
+		position: relative;
+		flex: none;
+		width: 50px;
+		height: 26px;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		background-color: #f1f1f4;
+		border: 1px solid #949497;
+		border-radius: 99px;
+	}
+
+	.bl_toggleArea_chkbox::after {
+		position: absolute;
+		top: 0;
+		right: auto;
+		left: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		content: "";
+		background-color: #ffffff;
+		border: 1px solid #414143;
+		border-radius: 50%;
+		transition: all .3s ease;
+	}
+
+	.bl_toggleArea_chkbox:checked {
+		background-color: var(--tb_accent);
+	}
+
+	.bl_toggleArea_chkbox:checked::after {
+		top: 0;
+		right: 0;
+		left: auto;
+	}
+
+	.bl_toggleArea_label {
+		flex: none;
+	}
+}
+
+#js_colorMode_controller[hidden] {
+	display: none;
 }

@@ -36,65 +36,77 @@ toolBoxChkbox.addEventListener('change', (e) => {
 
 /* ≡≡≡ ▀▄ DarkMode ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 	■ 概要
-		htmlタグに `is_darkMode` クラスをつけ外しすることで、カラーモードを制御する
-		カラーモードの制御には、CSSのカスタムプロパティを使用しているので詳細はそちらを参照
+		htmlタグに `is_darkMode`/`is_lightMode` クラスをつけ外しすることで、カラーモードを制御する
+		カラーモードの制御には、CSSのカスタムプロパティを使用しているので詳細はそちらを参照(devUtilities.css)
 	■ 備考
-		カラーモードの状態は、ブラウザ（OS）の設定を引き継ぐ
+		完全にOSやブラウザの設定とは切り離し、強制的な上書き処理を行う（検証用）
 		変更した情報は `sessionStorage` を使って保存され引き継ぐことができる
 ---------------------------------------------------------------------------- */
 
-// OSの設定がダークモード
-let darkModeOS = window.matchMedia("(prefers-color-scheme: dark)");
-
-// スイッチのinput要素（checkbox）
+// 各種要素の取得
+const colorModeChkbox = document.getElementById('js_colorMode_chkbox');
 const darkModeChkbox = document.getElementById("js_darkMode");
+const colorModeCtrl = document.getElementById('js_colorMode_controller');
 
-/** ダークモードをオンにする（クラス入れ替え、チェックボックスにチェック付与） */
-function darkModeOn() {
-	document.documentElement.classList.remove("is_lightMode");
-	document.documentElement.classList.add("is_darkMode"); // ルート要素<html>にクラスを追加
-	darkModeChkbox.checked = true;
+/**
+ * セッション中に維持保存される、カラーモード設定情報
+ *
+ * @param {boolean} isShow - 機能が有効化されているか
+ * @param {boolean} isDark - ダークモード設定か
+ */
+let currentColorState;
+if (sessionStorage.getItem('currentColorState')){
+	currentColorState = sessionStorage.getItem('currentColorState');
+	currentColorState = JSON.parse(currentColorState);
+} else {
+	currentColorState = {
+		isShow: false,
+		isDark: false,
+	};
 }
 
-/** ダークモードをオフにする（クラス入れ替え、チェックボックスの解除） */
-function darkModeOff() {
-	document.documentElement.classList.remove("is_darkMode"); // クラスの削除
-	document.documentElement.classList.add("is_lightMode");
-	darkModeChkbox.checked = false;
-}
-
-// イベントリスナー
-let listener = (event) => {
-	if (event.matches) {
-		darkModeOn();
+/**
+ * カラーモード機能の有効無効を管理
+ *
+ * 有効の場合は isDark に応じてクラスを付与、向こうの場合はクラス除去
+ *
+ * @param {boolean} isShow - 機能が有効化されているか
+ * @param {boolean} isDark - ダークモード設定か
+ */
+function changeColorMode(isShow, isDark) {
+	if (isShow) {
+		colorModeCtrl.hidden = false;
+		if (isDark) {
+			document.documentElement.classList.remove("is_lightMode");
+			document.documentElement.classList.add("is_darkMode");
+		} else {
+			document.documentElement.classList.remove("is_darkMode");
+			document.documentElement.classList.add("is_lightMode");
+		}
 	} else {
-		darkModeOff();
+		colorModeCtrl.hidden = true;
+		document.documentElement.classList.remove('is_lightMode', `is_darkMode`);
 	}
-};
-
-// リスナー登録
-darkModeOS.addEventListener("change", listener);
-
-// 初期化処理
-listener(darkModeOS);
-
-// スイッチの操作に応じて切り替え処理
-darkModeChkbox.addEventListener("change", () => {
-	if (darkModeChkbox.checked) {
-		darkModeOn();
-		sessionStorage.setItem("is_darkMode", "on");
-	} else {
-		darkModeOff();
-		sessionStorage.setItem("is_darkMode", "off");
-	}
-});
-
-// ロード時の状況に応じて切り替え
-if (sessionStorage.getItem("is_darkMode") === "on") {
-	darkModeOn();
-} else if (sessionStorage.getItem("is_darkMode") === "off") {
-	darkModeOff();
+	// 設定情報の更新
+	currentColorState.isShow = isShow;
+	currentColorState.isDark = isDark;
+	sessionStorage.setItem('currentColorState', JSON.stringify(currentColorState));
 }
+
+// 「ダークモード」チェックボックス
+darkModeChkbox.addEventListener("change", (e) =>{
+	changeColorMode(currentColorState.isShow, e.target.checked);
+})
+
+// 「カラーモード手動」チェックボックス
+colorModeChkbox.addEventListener("change", (e) => {
+	changeColorMode(e.target.checked, currentColorState.isDark);
+})
+
+// 初期状態の反映
+darkModeChkbox.checked = currentColorState.isDark;
+colorModeChkbox.checked = currentColorState.isShow;
+changeColorMode(currentColorState.isShow, currentColorState.isDark);
 
 
 
