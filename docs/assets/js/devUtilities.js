@@ -49,15 +49,17 @@ let darkModeOS = window.matchMedia("(prefers-color-scheme: dark)");
 // スイッチのinput要素（checkbox）
 const darkModeChkbox = document.getElementById("js_darkMode");
 
-/** ダークモードをオンにする（クラス付与、チェックボックスにチェック付与） */
+/** ダークモードをオンにする（クラス入れ替え、チェックボックスにチェック付与） */
 function darkModeOn() {
+	document.documentElement.classList.remove("is_lightMode");
 	document.documentElement.classList.add("is_darkMode"); // ルート要素<html>にクラスを追加
 	darkModeChkbox.checked = true;
 }
 
-/** ダークモードをオフにする（クラス除去、チェックボックスの解除） */
+/** ダークモードをオフにする（クラス入れ替え、チェックボックスの解除） */
 function darkModeOff() {
 	document.documentElement.classList.remove("is_darkMode"); // クラスの削除
+	document.documentElement.classList.add("is_lightMode");
 	darkModeChkbox.checked = false;
 }
 

@@ -207,8 +207,11 @@
 
 	<?php
 	// 開発者ツール（運用時には除去する）
-	get_template_part('template-parts/parts', 'devutils');
-
+	$enableDevUtil = get_theme_mod('zkr-setting-devutils', false);
+	if(($enableDevUtil) && (function_exists('zkr_enqueue_devUtils'))) {
+		zkr_enqueue_devUtils();
+		get_template_part('template-parts/parts', 'devutils');
+	}
 	wp_footer();
 	?>
 </body>

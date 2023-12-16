@@ -13,16 +13,6 @@ function zkr_enqueue_scripts() {
 		)
 	);
 
-  wp_enqueue_script(
-		'js-dev',
-		get_template_directory_uri() . '/assets/js/devUtilities.js',
-		array(),
-		'1.0.0',
-		array(
-			'in_footer' => 'true',
-		)
-	);
-
 	// スタイルシートの読み込み
   wp_enqueue_style(
 		'googlefonts',
@@ -47,6 +37,21 @@ function zkr_enqueue_scripts() {
 		'all'
 	);
 
+}
+add_action('wp_enqueue_scripts', 'zkr_enqueue_scripts');
+
+// 開発ツール有効時に読み込み
+function zkr_enqueue_devUtils() {
+  wp_enqueue_script(
+		'js-dev',
+		get_template_directory_uri() . '/assets/js/devUtilities.js',
+		array(),
+		'1.0.0',
+		array(
+			'in_footer' => 'true',
+		)
+	);
+
   wp_enqueue_style(
 		'css-dev',
 		get_template_directory_uri() . '/assets/css/devUtilities.css',
@@ -55,4 +60,3 @@ function zkr_enqueue_scripts() {
 		'all'
 	);
 }
-add_action('wp_enqueue_scripts', 'zkr_enqueue_scripts');

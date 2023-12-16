@@ -4,6 +4,7 @@
  * 1. 『サイト基本情報』セクション
  * 	 - 'zkr-setting-card-categories' : カテゴリ出力制限（デフォルト：3）
  *   - 'zkr-setting-card-excerpt' : 抜粋文の文字数（デフォルト：80）
+ *   - 'zkr-setting-devutils' : 開発ツールの有効化（デフォルト：false）
  *   + ヘッダー
  *     - カスタムロゴ
  *     - タイトルテキスト出力の是非
@@ -83,6 +84,27 @@ function zkr_theme_customizer($wp_customize){
 					'9' => '9',
 					'10' => '10',
 				),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'zkr-setting-devutils',
+		array(
+			'default' => false,
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'zkr-setting-devutils-ctrl',
+			array(
+				'label' => '開発ツールの有効化',
+				'section' => 'title_tagline',
+				'settings' => 'zkr-setting-devutils',
+				'priority' => 312,
+				'type' => 'checkbox',
 			)
 		)
 	);

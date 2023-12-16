@@ -156,37 +156,43 @@ Version: 1.0
 }
 
 /* セマンティックカラー（ダークモード時） */
-:root.is_darkMode {
-	--sc_txt_body: var(--white);
-	--sc_txt_body__small: var(--white);
-	--sc_txt_desc: var(--sumi-400);
-	--sc_txt_placeholder: var(--sumi-500);
-	--sc_txt_onFill: var(--white);
-	--sc_txt_link: var(--sea-300);
-	--sc_txt_link__hover: var(--sea-200);
-	--sc_txt_link__active: var(--sea-200);
-	--sc_txt_link__visited: var(--sea-200);
-	--sc_txt_alert: var(--sun-500);
-	--sc_txt_disabled: var(--sumi-600);
-	--sc_txt_icon: var(--white);
-	--sc_txt_btn__primary: var(--white);
-	--sc_txt_btn__secondary: var(--sea-300);
-	--sc_txt_btn__tertiary: var(--sea-300);
-	--sc_border_field: 1px solid var(--white);
-	--sc_border_divider: 1px solid var(--sumi-700);
-	--sc_border_focused: 2px solid var(--wood-600);
-	--sc_border_selected: 2px solid var(--sea-300);
-	--sc_border_disabled: 1px solid var(--sumi-300);
-	--sc_border_alert: 2px solid var(--sun-500);
-	--sc_bg_body__primary: var(--sumi-900);
-	--sc_bg_body__secondary: var(--sumi-700);
-	--sc_bg_body__tertiary: var(--sumi-800);
-	--sc_bg_btn__primary: var(--sea-300);
-	--sc_bg_btn__secondary: var(--sea-1100);
-	--sc_bg_disabled: var(--sumi-600);
-	--sc_bg_alert: var(--sun-500);
-	--sc_bg_shadow: var(--white);
+@media (prefers-color-scheme: dark) {
+	:root {
+		--sc_txt_body: var(--white);
+		--sc_txt_body__small: var(--white);
+		--sc_txt_desc: var(--sumi-400);
+		--sc_txt_placeholder: var(--sumi-500);
+		--sc_txt_onFill: var(--white);
+		--sc_txt_link: var(--sea-300);
+		--sc_txt_link__hover: var(--sea-200);
+		--sc_txt_link__active: var(--sea-200);
+		--sc_txt_link__visited: var(--sea-200);
+		--sc_txt_alert: var(--sun-500);
+		--sc_txt_disabled: var(--sumi-600);
+		--sc_txt_icon: var(--white);
+		--sc_txt_btn__primary: var(--white);
+		--sc_txt_btn__secondary: var(--sea-300);
+		--sc_txt_btn__tertiary: var(--sea-300);
+		--sc_border_field: 1px solid var(--white);
+		--sc_border_divider: 1px solid var(--sumi-700);
+		--sc_border_focused: 2px solid var(--wood-600);
+		--sc_border_selected: 2px solid var(--sea-300);
+		--sc_border_disabled: 1px solid var(--sumi-300);
+		--sc_border_alert: 2px solid var(--sun-500);
+		--sc_bg_body__primary: var(--sumi-900);
+		--sc_bg_body__secondary: var(--sumi-700);
+		--sc_bg_body__tertiary: var(--sumi-800);
+		--sc_bg_btn__primary: var(--sea-300);
+		--sc_bg_btn__secondary: var(--sea-1100);
+		--sc_bg_disabled: var(--sumi-600);
+		--sc_bg_alert: var(--sun-500);
+		--sc_bg_shadow: var(--white);
+	}
 }
+
+
+
+
 
 /* ≡≡≡ ▀▄ ベース設定 ▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 	■ 概要
