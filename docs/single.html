@@ -543,9 +543,9 @@
 
 					<h4>古いブラウザでは動作が怪しいと思われます</h4>
 					<p>
-						これは CSS において、新しい機能を使っているためです（ネストしたセレクタ など）<br>
-						「ベンダープレフィックスを使う」、「セレクタをネストさせない」など回避できる手段もあると思われますが、
-						まずはできるかできないかを知りたいため完成の方を優先させております。ご了承ください。
+						古いブラウザにおいて、CSS新機能の関係でレイアウトが崩れているかもしれません。<br>
+						セレクタをネストさせない、ベンダープレフィックスを使う などの回避手段を少しずつ反映させていっていますが、
+						完成の方を優先しているため対応が遅れております。ご了承ください。
 					</p>
 
 					<h4>ブロックテーマに関する知見が不足しており、テーマを適合させる方法が未解決の状態です</h4>
@@ -559,14 +559,6 @@
 						<li>カラムブロック等のレイアウトに関するブロックが上手く調整されるか？</li>
 						<li>機能の関係上、フォントサイズは <code>rem</code> を使うのが望ましいが、それは <code>theme.json</code> で設定すべきなのか css で個別に設定しなければいけないのか？</li>
 					</ul>
-
-					<h4>カラーモードに関する部分は、最終的には別の方法に変える予定です</h4>
-					<p>
-						現在は JavaScript と css クラスを使って処理していますが、これは検証しやすくするためのものです。
-						（画面上にコントロールできる要素を配置）
-						本来は <code>@media (prefers-color-scheme: dark) {各セマンティックカラー（カスタムプロパティ）}</code> を使うのが望ましいと考え、
-						最終的にはそちらに変更する予定です。
-					</p>
 
 					<h4>CSS設計が参考元とは少し変わっています</h4>
 					<p>
@@ -630,6 +622,13 @@
 					<ul>
 						<li><a class="el_link" href="https://fonts.google.com/noto/specimen/Noto+Sans+JP/about">Noto Sans Japanese - Google Fonts</a></li>
 						<li><a class="el_link" href="https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL">SIL Open Font License (OFL)</a></li>
+					</ul>
+
+					<h3>Material Symbols and Icons</h3>
+					<p>テーマの画像として、マテリアルシンボルを使用しています。こちらは Apache License バージョン 2.0 となっています。</p>
+					<ul>
+						<li><a class="el_link" href="https://fonts.google.com/icons">Material Symbols and Icons - Google Fonts</a></li>
+						<li><a class="el_link" href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a></li>
 					</ul>
 
 					<h3>デジタル庁イラストレーション・アイコン</h3>
