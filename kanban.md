@@ -4,6 +4,18 @@
 
 ## 処理
 
+### カラーモードのスタイル修正
+
++ 親：[カラーモード切替機能の改修](#カラーモード切替機能の改修)
++ 作業範囲：CSS/WordPress
+
+ダークモード用のスタイル改修に関し、一部修正漏れがあったので該当部を修正。
+*OSやブラウザのカラーモード `prefers-color-scheme`* と *Javascriptによる手動変更機能 `.is_lightMode`/`.is_darkMode`* を組み合わせて考える必要がある。
+
++ `is_darkMode` などのクラス付与によるスタイルは `devUtilities.css` 側に移動
++ `style.css` 側は `prefers-color-scheme: dark` を使用する手法に統一
++ 両者が組み合わさる状況下では `devUtilities.css` 側で適切な形に上書きする
+
 ## 処理途中
 
 ---

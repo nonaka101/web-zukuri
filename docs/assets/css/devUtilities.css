@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+/* ≡≡≡ ▀▄ カラーシステム（DesignSystem 1.3.2 準拠）▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+■ 概要
+	カラーモードを切り替えられるよう、カスタムプロパティでセマンティックカラーを再現している
+	ここでは Javascript によるカラーモード変更機能で付与するクラス `is_lightMode`, `is_darkMode` を使用する
+--------------------------------------------------------------------------- */
+
 /* セマンティックカラー（ライトモード時） */
 :root.is_lightMode {
 	--sc_txt_body: var(--sumi-900);
@@ -67,17 +73,39 @@
 }
 
 
+/* style.css 側で適用される `filter: invert(1);` を上書きする */
+@media (prefers-color-scheme: dark) {
+	.is_lightMode .bl_accordion_summary::after {
+		filter: invert(0);
+	}
+}
+
+.is_darkMode .bl_accordion_summary::after {
+	filter: invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+	.is_lightMode .bl_searchForm_inputSelect::after {
+		filter: invert(0);
+	}
+}
+
+.is_darkMode .bl_searchForm_inputSelect::after {
+	filter: invert(1);
+}
 
 
 
-/* ≡≡≡ ❒ bl_component ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+
+
+/* ≡≡≡ ❒ bl_component ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 	■ 概要
 		固定ページにある、コンポーネント用のボックス
 		（調べやすいよう、リサイズを可能にしている）
 	■ 構成
 		bl_component_box : ベース
 			bl_component_caption : ボックス上部に固定されたキャプション
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 .bl_component_box {
 	padding: 0;
 	margin-top: 0;
@@ -106,14 +134,14 @@
 
 
 
-/* ≡≡≡ ❒ bl_devToolBox ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ❒ bl_devToolBox ❒ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 	■ 概要
 		開発に使うツール
 	■ 構成
 		bl_devToolBox : ベース
 			bl_devToolBox_btn : ツールボックスを開閉するためのチェックボックス
 			bl_devToolBox_utils : ツール集
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 .bl_devToolBox {
 	--tb_text: #000000;
 	--tb_bg: #f8f8fb;
@@ -169,7 +197,7 @@
 		bl_toggleArea : ベース
 			bl_toggleArea_chkbox : トグルボタン
 			bl_toggleArea_label : ラベル
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 @supports(-webkit-appearance: none) or (-moz-appearance: none) {
 	.bl_toggleArea {
 		display: flex;

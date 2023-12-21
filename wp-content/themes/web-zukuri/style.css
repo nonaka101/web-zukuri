@@ -46,14 +46,11 @@ Version: 1.0
 	--space_13:6.5rem;
 
 	/* ≡≡≡ ▀▄ カラーシステム（DesignSystem 1.3.2 準拠）▀▄ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-	■ 概要
-		カラーモードを切り替えられるよう、カスタムプロパティでセマンティックカラーを再現している。
-		原則として、クラスの色に関してはセマンティックカラーを使用すること。
-		（※カラーモードに関係ない要素に関しては、プリミティブカラーからも可とする）
-	■ 注意
-		現在は開発用に、ルート要素にクラス 'is_darkMode' を使っている。
-		本来は、`@media (prefers-color-scheme: dark)` を使った方法が望ましいと考える。
-	--------------------------------------------------------------------------- */
+		■ 概要
+			カラーモードを切り替えられるよう、カスタムプロパティでセマンティックカラーを再現している。
+			原則として、クラスの色に関してはセマンティックカラーを使用すること。
+			（※カラーモードに関係ない要素に関しては、プリミティブカラーからも可とする）
+	-------------------------------------------------------------------------- */
 
 	/* プリミティブカラー */
 	--white: #ffffff;
@@ -796,9 +793,6 @@ html:has(dialog[open]) {
 			bl_address_title : このモジュール全体のタイトル
 			bl_address_item : アイテム
 				bl_address_name : アイテム名
-	■ 注意
-		カラーモードに対応するため、`is_darkMode` クラスを使用している
-		`prefers-color-scheme` の手法に変更時は、こちらも変えること
 ---------------------------------------------------------------------------- */
 .bl_address {
 	margin-bottom: 40px;
@@ -838,9 +832,6 @@ html:has(dialog[open]) {
 		-> bl_accordion__dummy : アーカイブ一覧用のダミー要素
 			bl_accordion_summary : サマリー要素
 			bl_accordion_description : 格納されている要素
-	■ 注意
-		カラーモードに対応するため、`is_darkMode` クラスを使用している
-		`prefers-color-scheme` の手法に変更時は、こちらも変えること
 ---------------------------------------------------------------------------- */
 .bl_accordion {
 	padding: 0.5em 0;
@@ -875,8 +866,10 @@ html:has(dialog[open]) {
 	transition: all 0.3s ease;
 }
 
-.is_darkMode .bl_accordion_summary::after {
-	filter: invert(1);
+@media (prefers-color-scheme: dark) {
+	.bl_accordion_summary::after {
+		filter: invert(1);
+	}
 }
 
 /* WordPressブロック化の際、インナーブロックを考慮して子結合子にしている */
@@ -1515,8 +1508,10 @@ html:has(dialog[open]) {
 	background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
 }
 
-.is_darkMode .bl_searchForm_inputSelect::after {
-	background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
+@media (prefers-color-scheme: dark) {
+	.bl_searchForm_inputSelect::after {
+		filter: invert(1);
+	}
 }
 
 @media (max-width: 200px) {
