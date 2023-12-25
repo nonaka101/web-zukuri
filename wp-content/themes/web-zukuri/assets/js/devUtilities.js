@@ -128,10 +128,10 @@ const fontSizeRange = document.getElementById('js_fontSize_range');
 const fontSizeResult = document.getElementById('js_fontSize_result');
 
 /**
- * セッション中に維持保存される、フォント設定情報
+ * セッション中に維持保存される、フォントサイズ設定情報
  *
  * @param {boolean} isShow - 機能が有効化されているか
- * @param {int} size - フォントサイズ
+ * @param {int} size - px単位のフォントサイズ
  */
 let currentFontState;
 if (sessionStorage.getItem('currentFontState')){
