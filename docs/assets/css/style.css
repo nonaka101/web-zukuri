@@ -812,17 +812,24 @@ html:has(dialog[open]) {
 			bl_accordion_description : 格納されている要素
 ---------------------------------------------------------------------------- */
 .bl_accordion {
-	padding: 0.5em 0;
+	--padding: 0.5em 0;
+
 	font-size: 1rem;
-	border-bottom: var(--sc_border_divider);
+	text-indent: 1ch;
+	border: var(--sc_border_divider);
 }
 
-.bl_accordion a {
+.bl_accordion.bl_accordion__dummy {
+	padding: var(--padding);
+	background-color: var(--sc_bg_body__primary);
+}
+
+.bl_accordion.bl_accordion__dummy > a {
 	color: var(--sc_txt_body);
 	text-decoration: none;
 }
 
-.bl_accordion a:hover {
+.bl_accordion.bl_accordion__dummy > a:hover {
 	text-decoration: underline;
 }
 
@@ -835,15 +842,21 @@ html:has(dialog[open]) {
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
+	padding: var(--padding);
 	color: var(--sc_txt_body);
 	list-style-type: none;
 	cursor: pointer;
+	background-color: var(--sc_bg_body__tertiary);
+}
+
+.bl_accordion[open] > .bl_accordion_summary {
+	background-color: var(--sc_bg_body__secondary);
 }
 
 .bl_accordion_summary::after {
 	width: 1em;
 	height: 1em;
-	margin-right: 0.1em;
+	margin-right: 1ch;
 	margin-left: auto;
 	content: "";
 	background-image: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.1L3 8L4 7L12 15L20 7L21 8L12 17.1Z"/></svg>');
@@ -865,11 +878,18 @@ html:has(dialog[open]) {
 .bl_accordion_description {
 	padding: 0;
 	margin: 0;
-	margin-top: 0.3rem;
 	list-style: none;
 }
 
+/* 年月アーカイブ用 */
+ul.bl_accordion_description > li > a {
+	color: var(--sc_txt_body);
+	text-decoration: none;
+}
 
+ul.bl_accordion_description > li > a:hover {
+	text-decoration: underline;
+}
 
 
 
