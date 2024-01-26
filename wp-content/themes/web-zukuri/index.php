@@ -5,7 +5,7 @@
 	<?php if ( is_home() && ! is_front_page() && ! empty( single_post_title( '', false ) ) ) : ?>
 		<h1 class="el_heading_lv1"><?php single_post_title(); ?></h1>
 	<?php elseif (is_date() || is_category() || is_tag() || is_author() || is_tax()) : ?>
-		<h1 class="el_header_lv1">
+		<h1 class="el_heading_lv1">
 			<?php if(is_month()): ?>
 				<?php echo get_the_date(format:'Y年n月'); // 月別アーカイブの場合は `single_term_title()` では取得不可のため ?>
 			<?php elseif (is_year()): ?>

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main class="ly_mainArea_content ly_mainArea_content__left" id="anchor_mainContent" tabindex="-1">
-	<h1 class="el_header_lv1">
+	<h1 class="el_heading_lv1">
 		<?php if(is_month()): ?>
 			<?php echo get_the_date(format:'Y年n月'); // 月別アーカイブの場合は `single_term_title()` では取得不可のため ?>
 		<?php elseif (is_year()): ?>

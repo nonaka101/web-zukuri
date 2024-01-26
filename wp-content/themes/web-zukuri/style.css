@@ -1732,13 +1732,13 @@ button.el_btn {
 
 
 
-/* ≡≡≡ ☐ el_header_lv* ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+/* ≡≡≡ ☐ el_heading_lv* ☐ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 	■ 概要
 		見出し（投稿、固定ページのブロックエディタコンテンツと同じスタイル）
 		これは、他のページと投稿、固定ページとでスタイルを統一させるためのもの
 		※なので投稿、固定ページ以外で使用することを想定
 ---------------------------------------------------------------------------- */
-.el_header_lv1 {
+.el_heading_lv1 {
 	margin-top: var(--space_8);
 	margin-bottom: var(--space_3);
 	font-size: 2rem;
@@ -1748,14 +1748,14 @@ button.el_btn {
 }
 
 @media (min-width: 960px) {
-	.el_header_lv1 {
+	.el_heading_lv1 {
 		font-size: 2.25rem;
 		font-weight: 400;
 		line-height: 1.4;
 	}
 }
 
-.el_header_lv2 {
+.el_heading_lv2 {
 	margin-top: var(--space_8);
 	margin-bottom: var(--space_3);
 	font-size: 1.75rem;
@@ -1765,13 +1765,13 @@ button.el_btn {
 }
 
 @media (min-width: 960px) {
-	.el_header_lv2 {
+	.el_heading_lv2 {
 		font-size: 2rem;
 		font-weight: 400;
 	}
 }
 
-.el_header_lv3 {
+.el_heading_lv3 {
 	margin-top: var(--space_5);
 	margin-bottom: var(--space_3);
 	font-size: 1.5rem;
@@ -1781,13 +1781,13 @@ button.el_btn {
 }
 
 @media (min-width: 960px) {
-	.el_header_lv3 {
+	.el_heading_lv3 {
 		font-size: 1.75rem;
 		font-weight: 400;
 	}
 }
 
-.el_header_lv4 {
+.el_heading_lv4 {
 	margin-top: var(--space_5);
 	margin-bottom: var(--space_2);
 	font-size: 1.25rem;
@@ -1797,13 +1797,13 @@ button.el_btn {
 }
 
 @media (min-width: 960px) {
-	.el_header_lv4 {
+	.el_heading_lv4 {
 		font-size: 1.5rem;
 		font-weight: 400;
 	}
 }
 
-.el_header_lv5 {
+.el_heading_lv5 {
 	margin-top: var(--space_5);
 	margin-bottom: var(--space_2);
 	font-size: 1rem;
@@ -1813,14 +1813,14 @@ button.el_btn {
 }
 
 @media (min-width: 960px) {
-	.el_header_lv5 {
+	.el_heading_lv5 {
 		font-size: 1.25rem;
 		font-weight: 400;
 		line-height: 1.5;
 	}
 }
 
-.el_header_lv6 {
+.el_heading_lv6 {
 	margin-top: var(--space_3);
 	margin-bottom: var(--space_2);
 	font-size: 1rem;
@@ -1830,7 +1830,7 @@ button.el_btn {
 }
 
 @media (min-width: 960px) {
-	.el_header_lv6 {
+	.el_heading_lv6 {
 		font-size: 1rem;
 		font-weight: 500;
 	}

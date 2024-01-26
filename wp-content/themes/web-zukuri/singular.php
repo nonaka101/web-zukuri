@@ -7,7 +7,7 @@
 				the_post();
 		?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-				<h1 class="el_header_lv1"><?php the_title(); ?></h1>
+				<h1 class="el_heading_lv1"><?php the_title(); ?></h1>
 				<?php if(is_single()): // PostData 出力は、投稿ページのみ適用 ?>
 					<!-- ブロックスキップ（キー操作用） -->
 					<nav class="bl_blockSkip_wrapper" aria-label="記事本文へのスキップ">
