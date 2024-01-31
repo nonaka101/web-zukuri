@@ -184,12 +184,12 @@ Googleフォントの `Noto Sans JP` を使用しています。こちらは Ope
 
 一部のSVGアイコンと画像については、デジタル庁が公開しているデータを使用しています。これらはデジタル庁に著作権があります。
 
-+ [イラストレーション・アイコン素材｜デジタル庁](https://www.digital.go.jp/policies/servicedesign/designsystem/Illustration_Icons)  
-+ [イラストレーション・アイコン素材利用規約｜デジタル庁](https://www.digital.go.jp/policies/servicedesign/designsystem/Illustration_Icons/terms_of_use)
+- [イラストレーション・アイコン素材｜デジタル庁](https://www.digital.go.jp/policies/servicedesign/designsystem/Illustration_Icons)  
+- [イラストレーション・アイコン素材利用規約｜デジタル庁](https://www.digital.go.jp/policies/servicedesign/designsystem/Illustration_Icons/terms_of_use)
 
 ### `normalize.css`
 
 CSS設計上、各ブラウザ間のスタイル差をなくすため、ノーマライズCSSを使用しています。こちらは MIT ライセンスとなっています。
 
-+ [Normalize.css: Make browsers render all elements more consistently.](https://necolas.github.io/normalize.css/)
-+ [normalize.css/LICENSE.md at master · necolas/normalize.css · GitHub](https://github.com/necolas/normalize.css/blob/master/LICENSE.md)
+- [Normalize.css: Make browsers render all elements more consistently.](https://necolas.github.io/normalize.css/)
+- [normalize.css/LICENSE.md at master · necolas/normalize.css · GitHub](https://github.com/necolas/normalize.css/blob/master/LICENSE.md)
