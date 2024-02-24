@@ -570,8 +570,8 @@ small {
 				ly_footer_widget3fr : 3fr使うウィジェット
 				ly_footer_widget6fr : 6fr使うウィジェット
 					ly_footer_headerTitle : ウィジェット先頭のタイトル要素
-				ly_footer_copyright : 最下部のコピーライト用
-					el_copyright : コピーライトテキスト
+			ly_footer_copyright : 最下部のコピーライト用
+				el_copyright : コピーライトテキスト
 ---------------------------------------------------------------------------- */
 .ly_footer_wrapper {
 	position: relative;

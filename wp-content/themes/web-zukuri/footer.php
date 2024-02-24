@@ -189,7 +189,7 @@
 				</p>
 				<!-- /.el_copyright -->
 			</div>
-			<!-- /.el_footer_copyright -->
+			<!-- /.ly_footer_copyright -->
 		<?php endif; ?>
 
 	</footer>
