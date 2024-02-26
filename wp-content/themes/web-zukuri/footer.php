@@ -1,7 +1,7 @@
 	</div>
 	<!-- /.ly_mainArea -->
-	<footer class="ly_footer_wrapper" id="anchor_footer" tabindex="-1">
-		<div class="ly_footer">
+	<footer class="ly_footer" id="anchor_footer" tabindex="-1">
+		<div class="ly_footer_widgetArea">
 			<div class="ly_footer_widget3fr">
 				<div class="ly_footer_headerTitle">
 					<?php // 似たコードが header.php にもあるが、imgのクラスが違う
@@ -176,7 +176,7 @@
 			<!-- /.ly_footer_widget3fr -->
 
 		</div>
-		<!-- /.ly_footer -->
+		<!-- /.ly_footer_widgetArea -->
 
 		<?php
 		// カスタマイザー上でコピーライト文が登録されていれば出力
@@ -193,7 +193,7 @@
 		<?php endif; ?>
 
 	</footer>
-	<!-- /.ly_footer_wrapper -->
+	<!-- /.ly_footer -->
 
 	<button type="button" id="js_pageTop" aria-label="ページトップに戻る">
 		<svg role="graphics-symbol img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
