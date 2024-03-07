@@ -2,7 +2,7 @@
 	<!-- /.ly_mainArea -->
 	<footer class="ly_footer" id="anchor_footer" tabindex="-1">
 		<div class="ly_footer_widgetArea">
-			<div class="ly_footer_widget3fr">
+			<div class="ly_footer_widget ly_footer_widget__3fr">
 				<div class="ly_footer_headerTitle">
 					<?php // 似たコードが header.php にもあるが、imgのクラスが違う
 						if( has_custom_logo() ){
@@ -40,9 +40,9 @@
 					);
 				?>
 			</div>
-			<!-- /.ly_footer_widget3fr -->
+			<!-- /.ly_footer_widget ly_footer_widget__3fr -->
 
-			<div class="ly_footer_widget6fr">
+			<div class="ly_footer_widget ly_footer_widget__6fr">
 				<h2 class="ly_footer_headerTitle">最新の投稿</h2>
 				<div class="bl_cardUnit bl_cardUnit__1col">
 
@@ -69,9 +69,9 @@
 
 				</div>
 			</div>
-			<!-- /.ly_footer_widget6fr -->
+			<!-- /.ly_footer_widget ly_footer_widget__6fr -->
 
-			<div class="ly_footer_widget3fr">
+			<div class="ly_footer_widget ly_footer_widget__3fr">
 				<h2 class="ly_footer_headerTitle">ユーティリティ</h2>
 				<?php
 				$utilText = get_theme_mod('zkr-setting-utils-text', '');
@@ -173,7 +173,7 @@
 				<?php endif; ?>
 
 			</div>
-			<!-- /.ly_footer_widget3fr -->
+			<!-- /.ly_footer_widget ly_footer_widget__3fr -->
 
 		</div>
 		<!-- /.ly_footer_widgetArea -->

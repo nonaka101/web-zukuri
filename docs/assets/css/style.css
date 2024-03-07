@@ -567,8 +567,9 @@ small {
 	■ 構成
 		ly_footer : ベース
 			ly_footer_widgetArea : ウィジェット格納要素
-				ly_footer_widget3fr : 3fr使うウィジェット
-				ly_footer_widget6fr : 6fr使うウィジェット
+				ly_footer_widget : ウィジェットのベース（モバイル画面で 12fr ）
+				-> ly_footer_widget__3fr : デスクトップ画面で 3fr 使うモディファイア
+				-> ly_footer_widget__6fr : デスクトップ画面で 6fr 使うモディファイア
 					ly_footer_headerTitle : ウィジェット先頭のタイトル要素
 			ly_footer_copyright : 最下部のコピーライト用
 				el_copyright : コピーライトテキスト
@@ -618,22 +619,15 @@ small {
 	}
 }
 
-.ly_footer_widget3fr {
+.ly_footer_widget {
 	grid-area: span 1/span 12;
 }
 
 @media (min-width: 960px) {
-	.ly_footer_widget3fr {
+	.ly_footer_widget.ly_footer_widget__3fr {
 		grid-area: span 1/span 3;
 	}
-}
-
-.ly_footer_widget6fr {
-	grid-area: span 1/span 12;
-}
-
-@media (min-width: 960px) {
-	.ly_footer_widget6fr {
+	.ly_footer_widget.ly_footer_widget__6fr {
 		grid-area: span 1/span 6;
 	}
 }

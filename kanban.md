@@ -4,19 +4,14 @@
 
 ## 処理
 
-### `ly_footer` の構造変更
+### `ly_footer_widget` に関する修正
 
 + 作業範囲：HTML/CSS/WordPress
 
-`ly_footer_copyright` が `ly_footer` と同階層にあるのは、`PRECSS` のルールに適していないと判断。
-ラッパー要素 `ly_footer_wrapper` を `ly_footer` に変更し、構造を修正した。
+これまでは `ly_footer_widget3fr`, `ly_footer_widget6fr` で個別でクラスを作り、それぞれでグリッド管理をしていた。  
+これは「モバイル画面では `12fr`」と共通化できるものであり、拡張性を考えるならモディファイアで対処すべき内容であった。
 
-### `bl_accordion`のスタイル修正3の検証結果をWordPressに反映
-
-+ 親：[bl_accordionのスタイル修正3](#bl_accordionのスタイル修正3)
-+ 作業範囲：WordPress
-
-アコーディオンのスタイル修正で検証した内容を、WordPress側に反映する。
+そのため、ベースクラス `ly_footer_widget` にモディファイア `ly_footer_widget__3fr`, `ly_footer_widget__6fr` となるよう管理方法を変更した。
 
 ## 処理途中
 
@@ -562,3 +557,17 @@ GitHub Pages 側を対象に、各種アーカイブ一覧をダミー要素と�
 
 + コメントが `el_` になってたので修正
 + style.css での構成説明でインデントミスを修正
+
+### `ly_footer` の構造変更
+
++ 作業範囲：HTML/CSS/WordPress
+
+`ly_footer_copyright` が `ly_footer` と同階層にあるのは、`PRECSS` のルールに適していないと判断。
+ラッパー要素 `ly_footer_wrapper` を `ly_footer` に変更し、構造を修正した。
+
+### `bl_accordion`のスタイル修正3の検証結果をWordPressに反映
+
++ 親：[bl_accordionのスタイル修正3](#bl_accordionのスタイル修正3)
++ 作業範囲：WordPress
+
+アコーディオンのスタイル修正で検証した内容を、WordPress側に反映する。
