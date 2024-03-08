@@ -627,6 +627,7 @@ small {
 	.ly_footer_widget.ly_footer_widget__3fr {
 		grid-area: span 1/span 3;
 	}
+	
 	.ly_footer_widget.ly_footer_widget__6fr {
 		grid-area: span 1/span 6;
 	}

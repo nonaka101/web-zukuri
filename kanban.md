@@ -4,15 +4,6 @@
 
 ## 処理
 
-### `ly_footer_widget` に関する修正
-
-+ 作業範囲：HTML/CSS/WordPress
-
-これまでは `ly_footer_widget3fr`, `ly_footer_widget6fr` で個別でクラスを作り、それぞれでグリッド管理をしていた。  
-これは「モバイル画面では `12fr`」と共通化できるものであり、拡張性を考えるならモディファイアで対処すべき内容であった。
-
-そのため、ベースクラス `ly_footer_widget` にモディファイア `ly_footer_widget__3fr`, `ly_footer_widget__6fr` となるよう管理方法を変更した。
-
 ## 処理途中
 
 ---
@@ -571,3 +562,12 @@ GitHub Pages 側を対象に、各種アーカイブ一覧をダミー要素と�
 + 作業範囲：WordPress
 
 アコーディオンのスタイル修正で検証した内容を、WordPress側に反映する。
+
+### `ly_footer_widget` に関する修正
+
++ 作業範囲：HTML/CSS/WordPress
+
+これまでは `ly_footer_widget3fr`, `ly_footer_widget6fr` で個別でクラスを作り、それぞれでグリッド管理をしていた。  
+これは「モバイル画面では `12fr`」と共通化できるものであり、拡張性を考えるならモディファイアで対処すべき内容であった。
+
+そのため、ベースクラス `ly_footer_widget` にモディファイア `ly_footer_widget__3fr`, `ly_footer_widget__6fr` となるよう管理方法を変更した。
