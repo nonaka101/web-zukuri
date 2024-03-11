@@ -627,6 +627,7 @@ small {
 	.ly_footer_widget.ly_footer_widget__3fr {
 		grid-area: span 1/span 3;
 	}
+
 	.ly_footer_widget.ly_footer_widget__6fr {
 		grid-area: span 1/span 6;
 	}
@@ -657,7 +658,7 @@ small {
 		モバイル画面の時にヘッダーに表示される「メニュー」ボタンから呼び出される
 		画面全体をモーダルダイアログで覆い、デスクトップ画面でのサイドバーの内容を表示
 	■ 構成
-		ly_dialog_wrapper[#menu] : ラッパー（※詳細度の関係からIDと併用）
+		ly_dialog_wrapper : ラッパー
 			ly_dialog : ダイアログ本体
 				bl_menuHeader : メニューヘッダー
 					bl_menuHeader_title : メニュー名
@@ -669,10 +670,15 @@ html:has(dialog[open]) {
 	overflow: hidden;
 }
 
+/* `max-*` は、デフォルトのスタイル（例：`dialog:-internal-dialog-in-top-layer`）を上書きするため */
 .ly_dialog_wrapper {
 	position: fixed;
 	top: 0;
 	left: 0;
+	width: 100dvw;
+	max-width: 100dvw;
+	height: 100dvh;
+	max-height: 100dvh;
 	padding: 0;
 	border: none;
 }
@@ -683,18 +689,6 @@ html:has(dialog[open]) {
 
 .ly_dialog_wrapper:not([open]) {
 	display: none;
-}
-
-/*
- * ここでIDセレクタを使っているのは、詳細度を高めるため
- * デフォルトのスタイル（例：`dialog:-internal-dialog-in-top-layer`）に `max-width` や `max-height` があり、
- * そこに em 関係が使われているため、ルートフォントが大きいと余白も大きくなり、折り返しが生じやすくなっていた。
- */
-#menu {
-	width: 100dvw;
-	max-width: 100dvw;
-	height: 100dvh;
-	max-height: 100dvh;
 }
 
 .ly_dialog {
