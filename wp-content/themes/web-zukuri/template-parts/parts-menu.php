@@ -8,9 +8,19 @@
 		echo 'id="' . $idAria . '"';
 		?>
 	>
-		<?php echo $args['name'] ?>
+		<?php
+			// 管理画面上のメニュー名を出力（登録がなければデフォルト名）
+			$locs = get_nav_menu_locations();
+			$menuId = $locs[$args['loc']];
+			if($menuId){
+				$menu = wp_get_nav_menu_object($menuId);
+				echo $menu->name;
+			} else {
+				echo $args['name'];
+			}
+		?>
 	</span>
-	
+
 	<?php
 	// コンテナなし、li要素やa要素にクラス付けした状態でメニューを出力（ul要素）
 	echo str_replace('sub-menu', 'sub-menu bl_tagMenu_list bl_tagMenu_list__indented',
